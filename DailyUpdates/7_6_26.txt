@@ -1,2 +1,3 @@
+ - Recieved project proposal
  - Created github repo for the project, shared with mentors
  
