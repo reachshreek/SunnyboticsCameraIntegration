@@ -1,3 +1,5 @@
  - Recieved project proposal
  - Created github repo for the project, shared with mentors
- 
+  - COmmunication w/Santi & Santiago for robot specs
+ - General Brainstorming for placement on robot and hardware stack
+     - taking initial technical challege & orevious takss into account
