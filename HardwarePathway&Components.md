@@ -4,6 +4,9 @@
 
 The main idea is to have the whole system work well in pretty serious weather conditions like high heat (100+F), dust, etc. 
 
+We will be splititng the full inference into partly on the edge computer and partly on the cloud
+  
+
 
 ---
 
@@ -25,7 +28,7 @@ The proposed camera system would be made of the following main hardware componen
   - Protects the camera lens from dust, water splashes, and debris.
   - Should be easy to clean or replace if it gets scratched or dirty.
 
-- **Optional Polarizing Filter**
+- **Polarizing Filter**
   - Helps reduce glare from the glass surface of the solar panels.
   - Should be tested because it may reduce brightness and require exposure adjustments.
 
@@ -44,7 +47,7 @@ The proposed camera system would be made of the following main hardware componen
   - Prevents data loss if the robot does not have a stable internet connection.
   - Should have enough capacity for at least one full mission.
 
-- **Robot GPS / Odometry Connection**
+- **Robot GPS/Odometry Connection**
   - Provides location and movement information for each image.
   - Allows every image to be georeferenced.
   - Helps connect each image to the correct row, panel, and mission.
@@ -77,7 +80,7 @@ The proposed hardware pathway is:
 ```mermaid
 flowchart LR
     A[Solar Panel / Target Area] --> B[Industrial RGB Camera]
-    B --> C[Fixed Lens + Protective Window / Optional Polarizer]
+    B --> C[Fixed Lens + Protective Window/Polarizer]
     C --> D[Sealed Camera Enclosure]
     D --> E[Edge Computer]
     E --> F[Local Storage]
@@ -87,4 +90,3 @@ flowchart LR
     I[Robot Power System] --> J[Protected DC-DC Converter]
     J --> E
     J --> B
-    ```
