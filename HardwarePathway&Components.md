@@ -72,7 +72,7 @@ The proposed camera system would be made of the following main hardware componen
   - Prevents cable damage during field operation.
   - Should be planned as part of the final installation design.
 
-
+---
 ## 3. Main Hardware Pathway
 
 The proposed hardware pathway is:
@@ -90,3 +90,6 @@ flowchart LR
     I[Robot Power System] --> J[Protected DC-DC Converter]
     J --> E
     J --> B
+```
+---
+## 4. Proposed 
