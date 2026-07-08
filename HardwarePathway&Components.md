@@ -93,4 +93,23 @@ flowchart LR
 ```
 ---
 
-## 4. 
+## 4. Proposed Items
+
+- ***LUCID Triton TRI050S-CC***
+  - Primary camera option for this system.
+  - Justification written in `CameraComparison&Choice.md`.
+  - Key reasons for selection:
+    - 5.0 MP resolution
+    - Global shutter
+    - GigE / PoE interface
+    - C-mount lens compatibility
+    - IP67 capability with proper lens tube and cables
+    - Good fit for outdoor robotic image capture
+
+  **Vendor / Product Links:**
+
+  | Source | Type | Link |
+  |---|---|---|
+  | Edmund Optics | Vendor | https://www.edmundoptics.com/p/lucid-vision-labs-tritontrade-tri050s-cc-sony-imx264-50mp-color-camera/41821/ |
+  | Graftek Imaging |Vendor | https://graftek.com/product/tri050s-cc/ |
+  | LUCID Vision Labs | Manufacturer Product Page + possible Vendor | https://thinklucid.com/product/triton-5-mp-imx264/ |
