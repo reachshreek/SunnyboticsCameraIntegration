@@ -96,23 +96,10 @@ flowchart LR
 ## 4. Proposed Items
 
 - **Camera: *LUCID Triton TRI050S-CC***
-  - Primary camera option for this system.
   - Justification written in `CameraChoice.md`.
-  - Key reasons for selection:
-    - 5.0 MP resolution
-    - Global shutter
-    - GigE / PoE interface
-    - C-mount lens compatibility
-    - IP67 capability with proper lens tube and cables
-    - Good fit for outdoor robotic image capture
 - **Edge Computer: *RUBIK Pi 3***
-  - Primary edge computer option for this system.
   - Justification written in `EdgeComputerChoice.md`.
-  - Key reasons for selection:
-    - Enough compute for image capture, metadata tagging, and light preprocessing
-    - Supports split inference between edge and cloud
-    - Gigabit Ethernet for connecting to the industrial camera system
-    - USB 3.0 support for peripherals
-    - M.2 support for local SSD storage
-    - Lower power and complexity compared with a heavier edge AI computer
-    - Better fit for the first prototype than the Jetson Orin Nano if full onboard inference is not required
+- **Local Storage: *WD Blue SN5000 2TB NVMe M.2 2280 SSD***
+  - Fits the RUBIK Pi 3 system because it uses the required **M.2 2280 NVMe** 
+  - The **2TB capacity** gives the system plenty of room for for lots of storage incase theres no wifi or ocnnection possible.
+  - will integrate into the system very easily. 

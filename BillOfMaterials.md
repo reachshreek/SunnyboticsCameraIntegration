@@ -17,3 +17,12 @@
     | RUBIK Pi | Official Product Page | https://rubikpi.ai/ |
     | Thundercomm | Manufacturer Product Page + possible Vendor | https://www.thundercomm.com/product/rubik-pi/ |
     | Amazon | Vendor | https://www.amazon.com/dp/B0F54BHVZY?lv=shuf&channelId=500&plpRedirect=mhFallback&th=1 |
+
+- **SSD: *WD Blue SN5000 2TB NVMe M.2 2280 SSD* - ~$110-140**
+
+    **Vendor / Product Links:**
+
+    | Source | Type | Link |
+    |---|---|---|
+    | Amazon | Vendor | https://www.amazon.com/dp/B0D7MKYNLX |
+    | Western Digital / SanDisk | Manufacturer | https://www.sandisk.com/products/ssd/internal-ssd/wd-blue-sn5000-nvme-ssd |
