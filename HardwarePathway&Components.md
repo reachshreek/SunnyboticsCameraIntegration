@@ -95,9 +95,9 @@ flowchart LR
 
 ## 4. Proposed Items
 
-- ***LUCID Triton TRI050S-CC***
+- **Camera: *LUCID Triton TRI050S-CC***
   - Primary camera option for this system.
-  - Justification written in `CameraComparison&Choice.md`.
+  - Justification written in `CameraChoice.md`.
   - Key reasons for selection:
     - 5.0 MP resolution
     - Global shutter
@@ -105,11 +105,14 @@ flowchart LR
     - C-mount lens compatibility
     - IP67 capability with proper lens tube and cables
     - Good fit for outdoor robotic image capture
-
-  **Vendor / Product Links:**
-
-  | Source | Type | Link |
-  |---|---|---|
-  | Edmund Optics | Vendor | https://www.edmundoptics.com/p/lucid-vision-labs-tritontrade-tri050s-cc-sony-imx264-50mp-color-camera/41821/ |
-  | Graftek Imaging |Vendor | https://graftek.com/product/tri050s-cc/ |
-  | LUCID Vision Labs | Manufacturer Product Page + possible Vendor | https://thinklucid.com/product/triton-5-mp-imx264/ |
+- **Edge Computer: *RUBIK Pi 3***
+  - Primary edge computer option for this system.
+  - Justification written in `EdgeComputerChoice.md`.
+  - Key reasons for selection:
+    - Enough compute for image capture, metadata tagging, and light preprocessing
+    - Supports split inference between edge and cloud
+    - Gigabit Ethernet for connecting to the industrial camera system
+    - USB 3.0 support for peripherals
+    - M.2 support for local SSD storage
+    - Lower power and complexity compared with a heavier edge AI computer
+    - Better fit for the first prototype than the Jetson Orin Nano if full onboard inference is not required
