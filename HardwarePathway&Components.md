@@ -88,25 +88,30 @@ flowchart LR
     J --> E
     J --> B
 ```
+![alt text](electricalarchitecture.png)
+
 ---
 
 ## 4. Proposed Items
 
 - **Camera: *LUCID Triton TRI050S-CC***
   - Justification written in `CameraChoice.md`.
+
 - **Edge Computer: *RUBIK Pi 3***
   - Justification written in `EdgeComputerChoice.md`.
+
 - **Local Storage: *WD Blue SN5000 2TB NVMe M.2 2280 SSD***
   - Fits the RUBIK Pi 3 system because it uses the required **M.2 2280 NVMe** 
   - The **2TB capacity** gives the system plenty of room for for lots of storage incase theres no wifi or ocnnection possible.
   - will integrate into the system very easily. 
-- **Lens: *LUCID / Universe NF120-5M-C 12mm C-Mount 5MP 2/3" Lens* - ~$260**
-  - Compatible with the LUCID Triton TRI050S-CC because it uses a C-mount and supports 2/3" sensors.
+
+- **Lens: *LUCID / Universe UC080-5M / BL080C 8mm C-Mount 5MP 2/3" Lens* - ~$420-560**
+  - Compatible with the LUCID Triton TRI050S-CC because it uses a C-mount and supports up to 2/3" sensors.
   - Rated for 5MP imaging, matching the 5MP resolution of the selected Triton camera.
-  - The 12mm focal length provides a big field of view for the  vision system without being wide or distorted.
-  - Manual focus and manual iris are suitable for a fixed-mounted machine vision setup where the camera-to-object distance will not constantly change.
-  - Compact and lightweight, making it easy to mechanically integrate with the camera enclosure or mounting system.
-  - Listed by LUCID as compatible with Triton camera models, reducing integration risk.
+  - The robot is only about 298mm tall, so a 8mm lens inspects a good strip of the panel at once.
+  - Manual focus and manual iris are suitable for a fixed mount, so camera-to-panel distance will stay consistent.
+  - C-mount matches the LUCID camera.
+
 - **Optical Filter: *Edmund Optics M22.5 × 0.50 Machine Vision Mounted Linear Glass Polarizing Filter***
   - Recommended because the target surface is **solar panels in direct sunlight**, which can create strong glare and reflections from the glass surface.
   - Helps reduce specular glare and bright hot spots, allowing the camera to capture the actual solar panel surface more clearly.
@@ -114,3 +119,81 @@ flowchart LR
   - The rotating mount allows the filter angle to be adjusted during setup for maximum glare reduction.
   - The locking thumbscrew helps keep the polarizer orientation fixed after adjustment, which is useful for a mounted field system.
   - Improves image consistency and contrast, which helps the computer vision system avoid being confused by sunlight reflections.
+
+- **Power Converter: *Coolgear ChargeIt! Mini 100W USB-C PD 3.0 Surface Mount Charger***
+  - Converts the robot’s 24 V power into USB-C Power Delivery for the RUBIK Pi 3.
+  - Supports the needed 12 V / 3 A USB-C PD output profile.
+  - Better than a normal USB charger because the RUBIK Pi 3 needs proper USB-C PD negotiation.
+  - Has a mountable enclosure, which makes it easier to secure inside the robot.
+  - Connects to the robot through a 2-pin DC input terminal, then powers the RUBIK Pi 3 through USB-C.
+
+- **PoE Network Switch: *LINOVISION Industrial Full Gigabit PoE Switch, 12/24 V Input Version***
+  - Powers the LUCID Triton camera through PoE.
+  - Passes image data from the camera back to the RUBIK Pi 3 over Ethernet.
+  - Accepts low-voltage DC input, so it can run from the robot’s 24 V power system.
+  - Supports gigabit Ethernet, which is important for the LUCID GigE camera.
+  - Easier to expand than a single PoE injector because more Ethernet devices can be added later.
+
+- **Camera Ethernet Cable: *LUCID M12 X-coded 8-pin to RJ45 Cat6a Cable***
+  - Connects the LUCID Triton camera to the PoE switch.
+  - M12 X-coded side connects to the camera.
+  - RJ45 side connects to a PoE port on the switch.
+  - Carries both camera power and image data through one cable.
+  - Cat6a rating gives enough bandwidth margin for gigabit Ethernet.
+
+- **RUBIK Pi Ethernet Cable: *Short Shielded Cat6a RJ45 Patch Cable***
+  - Connects the RUBIK Pi 3 Ethernet port to the PoE switch LAN/uplink port.
+  - Carries image data from the camera network to the RUBIK Pi 3.
+  - Shielded Cat6a is preferred because the robot may have electrical noise from motors and power wiring.
+  - Short cable length keeps the electronics box cleaner and easier to manage.
+
+- *Optional:* **Fused Distribution Block: *Blue Sea Systems 5025 ST Blade Fuse Block, 6 Circuits with Negative Bus and Cover***
+  - Splits the robot’s 24 V vision power branch into multiple protected outputs.
+  - Allows separate fuses for the RUBIK Pi power branch and the PoE switch branch.
+  - Cleaner and safer than twisting wires together or making loose splices.
+  - Includes a negative bus, which helps organize both 24 V positive and ground wiring.
+  - The covered design is safer inside a robot electronics enclosure.
+
+- **Fuses: *Littelfuse ATO / ATOF Blade Fuses***
+  - Protects the vision system wiring and electronics from overcurrent.
+  - Use around 5A for the main bus.
+  - Use around 3A for the RUBIK Pi power-converter branch.
+  - Use around 1–2A for the PoE switch/camera branch.
+  - Standard blade fuses are easy to replace and easy to find.
+
+- *Optional: * **Power Switch: *Carling Technologies L-Series Sealed Rocker Switch***
+  - Provides a dedicated on/off switch for the whole vision system.
+  - Lets the camera, PoE switch, and RUBIK Pi power system be shut off without turning off the entire robot.
+  - Sealed design is better for a robot environment than an open, exposed switch.
+  - Current rating is much higher than the expected current draw of the vision branch.
+  - Useful as a service disconnect during testing and maintenance.
+
+- **Robot Power Connector: *TE Connectivity / DEUTSCH DT 2-Pin Connector Set***
+  - Provides a rugged locking connector between the robot and the vision module.
+  - Carries 24 V positive and ground from the robot into the vision power system.
+  - Locking design prevents the connector from shaking loose during robot movement.
+  - Weather-sealed design is better for outdoor or dusty robot environments.
+  - Makes the vision module removable without cutting or rewiring cables.
+
+- **Main Power Wire: *18 AWG Stranded Red/Black Wire***
+  - Used for the main 24 V power run from the robot to the vision power system.
+  - Stranded wire is better than solid wire for vibration and movement.
+  - 18 AWG gives good current margin for the fused vision branch.
+  - Red and black wiring keeps positive and ground easy to identify.
+
+- **Branch Power Wire: *20–22 AWG Stranded Red/Black Wire***
+  - Used for short low-current internal power branches.
+  - Good for wiring from the distribution block to the USB-C PD converter and PoE switch.
+  - Easier to route inside the enclosure than thicker wire.
+  - Still sufficient for the low current draw of the camera and RUBIK Pi power branches.
+
+- **Wiring Hardware: *Ferrules, Crimp Terminals, Heat Shrink, Labels, Strain Relief, and Wire Loom***
+  - Ferrules and crimp terminals make cleaner and more reliable electrical connections.
+  - Heat shrink protects exposed metal and strengthens wire ends.
+  - Labels make debugging and maintenance much easier.
+  - Strain relief prevents connectors and terminals from taking direct cable-pull force.
+  - Wire loom protects the wiring from rubbing, vibration, and robot movement.
+
+  ## 5. Architectcure w/materials
+
+  ![alt text](electricalarchitecture.png)
