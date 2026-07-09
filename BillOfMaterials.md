@@ -121,3 +121,10 @@
     | DigiKey | Vendor / Heat Shrink Tubing | https://www.digikey.com/en/product-highlight/t/te-connectivity/tubing-products |
     | McMaster-Carr | Vendor / Cable Looms | https://www.mcmaster.com/products/cable-looms/ |
     | McMaster-Carr | Vendor / Strain Relief Connectors | https://www.mcmaster.com/products/strain-relief-connectors/ |
+
+- **Location Tracking / Image Geotagging: *NaviSys GR-U01U USB GNSS Receiver* - ~$70**
+
+    | Source | Type | Link |
+    |---|---|---|
+    | GPSWebShop | Vendor | https://gpswebshop.com/products/navisys-gr-u01-industrial-grade-usb-gnss-receiver-1-5m-accuracy-18hz-update-rate-ultra-low-power-consumption-ipx7-waterproof-fully-emi-shielded-operating-temperatures-from-40-c-to-85-c |
+    | NaviSys | Manufacturer | https://www.navisys.com.tw/productdetail?class=GPS&name=GRU01 |

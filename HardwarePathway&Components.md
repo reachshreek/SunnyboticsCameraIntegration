@@ -194,6 +194,14 @@ flowchart LR
   - Strain relief prevents connectors and terminals from taking direct cable-pull force.
   - Wire loom protects the wiring from rubbing, vibration, and robot movement.
 
+- **Location Tracking / Image Geotagging: *NaviSys GR-U01U USB GNSS Receiver***
+  - Adds location metadata to each captured image, allowing the final report to show where each detected panel issue or anomaly was found.
+  - Plugs into the RUBIK Pi 3 over USB, making it much easier to integrate than a bare GNSS module that would require UART wiring or custom electronics.
+  - Does not require a hotspot, RTK base station, or correction service for the basic GNSS version.
+  - Includes the GNSS receiver and antenna in one packaged unit, so a separate external antenna is not needed.
+  - Can be mounted on the top of the robot or enclosure to maintain clear sky visibility for better satellite reception.
+  - Helps connect camera data with physical robot location, which makes the inspection system more useful for solar farm reporting and maintenance.
+
   ## 5. Architectcure w/materials
 
   ![alt text](electricalarchitecture.png)
