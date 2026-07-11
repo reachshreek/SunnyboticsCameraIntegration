@@ -2,13 +2,17 @@
 
 - **Camera: *LUCID Triton TRI050S-CC* - $470-550**
 
+    **Amount:** 1
+
     | Source | Type | Link |
     |---|---|---|
     | Edmund Optics | Vendor | https://www.edmundoptics.com/p/lucid-vision-labs-tritontrade-tri050s-cc-sony-imx264-50mp-color-camera/41821/ |
-    | Graftek Imaging |Vendor | https://graftek.com/product/tri050s-cc/ |
+    | Graftek Imaging | Vendor | https://graftek.com/product/tri050s-cc/ |
     | LUCID Vision Labs | Manufacturer Product Page + possible Vendor | https://thinklucid.com/product/triton-5-mp-imx264/ |
 
 - **Edge Computer: *RUBIK Pi 3* - $250-300**
+
+    **Amount:** 1
 
     | Source | Type | Link |
     |---|---|---|
@@ -18,6 +22,8 @@
 
 - **SSD: *WD Blue SN5000 2TB NVMe M.2 2280 SSD* - ~$110-140**
 
+    **Amount:** 1
+
     | Source | Type | Link |
     |---|---|---|
     | Amazon | Vendor | https://www.amazon.com/dp/B0D7MKYNLX |
@@ -25,18 +31,25 @@
 
 - **Lens: *LUCID / Universe UC080-5M / BL080C 8mm C-Mount 5MP 2/3" Lens* - ~$420-560**
 
+    **Amount:** 1
+
     | Source | Type | Link |
     |---|---|---|
     | LUCID Vision Labs | Vendor | https://thinklucid.com/product/universe-compact-c-mount-5mp-8mm-f-2-0/ |
     | IMVision | Vendor | https://www.imvision.com.mx/en/shop/uc080-5m-universe-bl080c-c-mount-lens-8mm-23-5mp-149086 |
 
 - **Optical Filter: *Edmund Optics M22.5 × 0.50 Machine Vision Mounted Linear Glass Polarizing Filter* - ~$75–83**
+
+    **Amount:** 1
+
     | Source | Type | Link |
     |---|---|---|
     | Edmund Optics | Vendor | https://www.edmundoptics.com/p/m225-x-050-machine-vision-mounted-linear-glass-polarizing-filter/48695/ |
     | Volition | Vendor | https://www.govolition.com/product/V41-21-545 |
 
 - **Power Converter: *Coolgear ChargeIt! Mini 100W USB-C PD 3.0 Surface Mount Charger* - ~$80–100**
+
+    **Amount:** 1
 
     | Source | Type | Link |
     |---|---|---|
@@ -45,6 +58,8 @@
 
 - **PoE Network Switch: *LINOVISION Industrial Full Gigabit PoE Switch, 12/24 V Input Version* - ~$150–200**
 
+    **Amount:** 1
+
     | Source | Type | Link |
     |---|---|---|
     | LINOVISION | Manufacturer / Vendor | https://linovision.com/products/industrial-8-ports-full-gigabit-poe-switch-support-dc-8-57v-input-24v-12v-poe-switch-for-solar-or-rv-ups-system |
@@ -52,13 +67,17 @@
 
 - **Camera Ethernet Cable: *LUCID CAB-MR-2M M12 X-coded 8-pin to RJ45 Cat6a Cable* - ~$30–130**
 
+    **Amount:** 1
+
     | Source | Type | Link |
     |---|---|---|
     | LUCID Vision Labs | Manufacturer / Vendor | https://thinklucid.com/product/m12-to-rj45-ip67-cat6a-cable-2m-dark-green/ |
     | Edmund Optics | Vendor | https://www.edmundoptics.com/p/m12-rj45-cat6a-ethernet-ip67-cable-2m-a/49831/ |
     | Graftek Imaging | Vendor | https://graftek.com/product/cab-mr-2m-a/ |
 
-- **RUBIK Pi Ethernet Cable: *Short Shielded Cat6a RJ45 Patch Cable* - ~$10–25**\
+- **RUBIK Pi Ethernet Cable: *Short Shielded Cat6a RJ45 Patch Cable* - ~$10–25**
+
+    **Amount:** 1
 
     | Source | Type | Link |
     |---|---|---|
@@ -66,6 +85,8 @@
     | Amazon | Vendor | https://www.amazon.com/Belden-R601001-Datatuff-Industrial-Patch/dp/B019ATPIH6 |
 
 - *Optional:* **Fused Distribution Block: *Blue Sea Systems 5025 ST Blade Fuse Block, 6 Circuits with Negative Bus and Cover* - ~$45–55**
+
+    **Amount:** 1
 
     | Source | Type | Link |
     |---|---|---|
@@ -75,12 +96,16 @@
 
 - **Fuses: *Littelfuse ATO / ATOF Blade Fuses, Assorted 1 A, 2 A, 3 A, and 5 A* - ~$5–20 total**
 
+    **Amount:** 1 assorted fuse kit / pack
+
     | Source | Type | Link |
     |---|---|---|
     | Littelfuse | Manufacturer / Product Family | https://www.littelfuse.com/products/fuses-overcurrent-protection/fuses/automotive-fuses/blade-fuses-shunt/atof/287 |
     | Mouser | Vendor | https://www.mouser.com/c/circuit-protection/fuses/automotive-fuses/?m=Littelfuse&series=ATO |
 
 - *Optional:* **Power Switch: *Carling Technologies L-Series Sealed Rocker Switch* - ~$10–60**
+
+    **Amount:** 1
 
     | Source | Type | Link |
     |---|---|---|
@@ -89,6 +114,8 @@
     | DigiKey | Vendor / Product Family | https://www.digikey.com/en/product-highlight/c/carling-technologies/l-series-sealed-rocker-switches |
 
 - **Robot Power Connector: *TE Connectivity / DEUTSCH DT 2-Pin Connector Set* - ~$5–25**
+
+    **Amount:** 1 connector set
 
     | Source | Type | Link |
     |---|---|---|
@@ -99,6 +126,8 @@
 
 - **Main Power Wire: *18 AWG Stranded Red/Black Wire* - ~$15–50**
 
+    **Amount:** 1 red/black wire pair or spool set
+
     | Source | Type | Link |
     |---|---|---|
     | Fisheries Supply | Vendor / Ancor Marine Wire | https://www.fisheriessupply.com/ancor |
@@ -106,6 +135,8 @@
     | Amazon | Vendor / Ancor 18 AWG Wire Example | https://www.amazon.com/Ancor-180003-Tinned-Copper-Black-35ft/dp/B000NUYGJI |
 
 - **Branch Power Wire: *20–22 AWG Stranded Red/Black Wire* - ~$10–40**
+
+    **Amount:** 1 red/black wire pair or spool set
 
     | Source | Type | Link |
     |---|---|---|
@@ -115,6 +146,8 @@
 
 - **Wiring Hardware: *Ferrules, Crimp Terminals, Heat Shrink, Labels, Strain Relief, and Wire Loom* - ~$30–100**
 
+    **Amount:** 1 assorted wiring hardware kit / supply set
+
     | Source | Type | Link |
     |---|---|---|
     | DigiKey | Vendor / WAGO 221 Lever Connectors | https://www.digikey.com/en/products/detail/wago-corporation/221-413/13549610 |
@@ -123,6 +156,8 @@
     | McMaster-Carr | Vendor / Strain Relief Connectors | https://www.mcmaster.com/products/strain-relief-connectors/ |
 
 - **Location Tracking / Image Geotagging: *NaviSys GR-U01U USB GNSS Receiver* - ~$70**
+
+    **Amount:** 1
 
     | Source | Type | Link |
     |---|---|---|
