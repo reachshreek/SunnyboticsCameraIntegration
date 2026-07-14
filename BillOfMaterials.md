@@ -56,14 +56,14 @@
     | Coolgear | Manufacturer / Vendor | https://www.coolgear.com/product/chargeit-100-watt-usb-type-c-charger |
     | Newegg | Vendor | https://www.newegg.com/p/379-0028-00013 |
 
-- **PoE Network Switch: *LINOVISION Industrial Full Gigabit PoE Switch, 12/24 V Input Version* - ~$150–200**
-
+- **PoE Injector: *Tycon Power TP-DCDC-1248GD-M Industrial Gigabit PoE Injector* - ~$130–150**
+    
     **Amount:** 1
 
     | Source | Type | Link |
     |---|---|---|
-    | LINOVISION | Manufacturer / Vendor | https://linovision.com/products/industrial-8-ports-full-gigabit-poe-switch-support-dc-8-57v-input-24v-12v-poe-switch-for-solar-or-rv-ups-system |
-    | Amazon | Vendor | https://www.amazon.com/LINOVISION-Industrial-Gigabit-Wireless-Compliant/dp/B0FSDB369H |
+    | Tycon Systems | Manufacturer Product Page | https://www.tyconsystems.com/products/tp-dcdc-1248gd-m/6026428000003330297 |
+    | Tycon Systems Datasheet | Manufacturer Datasheet | https://tsi.tyconsystems.com/doc/SpecSheets/TP-DCDC_Gigabit_POE_Inserter-Converter_Spec_Sheet.pdf |
 
 - **Camera Ethernet Cable: *LUCID CAB-MR-2M M12 X-coded 8-pin to RJ45 Cat6a Cable* - ~$30–130**
 

@@ -126,12 +126,13 @@ flowchart LR
   - Has a mountable enclosure, which makes it easier to secure inside the robot.
   - Connects to the robot through a 2-pin DC input terminal, then powers the RUBIK Pi 3 through USB-C.
 
-- **PoE Network Switch: *LINOVISION Industrial Full Gigabit PoE Switch, 12/24 V Input Version***
-  - Powers the LUCID Triton camera through PoE.
-  - Passes image data from the camera back to the RUBIK Pi 3 over Ethernet.
-  - Accepts low-voltage DC input, so it can run from the robot’s 24 V power system.
-  - Supports gigabit Ethernet, which is important for the LUCID GigE camera.
-  - Easier to expand than a single PoE injector because more Ethernet devices can be added later.
+- **PoE Injector: *Tycon Power TP-DCDC-1248GD-M Industrial Gigabit PoE Injector***
+  - Provides IEEE 802.3af Gigabit PoE power and data to the LUCID Triton camera over a single Ethernet cable.
+  - Accepts a wide 9–36 VDC input range, allowing it to connect directly to the robot's nominal 24 V power system without requiring an additional DC-DC converter.
+  - Supplies up to 17 W of PoE power, providing ample margin above the camera's approximately 3.1 W power requirement while avoiding the unnecessary capacity of larger PoE switches.
+  - Compact form factor reduces weight and required mounting space, addressing the robot's limited internal space.
+  - Low self-power consumption (approximately 1 W) minimizes the impact on robot battery life.
+  - Industrial Gigabit Ethernet design simplifies system architecture by replacing the previously considered multi-port PoE switch with a smaller, lighter, and more cost-effective single-port injector.
 
 - **Camera Ethernet Cable: *LUCID M12 X-coded 8-pin to RJ45 Cat6a Cable***
   - Connects the LUCID Triton camera to the PoE switch.
