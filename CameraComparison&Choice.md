@@ -25,18 +25,6 @@
 
 ---
 
-## Evaluation Criteria
-
-| Criterion | What It Means |
-|---|---|
-| **Performance** | Image quality, resolution, shutter type, and ability to capture usable images while the robot is moving. |
-| **Cost** | Approximate purchase cost and whether the option is realistic for approval. |
-| **Availability** | Whether the camera appears easy to purchase within the project timeline. |
-| **Support / Documentation** | Quality of datasheets, SDKs, examples, and vendor support. |
-| **Power Consumption** | How much power the camera needs and how easy it is to power from the robot. |
-| **Ease of Integration** | How easy the camera is to connect to the edge computer, mount, protect, and use in software. |
-
----
 
 ## Camera System Options
 
@@ -62,56 +50,94 @@
 
 ---
 
-## Comparison Matrix
+## Weighted Camera Evaluation
 
-| Option | Performance | Cost | Availability | Support / Docs | Power | Ease of Integration | Overall Evaluation |
-|---|---|---|---|---|---|---|---|
-| **LUCID Triton System** | Excellent | Excellent | Good | Good | Good | Excellent | Best overall balance of ruggedness, image quality, PoE/GigE integration, and cost. |
-| **FLIR Blackfly S System** | Good | Acceptable | Acceptable | Excellent | Good | Good | Strong camera and SDK support, but needs a separate enclosure for field use. |
-| **Basler ace 2 Pro System** | Good | Acceptable | Good | Excellent | Good | Good | Reliable industrial option with strong documentation, but IP30 rating means enclosure is required. |
-| **Allied Vision Alvium System** | Good | Acceptable | Excellent | Good | Excellent | Acceptable | Good low-power USB3 option, but USB3 is less ideal than PoE/GigE for rugged robot cable routing. |
-| **IDS uEye+ FA System** | Acceptable | Good | Acceptable | Good | Excellent | Good | Very rugged physically, but lower resolution may limit image detail for solar panel analysis. |
+The original qualitative comparison used ratings such as Excellent, Good, and Acceptable. To make the selection more objective and cost-effective, the cameras were reevaluated using a weighted decision matrix. Each criterion is assigned a weight based on its importance to the solar-panel inspection system. Each camera is then scored from 1 to 10, with higher scores representing better suitability.
 
----
+Before weighted scoring, each camera must satisfy the mandatory minimum requirements of global-shutter operation, compatibility with the selected edge-computing system, and sufficient image resolution for the required field of view and defect-detection target. Cameras that do not meet a mandatory requirement may be removed from consideration regardless of their weighted score.
 
-## Short Justification
+### Evaluation Criteria and Weights
 
-| Option | Justification |
+| Criterion | Weight | Reason for Weight |
+|---|:---:|---|
+| **Performance** | 25% | The camera must capture sufficiently detailed, low-distortion images while the robot is moving. Resolution, sensor performance, frame rate, and global-shutter operation are considered. |
+| **System Compatibility** | 20% | The camera must integrate with the RUBIK Pi, selected network and power hardware, lens, software, and data-transfer architecture. |
+| **Cost** | 15% | The selected camera should meet the requirements without unnecessary expense. Required accessories and enclosure costs should also be considered. |
+| **Environmental Suitability** | 15% | The camera will operate outdoors near solar panels and must be protected from dust, moisture, vibration, and temperature changes. |
+| **Power Consumption** | 10% | Camera power contributes to the total load on the robot's battery and affects operating time. |
+| **Size and Weight** | 5% | Smaller and lighter cameras are easier to mount and have less impact on available robot space and payload. |
+| **Support and Documentation** | 5% | Datasheets, SDKs, examples, and vendor support reduce integration and maintenance risk. |
+| **Availability** | 5% | The camera should be obtainable within the project schedule from a reliable supplier. |
+| **Total** | **100%** | |
+
+### Scoring Scale
+
+| Score | Meaning |
+|:---:|---|
+| 10 | Best fit for the project and significantly exceeds the minimum requirement |
+| 9 | Exceeds the requirement with a clear advantage |
+| 8 | Fully meets the requirement and is a strong option |
+| 7 | Meets the requirement with a minor disadvantage |
+| 6 | Meets the minimum acceptable requirement |
+| 5 | Marginal fit or requires a meaningful compromise |
+| 4 | Falls below the preferred requirement or requires significant modification |
+| 3 | Major limitation |
+| 2 | Poor suitability |
+| 1 | Does not meet the requirement |
+
+### Example Score Assignment: LUCID Triton TRI050S-CC
+
+The following example illustrates how individual scores were assigned using manufacturer datasheets and project requirements.
+
+| Criterion | Score | Justification |
+|---|:---:|---|
+| **Performance** | **9** | The camera provides a 5.0 MP Sony IMX264 global-shutter sensor with good dynamic range and sensitivity, making it well suited for capturing sharp images of solar panels while the robot is moving. It fully meets the project's imaging requirements but is not scored as a perfect 10 because final image quality must still be verified through field testing. |
+| **System Compatibility** | **10** | Supports GigE Vision, PoE, GenICam, C-mount lenses, hardware triggering, and Linux SDKs, allowing straightforward integration with the selected RUBIK Pi edge computer and industrial networking architecture. |
+| **Cost** | **10** | At approximately \$550, it is the lowest-cost camera that satisfies the project's technical requirements, making it the best value among the compared options. |
+| **Environmental Suitability** | **9** | The Triton family supports an IP67 configuration when paired with the proper lens tube, cables, and accessories. However, the complete camera assembly must still be verified to achieve the required environmental protection. |
+| **Power Consumption** | **9** | Typical power consumption of approximately 3.1 W (PoE) is lower than many comparable industrial GigE cameras, minimizing impact on robot battery life. |
+| **Size and Weight** | **9** | Compact dimensions (29 × 29 × 45 mm) and low weight (67 g) simplify integration within the robot's limited mounting space. |
+| **Support and Documentation** | **8** | LUCID provides comprehensive datasheets, SDKs, and software documentation. Although well documented, its software ecosystem is slightly smaller than that of Basler. |
+| **Availability** | **8** | Available from multiple industrial machine vision distributors, although supplier stock may vary depending on region and demand. |
+
+### Weighted Decision Matrix
+
+| Camera | Performance 25% | Compatibility 20% | Cost 15% | Environmental 15% | Power 10% | Size and Weight 5% | Support 5% | Availability 5% | **Weighted Score** |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **LUCID Triton TRI050S-CC** | 9 | 9 | 10 | 10 | 9 | 9 | 8 | 8 | **9.25** |
+| **Teledyne FLIR Blackfly S BFS-PGE-50S5C-C** | 9 | 9 | 6 | 6 | 9 | 10 | 10 | 7 | **8.10** |
+| **Basler ace 2 Pro a2A2448-23gcPRO** | 9 | 9 | 5 | 5 | 8 | 8 | 10 | 8 | **7.65** |
+| **Allied Vision Alvium 1800 U-507c** | 9 | 6 | 5 | 5 | 10 | 9 | 8 | 9 | **7.25** |
+| **IDS uEye+ FA GV-5040FA-C-HQ** | 5 | 9 | 7 | 10 | 10 | 6 | 8 | 7 | **7.65** |
+
+The weighted score is calculated using:
+
+`Weighted Score = Σ(Camera Score × Criterion Weight)`
+
+For example, the LUCID Triton score is calculated as:
+
+`(9 × 0.25) + (10 × 0.20) + (10 × 0.15) + (9 × 0.15) + (9 × 0.10) + (9 × 0.05) + (8 × 0.05) + (8 × 0.05) = 9.25`
+
+### Score Justification
+
+| Camera | Score Justification |
 |---|---|
-| **LUCID Triton System** | Best overall choice because it has 5 MP resolution, global shutter, PoE/GigE, low power, compact size, and IP67 capability with the correct accessories. |
-| **FLIR Blackfly S System** | Strong industrial camera with good image quality and excellent software support, but it is not sealed for dust or water by default. |
-| **Basler ace 2 Pro System** | Strong vendor ecosystem and documentation, but it needs a protective enclosure because the camera itself is only IP30. |
-| **Allied Vision Alvium System** | Good low-power option for USB3-based compute, but USB3 may be less rugged than PoE/GigE for a vibrating robot. |
-| **IDS uEye+ FA System** | Best physical ruggedness option, but the lower 1.58 MP resolution may not provide enough detail depending on the analysis pipeline. |
+| **LUCID Triton TRI050S-CC** | Receives the highest score because it combines 5 MP global-shutter imaging, GigE/PoE compatibility, low power consumption, compact dimensions, relatively low cost, and an available IP67 sealing approach. It still requires the correct IP67 lens tube, cables, and mounting hardware. |
+| **Teledyne FLIR Blackfly S BFS-PGE-50S5C-C** | Provides strong imaging performance, compact size, GigE/PoE connectivity, and excellent software support. Its higher cost and lack of an IP-rated body reduce its score because a separate sealed enclosure is required. |
+| **Basler ace 2 Pro a2A2448-23gcPRO** | Provides strong imaging performance, documentation, and industrial software support. However, it is more expensive, slightly larger and heavier, and only IP30, requiring a complete protective enclosure. |
+| **Allied Vision Alvium 1800 U-507c** | Offers strong 5.1 MP performance, low power consumption, compact dimensions, and good availability. Its USB3 interface is less desirable than GigE/PoE for long or vibration-prone robot cable routing, and it requires a sealed enclosure. |
+| **IDS uEye+ FA GV-5040FA-C-HQ** | Scores very highly in ruggedness, power consumption, and GigE/PoE compatibility. However, its 1.58 MP resolution provides substantially less image detail than the approximately 5 MP alternatives and may not satisfy the final ground-sampling-distance requirement. |
 
----
+## Final Camera Selection
 
-## Final Ranking
+The **LUCID Triton TRI050S-CC** received the highest weighted score and remains the recommended camera. Its main advantages are its combination of 5 MP global-shutter imaging, GigE/PoE integration, compact size, low power use, lower purchase cost, and ability to support an IP67 installation with the proper accessories.
 
-| Rank | Camera System | Reason |
-|---:|---|---|
-| 1 | **LUCID Triton System** | Best overall balance of image quality, ruggedness, PoE/GigE integration, and cost. |
-| 2 | **Basler ace 2 Pro System** | Strong industrial camera with excellent documentation and support. |
-| 3 | **FLIR Blackfly S System** | Very strong camera and SDK support, but enclosure requirement increases integration effort. |
-| 4 | **Allied Vision Alvium System** | Good low-power embedded option, but USB3 is less ideal for rugged robot use. |
-| 5 | **IDS uEye+ FA System** | Very rugged, but lower resolution makes it a riskier choice for detailed panel imagery. |
+The recommendation remains conditional on completing the following verification:
 
----
-
-## Initial Recommendation
-
-The recommended baseline option is:
-
-**LUCID Triton TRI050S-CC + C-mount low-distortion lens + RUBIK Pi or similar edge computer + local SSD storage**
-
-This option is recommended because it provides the best balance of:
-
-- Image quality
-- Global shutter performance
-- Ruggedness
-- PoE/GigE integration
-- Cost
-- Low integration risk
+- Confirm that the calculated field of view and ground sampling distance satisfy the minimum defect-detection requirement.
+- Confirm compatibility between the selected lens and polarizer thread.
+- Define the complete IP67 sealing arrangement, including the lens tube or enclosure, cables, connectors, and polarizer location.
+- Confirm camera compatibility with the RUBIK Pi software and network configuration.
 
 ---
 

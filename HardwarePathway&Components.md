@@ -88,7 +88,6 @@ flowchart LR
     J --> E
     J --> B
 ```
-![alt text](electricalarchitecture.png)
 
 ---
 
