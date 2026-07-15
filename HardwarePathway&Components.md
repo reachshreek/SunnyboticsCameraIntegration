@@ -204,4 +204,4 @@ flowchart LR
 
   ## 5. Architectcure w/materials
 
-  ![alt text](electricalarchitecture.png)
+  ![alt text](img\electricalarchitecture.png)
