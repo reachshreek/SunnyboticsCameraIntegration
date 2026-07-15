@@ -130,12 +130,13 @@ flowchart LR
   - The unused M8 GPIO connector will remain sealed with the CAP-M8 IP67 cap included with the Triton camera.
   - Removes the need for a larger and heavier external protective camera enclosure.
 
-- **Power Converter: *Coolgear ChargeIt! Mini 100W USB-C PD 3.0 Surface Mount Charger***
-  - Converts the robot’s 24 V power into USB-C Power Delivery for the RUBIK Pi 3.
-  - Supports the needed 12 V / 3 A USB-C PD output profile.
-  - Better than a normal USB charger because the RUBIK Pi 3 needs proper USB-C PD negotiation.
-  - Has a mountable enclosure, which makes it easier to secure inside the robot.
-  - Connects to the robot through a 2-pin DC input terminal, then powers the RUBIK Pi 3 through USB-C.
+- **USB-C PD Power Converter: *Coolgear CG-PD82HVV ChargeIT Mini 82W***
+  - Accepts 24–48 VDC input, with a documented 22–55 V operating limit.
+  - Safely accommodates the robot battery's approximately 29.4 V maximum voltage.
+  - Supports USB-C Power Delivery 3.0.
+  - Provides the RUBIK Pi 3's required 12 V / 3 A power profile.
+  - Uses essentially the same enclosure dimensions as the previous CG-PD100C.
+  - Listed by Coolgear at the same item weight as the previous converter.
 
 - **PoE Injector: *Tycon Power TP-DCDC-1248GD-M Industrial Gigabit PoE Injector***
   - Provides IEEE 802.3af Gigabit PoE power and data to the LUCID Triton camera over a single Ethernet cable.

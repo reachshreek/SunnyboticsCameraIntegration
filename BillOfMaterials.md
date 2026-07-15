@@ -55,14 +55,13 @@
     |---|---|---|
     | LUCID Vision Labs | Manufacturer / Vendor | https://thinklucid.com/product/ip67-c-mount-50mm-lens-tube/ |
 
-- **Power Converter: *Coolgear ChargeIt! Mini 100W USB-C PD 3.0 Surface Mount Charger* - ~$80–100**
+- **USB-C PD Power Converter: *Coolgear ChargeIT Mini 82W CG-PD82HVV* - $84.99**
 
     **Amount:** 1
 
     | Source | Type | Link |
     |---|---|---|
-    | Coolgear | Manufacturer / Vendor | https://www.coolgear.com/product/chargeit-100-watt-usb-type-c-charger |
-    | Newegg | Vendor | https://www.newegg.com/p/379-0028-00013 |
+    | Coolgear | Manufacturer Product Page | https://www.coolgear.com/product/chargeit-mini-82w-usb-type-c-pd-charger-high-w-2448v-dc-input |
 
 - **PoE Injector: *Tycon Power TP-DCDC-1248GD-M Industrial Gigabit PoE Injector* - ~$130–150**
     
@@ -110,16 +109,6 @@
     |---|---|---|
     | Littelfuse | Manufacturer / Product Family | https://www.littelfuse.com/products/fuses-overcurrent-protection/fuses/automotive-fuses/blade-fuses-shunt/atof/287 |
     | Mouser | Vendor | https://www.mouser.com/c/circuit-protection/fuses/automotive-fuses/?m=Littelfuse&series=ATO |
-
-- *Optional:* **Power Switch: *Carling Technologies L-Series Sealed Rocker Switch* - ~$10–60**
-
-    **Amount:** 1
-
-    | Source | Type | Link |
-    |---|---|---|
-    | Carling Technologies | Manufacturer | https://www.carlingtech.com/rocker-switches-l-series |
-    | Mouser | Vendor | https://www.mouser.com/c/electromechanical/switches/rocker-switches/?m=Carling+Technologies&series=L |
-    | DigiKey | Vendor / Product Family | https://www.digikey.com/en/product-highlight/c/carling-technologies/l-series-sealed-rocker-switches |
 
 - **Robot Power Connector: *TE Connectivity / DEUTSCH DT 2-Pin Connector Set* - ~$5–25**
 
