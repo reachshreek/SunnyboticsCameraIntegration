@@ -20,7 +20,7 @@
     | Thundercomm | Manufacturer Product Page + possible Vendor | https://www.thundercomm.com/product/rubik-pi/ |
     | Amazon | Vendor | https://www.amazon.com/dp/B0F54BHVZY?lv=shuf&channelId=500&plpRedirect=mhFallback&th=1 |
 
-- **SSD: *WD Blue SN5000 2TB NVMe M.2 2280 SSD* - ~$110-140**
+- **SSD: *WD Blue SN5000 500GB NVMe M.2 2280 SSD* - ~$110-140**
 
     **Amount:** 1
 
@@ -46,6 +46,14 @@
     |---|---|---|
     | Edmund Optics | Vendor | https://www.edmundoptics.com/p/m225-x-050-machine-vision-mounted-linear-glass-polarizing-filter/48695/ |
     | Volition | Vendor | https://www.govolition.com/product/V41-21-545 |
+
+- **Camera IP67 Lens Tube: *LUCID IPTC-D355L399 IP67 C-Mount Lens Tube* - $65**
+
+    **Amount:** 1
+
+    | Source | Type | Link |
+    |---|---|---|
+    | LUCID Vision Labs | Manufacturer / Vendor | https://thinklucid.com/product/ip67-c-mount-50mm-lens-tube/ |
 
 - **Power Converter: *Coolgear ChargeIt! Mini 100W USB-C PD 3.0 Surface Mount Charger* - ~$80–100**
 

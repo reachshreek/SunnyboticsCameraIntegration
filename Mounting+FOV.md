@@ -149,7 +149,7 @@ This provides a useful balance between:
 
 ### Angle comparison
 
-| Downward angle | Approximate behavior |
+| Angle | Approximate behavior |
 |---:|---|
 | 30° | Longer look-ahead, less close-range detail |
 | **35°** | Balanced general-purpose view |
@@ -272,31 +272,20 @@ The 35° setting is a practical starting point, not a fixed final requirement. T
 
 > The illustration is a concept visualization
 
-## Product references
+## Sources
 
-### Camera and optics
-
-- [LUCID Triton TRI050S-CC — Edmund Optics](https://www.edmundoptics.com/p/lucid-vision-labs-tritontrade-tri050s-cc-sony-imx264-50mp-color-camera/41821/)
-- [LUCID Triton TRI050S-CC — Graftek Imaging](https://graftek.com/product/tri050s-cc/)
+- [LUCID Triton TRI050S-CC - Edmund Optics](https://www.edmundoptics.com/p/lucid-vision-labs-tritontrade-tri050s-cc-sony-imx264-50mp-color-camera/41821/)
+- [LUCID Triton TRI050S-CC - Graftek Imaging](https://graftek.com/product/tri050s-cc/)
 - [LUCID Triton 5 MP product page](https://thinklucid.com/product/triton-5-mp-imx264/)
 - [LUCID Universe UC080-5M 8 mm lens](https://thinklucid.com/product/universe-compact-c-mount-5mp-8mm-f-2-0/)
-- [UC080-5M lens — IMVision](https://www.imvision.com.mx/en/shop/uc080-5m-universe-bl080c-c-mount-lens-8mm-23-5mp-149086)
+- [UC080-5M lens - IMVision](https://www.imvision.com.mx/en/shop/uc080-5m-universe-bl080c-c-mount-lens-8mm-23-5mp-149086)
 - [Edmund M22.5 linear polarizing filter](https://www.edmundoptics.com/p/m225-x-050-machine-vision-mounted-linear-glass-polarizing-filter/48695/)
-
-### Compute and storage
-
 - [RUBIK Pi](https://rubikpi.ai/)
-- [RUBIK Pi — Thundercomm](https://www.thundercomm.com/product/rubik-pi/)
+- [RUBIK Pi - Thundercomm](https://www.thundercomm.com/product/rubik-pi/)
 - [WD Blue SN5000 NVMe SSD](https://www.sandisk.com/products/ssd/internal-ssd/wd-blue-sn5000-nvme-ssd)
-
-### Power and networking
-
 - [Coolgear ChargeIt! 100 W USB-C charger](https://www.coolgear.com/product/chargeit-100-watt-usb-type-c-charger)
 - [Tycon TP-DCDC-1248GD-M PoE injector](https://www.tyconsystems.com/products/tp-dcdc-1248gd-m/6026428000003330297)
 - [Tycon PoE injector datasheet](https://tsi.tyconsystems.com/doc/SpecSheets/TP-DCDC_Gigabit_POE_Inserter-Converter_Spec_Sheet.pdf)
 - [LUCID M12-to-RJ45 Cat6a cable](https://thinklucid.com/product/m12-to-rj45-ip67-cat6a-cable-2m-dark-green/)
-
-### GNSS
-
-- [NaviSys GR-U01U — GPSWebShop](https://gpswebshop.com/products/navisys-gr-u01-industrial-grade-usb-gnss-receiver-1-5m-accuracy-18hz-update-rate-ultra-low-power-consumption-ipx7-waterproof-fully-emi-shielded-operating-temperatures-from-40-c-to-85-c)
+- [NaviSys GR-U01U - GPSWebShop](https://gpswebshop.com/products/navisys-gr-u01-industrial-grade-usb-gnss-receiver-1-5m-accuracy-18hz-update-rate-ultra-low-power-consumption-ipx7-waterproof-fully-emi-shielded-operating-temperatures-from-40-c-to-85-c)
 - [NaviSys GR-U01 manufacturer page](https://www.navisys.com.tw/productdetail?class=GPS&name=GRU01)

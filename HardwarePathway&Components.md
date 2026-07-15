@@ -99,9 +99,9 @@ flowchart LR
 - **Edge Computer: *RUBIK Pi 3***
   - Justification written in `EdgeComputerChoice.md`.
 
-- **Local Storage: *WD Blue SN5000 2TB NVMe M.2 2280 SSD***
+- **Local Storage: *WD Blue SN5000 500GB NVMe M.2 2280 SSD***
   - Fits the RUBIK Pi 3 system because it uses the required **M.2 2280 NVMe** 
-  - The **2TB capacity** gives the system plenty of room for for lots of storage incase theres no wifi or ocnnection possible.
+  - The **500GB capacity** gives the system plenty of room for for lots of storage incase theres no wifi or ocnnection possible.
   - will integrate into the system very easily. 
 
 - **Lens: *LUCID / Universe UC080-5M / BL080C 8mm C-Mount 5MP 2/3" Lens* - ~$420-560**
@@ -118,6 +118,17 @@ flowchart LR
   - The rotating mount allows the filter angle to be adjusted during setup for maximum glare reduction.
   - The locking thumbscrew helps keep the polarizer orientation fixed after adjustment, which is useful for a mounted field system.
   - Improves image consistency and contrast, which helps the computer vision system avoid being confused by sunlight reflections.
+
+- **IP67 Seal: *LUCID IPTC-D355L399 IP67 C-Mount Lens Tube***
+  - Allows the LUCID Triton camera to achieve its IP67 dust- and water-protection rating without requiring a separate external camera enclosure.
+  - Compatible with the LUCID Triton IP67 camera series.
+  - Uses a 35.5 mm internal diameter, providing additional clearance for the selected 8 mm lens and Edmund Optics polarizing filter.
+  - Provides 39.9 mm of internal clearance from the camera flange to the lens-tube glass.
+  - Includes the lens-tube attachment ring and sealing O-rings required to seal the front of the camera.
+  - Protects the lens and polarizing filter behind the lens tube's sealed front window.
+  - Works with the existing LUCID CAB-MR-2M-A IP67 M12 Ethernet cable to seal the camera's network and PoE connection.
+  - The unused M8 GPIO connector will remain sealed with the CAP-M8 IP67 cap included with the Triton camera.
+  - Removes the need for a larger and heavier external protective camera enclosure.
 
 - **Power Converter: *Coolgear ChargeIt! Mini 100W USB-C PD 3.0 Surface Mount Charger***
   - Converts the robot’s 24 V power into USB-C Power Delivery for the RUBIK Pi 3.
