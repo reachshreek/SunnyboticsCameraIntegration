@@ -268,7 +268,7 @@ The 35° setting is a practical starting point, not a fixed final requirement. T
 
 ---
 
-![Sunnybotics Robot camera setup overview](img\cameraview.jpg)
+![Sunnybotics Robot camera setup overview](img/cameraview.jpg)
 
 > The illustration is a concept visualization
 
