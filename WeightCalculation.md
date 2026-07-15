@@ -7,7 +7,7 @@ The following calculation covers the complete camera, computing, networking, pos
 | Component | Quantity | Unit Weight | Total Weight |
 |---|---:|---:|---:|
 | LUCID Triton TRI050S-CC Camera | 1 | 67 g | 67 g |
-| WD Blue SN5000 2 TB NVMe SSD | 1 | 5.7 g | 5.7 g |
+| WD Blue SN5000 500 Gb NVMe SSD | 1 | 5.7 g | 5.7 g |
 | Coolgear CG-PD100C USB-C PD Converter | 1 | 16.78 g | 16.78 g |
 | Tycon TP-DCDC-1248GD-M PoE Injector | 1 | 134 g | 134 g |
 | LUCID CAB-MR-2M-A 2 m M12-to-RJ45 Cable | 1 | 110 g | 110 g |

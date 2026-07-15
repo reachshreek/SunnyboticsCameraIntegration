@@ -7,7 +7,7 @@ The proposed configuration uses:
 - **Lens:** Universe UC080-5M / BL080C, 8 mm C-mount
 - **Optical filter:** Edmund Optics M22.5 × 0.50 linear polarizing filter
 - **Edge computer:** RUBIK Pi 3
-- **Storage:** WD Blue SN5000 2 TB NVMe SSD
+- **Storage:** WD Blue SN5000 500GB NVMe SSD
 - **Camera network power:** Tycon TP-DCDC-1248GD-M PoE injector
 - **Location tagging:** NaviSys GR-U01U USB GNSS receiver
 

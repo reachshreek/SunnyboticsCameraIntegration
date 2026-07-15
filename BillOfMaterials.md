@@ -63,6 +63,10 @@
     |---|---|---|
     | Coolgear | Manufacturer Product Page | https://www.coolgear.com/product/chargeit-mini-82w-usb-type-c-pd-charger-high-w-2448v-dc-input |
 
+     ```text
+        Note: This is technically in development, but it is our best choice for both weight and electrical requirements
+    ```
+
 - **PoE Injector: *Tycon Power TP-DCDC-1248GD-M Industrial Gigabit PoE Injector* - ~$130–150**
     
     **Amount:** 1
