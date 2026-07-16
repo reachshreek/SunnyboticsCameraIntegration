@@ -1,4 +1,4 @@
-# Sunnybotics Solar Capture and Metadata Service
+# Metadata Labeler
 
 Production-oriented Python software for capturing solar-panel images, matching them to GNSS fixes, assigning row/panel identifiers, and storing durable metadata on the robot.
 
