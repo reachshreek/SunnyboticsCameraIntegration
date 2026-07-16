@@ -1,0 +1,28 @@
+[Unit]
+Description=Sunnybotics Solar Camera Capture and Metadata Service
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=/opt/ssd
+
+[Service]
+Type=simple
+User=solarbot
+Group=solarbot
+SupplementaryGroups=dialout
+WorkingDirectory=/opt/solar-metadata-tagger
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/solar-metadata-tagger/.venv/bin/solar-tagger run-service --config /etc/solar-tagger/config.json
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=15
+KillSignal=SIGTERM
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/ssd/sunnybotics
+ReadOnlyPaths=/etc/solar-tagger /opt/solar-metadata-tagger
+
+[Install]
+WantedBy=multi-user.target

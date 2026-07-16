@@ -1,0 +1,81 @@
+{
+  "robot_id": "sunnybot-01",
+  "mission_id": "REPLACE-WITH-UNIQUE-MISSION-ID",
+  "storage": {
+    "root": "/opt/ssd/sunnybotics",
+    "spool_dir": "/opt/ssd/sunnybotics/spool",
+    "quarantine_on_missing_required": true,
+    "compute_sha256": true,
+    "validate_images": true,
+    "preserve_source": false,
+    "min_free_gb": 10.0,
+    "emergency_free_gb": 2.0
+  },
+  "camera": {
+    "source": "lucid",
+    "model": "LUCID Triton TRI050S-CC",
+    "serial_number": null,
+    "output_format": "png",
+    "frame_timeout_ms": 5000,
+    "reconnect_delay_s": 2.0,
+    "pixel_format": "BayerRG8",
+    "conversion_pixel_format": "BGR8",
+    "exposure_auto": "Continuous",
+    "exposure_us": null,
+    "gain_auto": "Continuous",
+    "gain_db": null,
+    "stream_packet_resend": true,
+    "stream_auto_packet_size": true,
+    "stream_buffer_count": 8,
+    "device_link_throughput_reserve_percent": 10.0,
+    "trigger_source": "Software",
+    "ptp_enable": false,
+    "chunk_mode_active": true
+  },
+  "capture": {
+    "trigger_mode": "file",
+    "trigger_directory": "/opt/ssd/sunnybotics/triggers",
+    "trigger_poll_s": 0.2,
+    "continue_on_error": true,
+    "health_interval_s": 5.0
+  },
+  "gnss": {
+    "enabled": true,
+    "port": "auto",
+    "baudrate": 9600,
+    "timeout_s": 1.0,
+    "reconnect_delay_s": 2.0,
+    "max_fix_age_s": 2.5,
+    "future_tolerance_s": 0.25,
+    "history_size": 256,
+    "min_satellites": 4,
+    "max_hdop": 5.0,
+    "require_fix_quality": true
+  },
+  "layout_file": "/etc/solar-tagger/site-layout.geojson",
+  "required_fields": [
+    "latitude",
+    "longitude",
+    "row",
+    "panel"
+  ],
+  "hardware": {
+    "edge_computer": "RUBIK Pi 3",
+    "storage_device": "WD Blue SN5000 500GB NVMe M.2 2280 SSD",
+    "lens": "LUCID / Universe UC080-5M / BL080C 8mm C-Mount 5MP 2/3-inch Lens",
+    "optical_filter": "Edmund Optics M22.5 x 0.50 Machine Vision Mounted Linear Glass Polarizing Filter",
+    "camera_enclosure": "LUCID IPTC-D355L399 IP67 C-Mount Lens Tube",
+    "gnss_receiver": "NaviSys GR-U01U USB GNSS Receiver",
+    "poe_injector": "Tycon Power TP-DCDC-1248GD-M Industrial Gigabit PoE Injector",
+    "power_converter": "Coolgear ChargeIT Mini 82W CG-PD82HVV",
+    "camera_cable": "LUCID CAB-MR-2M M12 X-coded to RJ45 Cat6a",
+    "rubik_pi_ethernet_cable": "Short Shielded Cat6a RJ45 Patch Cable",
+    "fused_distribution_block": "Blue Sea Systems 5025 ST Blade Fuse Block, 6 Circuits with Negative Bus and Cover (optional)",
+    "fuses": "Littelfuse ATO / ATOF Blade Fuses, assorted 1 A, 2 A, 3 A, and 5 A",
+    "robot_power_connector": "TE Connectivity / DEUTSCH DT 2-Pin Connector Set",
+    "main_power_wire": "18 AWG Stranded Red/Black Wire",
+    "branch_power_wire": "20-22 AWG Stranded Red/Black Wire",
+    "wiring_hardware": "Ferrules, Crimp Terminals, Heat Shrink, Labels, Strain Relief, and Wire Loom"
+  },
+  "log_level": "INFO"
+}

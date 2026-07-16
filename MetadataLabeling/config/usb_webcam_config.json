@@ -1,0 +1,37 @@
+{
+  "robot_id": "sunnybot-01",
+  "mission_id": "mission-webcam-bench",
+  "storage": {
+    "root": "../runtime-data-webcam",
+    "validate_images": true,
+    "preserve_source": false,
+    "min_free_gb": 0.5,
+    "emergency_free_gb": 0.1
+  },
+  "camera": {
+    "source": "opencv",
+    "model": "USB Webcam Bench Substitute",
+    "opencv_device": 0,
+    "width": 1280,
+    "height": 720,
+    "output_format": "png"
+  },
+  "capture": {
+    "trigger_mode": "interval",
+    "interval_s": 2.0,
+    "max_images": 20,
+    "continue_on_error": true
+  },
+  "gnss": {
+    "enabled": true,
+    "port": "auto",
+    "baudrate": 9600,
+    "max_fix_age_s": 2.5,
+    "future_tolerance_s": 0.25,
+    "min_satellites": 4,
+    "max_hdop": 5.0
+  },
+  "layout_file": "example_layout.geojson",
+  "required_fields": ["latitude", "longitude", "row", "panel"],
+  "log_level": "INFO"
+}

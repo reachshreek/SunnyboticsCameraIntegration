@@ -1,0 +1,40 @@
+{
+  "robot_id": "sunnybot-01",
+  "mission_id": "mission-development",
+  "storage": {
+    "root": "../runtime-data",
+    "spool_dir": "../runtime-data/spool",
+    "quarantine_on_missing_required": true,
+    "compute_sha256": true,
+    "validate_images": true,
+    "preserve_source": true,
+    "min_free_gb": 0.1,
+    "emergency_free_gb": 0.02
+  },
+  "camera": {
+    "source": "directory",
+    "model": "Simulated Camera (LUCID integration boundary)",
+    "source_directory": "../sample_images",
+    "directory_loop": false,
+    "output_format": "png"
+  },
+  "capture": {
+    "trigger_mode": "once",
+    "max_images": 1,
+    "continue_on_error": true,
+    "health_interval_s": 5.0
+  },
+  "gnss": {
+    "enabled": false,
+    "port": "auto",
+    "baudrate": 9600,
+    "max_fix_age_s": 2.5,
+    "future_tolerance_s": 0.25,
+    "min_satellites": 4,
+    "max_hdop": 5.0,
+    "require_fix_quality": true
+  },
+  "layout_file": "example_layout.geojson",
+  "required_fields": ["latitude", "longitude", "row", "panel"],
+  "log_level": "INFO"
+}

@@ -1,0 +1,29 @@
+{
+  "type": "FeatureCollection",
+  "properties": {
+    "nearest_limit_m": 3.0,
+    "warning": "Example coordinates only. Replace every polygon with surveyed site coordinates before deployment."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "row-A-panel-001",
+      "properties": {
+        "row": "A",
+        "panel": "001"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-121.000020, 37.000000],
+            [-121.000000, 37.000000],
+            [-121.000000, 37.000010],
+            [-121.000020, 37.000010],
+            [-121.000020, 37.000000]
+          ]
+        ]
+      }
+    }
+  ]
+}

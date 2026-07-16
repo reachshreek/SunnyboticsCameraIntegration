@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "solar-metadata-tagger"
+version = "0.3.0"
+description = "Sunnybotics unattended image capture, GNSS matching, and metadata tagging service"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "Sunnybotics Camera Integration Project"}]
+dependencies = [
+  "Pillow>=10,<13",
+  "pyserial>=3.5,<4",
+]
+
+[project.optional-dependencies]
+webcam = ["opencv-python-headless>=4.8,<5"]
+dev = ["pytest>=8,<9"]
+
+[project.scripts]
+solar-tagger = "solar_metadata_tagger.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-ra"
