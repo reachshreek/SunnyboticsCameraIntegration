@@ -706,3 +706,20 @@ The test should include:
 - The final image count matches the expected image count within the approved dropped-image limit.
 
 ---
+
+## 5. Immediate Priorities/Risks
+
+The recommended order of work is:
+
+1. Complete the requirements traceability matrix.
+2. Freeze the electrical and network interface diagrams.
+3. Verify LUCID SDK and ARM64 compatibility.
+4. Create the mock camera interface.
+5. Create the mock GPS and timestamp data source.
+6. Complete synthetic image-pipeline testing.
+7. Complete storage-capacity and write-speed testing.
+8. Complete upload interruption and retry testing.
+9. Complete failure-recovery testing.
+10. Record all results using the standard test template.
+11. Prepare the hardware-dependent procedures before purchasing parts.
+12. Assign an actual named owner to every remaining test and risk.
