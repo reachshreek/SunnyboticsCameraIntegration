@@ -8,10 +8,12 @@ The following calculation covers the complete camera, computing, networking, pos
 |---|---:|---:|---:|
 | LUCID Triton TRI050S-CC Camera | 1 | 67 g | 67 g |
 | WD Blue SN5000 500 Gb NVMe SSD | 1 | 5.7 g | 5.7 g |
-| Coolgear CG-PD100C USB-C PD Converter | 1 | 16.78 g | 16.78 g |
+| Coolgear CG-PD82HVV 82 W USB-C PD Converter | 1 | 16.78 g | 16.78 g |
 | Tycon TP-DCDC-1248GD-M PoE Injector | 1 | 134 g | 134 g |
 | LUCID CAB-MR-2M-A 2 m M12-to-RJ45 Cable | 1 | 110 g | 110 g |
 | **Documented Weight Subtotal** |  |  | **333.48 g** |
+
+Coolgear lists the selected CG-PD82HVV at the same nominal item weight as the previously considered CG-PD100C. The converter-model correction therefore does not change the converter-weight allowance used in this calculation.
 
 ### Estimated Optical and Computing Component Weights
 
@@ -70,11 +72,37 @@ The manufacturers do not publish usable weights for the following exact products
 - **Estimated complete installed mass:** 980.48 g
 - **Estimated complete installed mass:** approximately 0.98 kg
 - **Estimated complete installed mass:** approximately 2.16 lb
-- **Reasonable expected range:** approximately 0.80–1.25 kg
-- **Reasonable expected range:** approximately 1.77–2.76 lb
+- **Required complete installed mass:** less than 1.00 kg
+- **Estimated remaining margin below the requirement:** 19.52 g
+- **Reasonable expected range before final part selection and measurement:** approximately 0.80–1.25 kg, or 1.77–2.76 lb
 
 The reasonable range accounts for differences in the final mounting bracket, wire lengths, cable construction, fasteners, strain-relief hardware, and the undocumented masses of the RUBIK Pi 3, lens, polarizer, GNSS receiver, and IP67 lens tube.
 
+The complete installed system shall be weighed after assembly.
+
+The final measurement shall include:
+
+- Camera
+- Lens
+- Polarizing filter
+- IP67 lens tube and sealing hardware
+- Camera mount
+- Fasteners
+- Vibration material
+- Camera cable
+- Cable strain relief
+- RUBIK Pi
+- SSD
+- Coolgear converter
+- PoE injector
+- GNSS receiver
+- Power and Ethernet cables
+- Fuses
+- Connectors
+- Wire loom
+- Any shared cable-penetration hardware attributed to the camera system
+
+If the measured complete installed mass is 1.00 kg or greater, the system shall not pass the weight requirement until mass is reduced.
 
 ## Weight Estimate Justifications
 
@@ -86,7 +114,6 @@ The estimated values were developed using one or more of the following methods:
 - Documented weights of comparable products
 - Known cable lengths and wire gauges
 - Allowances for standard mounting and installation hardware
-
 
 ### Estimated Component Justifications
 
@@ -107,4 +134,3 @@ The estimated values were developed using one or more of the following methods:
 | LUCID M8 IP67 GPIO Sealing Cap | 3 g | The cap is a small molded and threaded industrial connector cover with a sealing element. Comparable M8 connector caps generally weigh only a few grams. | 2–5 g |
 | Adjustable Camera Mounting Bracket | 150 g | No exact bracket has been selected. The estimate assumes a compact aluminum machine-vision bracket with a mounting base, adjustable vertical member, pivot or angle adjustment, and camera fasteners. This is one of the least certain values in the calculation. | 100–220 g |
 | Screws, Vibration Pad, and Mounting Hardware | 30 g | The allowance includes approximately 15–20 g for stainless-steel screws, nuts, and washers, plus approximately 10–15 g for rubber vibration material, clamps, or retaining hardware. | 20–50 g |
-

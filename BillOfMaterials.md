@@ -61,11 +61,10 @@
 
     | Source | Type | Link |
     |---|---|---|
-    | Coolgear | Manufacturer Product Page | https://www.coolgear.com/product/chargeit-mini-82w-usb-type-c-pd-charger-high-w-2448v-dc-input |
+    | Coolgear CG-PD82HVV | Selected manufacturer product page | https://www.coolgear.com/product/chargeit-mini-82w-usb-type-c-pd-charger-high-w-2448v-dc-input |
+    | Coolgear CG-PD100C | Previous-model weight comparison only | https://www.coolgear.com/product/chargeit-100-watt-usb-type-c-charger |
 
-     ```text
-        Note: This is technically in development, but it is our best choice for both weight and electrical requirements
-    ```
+    > **Selection note:** The CG-PD82HVV is the selected converter because its input range and 12 V / 3 A USB-C PD profile match the planned robot and RUBIK Pi power pathway. Coolgear lists the CG-PD82HVV at the same nominal item weight as the previously considered CG-PD100C, so selecting the 82 W model does not increase the current converter-weight allowance. The CG-PD82HVV is identified as a development product, so availability, product revision, and received-unit performance shall be checked before final integration.
 
 - **PoE Injector: *Tycon Power TP-DCDC-1248GD-M Industrial Gigabit PoE Injector* - ~$130–150**
     

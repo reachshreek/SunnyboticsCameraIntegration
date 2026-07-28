@@ -5,8 +5,6 @@
 The main idea is to have the whole system work well in pretty serious weather conditions like high heat (100+F), dust, etc. 
 
 We will be splititng the full inference into partly on the edge computer and partly on the cloud
-  
-
 
 ---
 
@@ -24,7 +22,6 @@ The proposed camera system would be made of the following main hardware componen
   - A fixed lens is preferred over autofocus because it is more reliable in vibration, glare, and dust.
   - The lens should be chosen based on the final camera mounting distance from the panel.
 
-
 - **Polarizing Filter**
   - Helps reduce glare from the glass surface of the solar panels.
   - Should be tested because it may reduce brightness and require exposure adjustments.
@@ -36,18 +33,23 @@ The proposed camera system would be made of the following main hardware componen
 
 - **Edge Computer**
   - Controls the camera and handles image capture.
-  - Adds metadata such as timestamp, robot ID, mission ID, GPS coordinates, row, and panel number.
+  - Generates the image ID and records the timestamp, robot ID, mission ID, GNSS latitude, GNSS longitude, and GNSS validity information.
+  - Retains the mission-ID implementation already used by the current software instead of introducing a new naming format.
+  - Uses current speed to calculate capture timing when a valid speed source is available.
   - Stores images locally and prepares them for the analysis pipeline.
+  - Existing row and panel fields may remain available as optional backward-compatible fields, but they are not required project metadata.
 
 - **Local SSD Storage**
   - Stores images during the mission.
   - Prevents data loss if the robot does not have a stable internet connection.
   - Should have enough capacity for at least one full mission.
 
-- **Robot GPS/Odometry Connection**
-  - Provides location and movement information for each image.
-  - Allows every image to be georeferenced.
-  - Helps connect each image to the correct row, panel, and mission.
+- **GNSS Location and Speed Input**
+  - Provides latitude, longitude, time, fix quality, and GNSS-derived speed to the RUBIK Pi.
+  - Allows every image to be georeferenced when a valid fix is available.
+  - Allows the RUBIK Pi to calculate image timing from speed and calibrated field-of-view coverage.
+  - Does not prevent image capture when GNSS is unavailable; missing location is recorded as invalid.
+  - A future robot-controller speed connection may replace or supplement GNSS speed after the robot communication protocol and electrical interface are confirmed.
 
 - **DC-DC Converter**
   - Converts robot power into the voltage needed by the camera and edge computer.
@@ -68,8 +70,12 @@ The proposed camera system would be made of the following main hardware componen
   - Keeps wires away from the brush, wheels, moving parts, and sharp edges.
   - Prevents cable damage during field operation.
   - Should be planned as part of the final installation design.
+  - If the camera is integrated into the same existing external nozzle structure, the camera cable shall use the same approved sealed penetration and waterproofing method.
+  - A separate unsealed chassis opening shall not be created.
+  - The shared penetration shall include strain relief and shall be inspected to confirm that camera wiring does not reduce the robot's existing protection.
 
 ---
+
 ## 3. Main Hardware Pathway
 
 The proposed hardware pathway is:
@@ -81,13 +87,50 @@ flowchart LR
     C --> D[Sealed Camera Enclosure]
     D --> E[Edge Computer]
     E --> F[Local Storage]
-    E --> G[Robot GPS / Odometry Metadata]
-    F --> H[Upload]
+    G[GNSS Position / Time / Speed] --> E
+    E --> H[Upload]
 
-    I[Robot Power System] --> J[Protected DC-DC Converter]
+    I[Robot Power System] --> J[USB-C PD Converter]
     J --> E
-    J --> B
+
+    I --> K[PoE Injector]
+    K --> B
 ```
+
+## 3.1 Adaptive Capture Pathway
+
+The current software shall retain its existing mission-ID behavior and add adaptive capture as an additional trigger mode.
+
+```text
+GNSS receiver
+    │
+    ├── Latitude, longitude, fix quality, and GNSS time
+    └── Current GNSS speed
+             │
+             v
+       RUBIK Pi speed provider
+             │
+             v
+Capture spacing = calibrated along-track coverage × 0.70
+             │
+             v
+Capture image whenever estimated travel reaches the capture spacing
+```
+
+Initial values:
+
+- Required overlap: at least 30%.
+- Conservative along-track coverage: 1.62 m.
+- Initial capture spacing: 1.134 m.
+- Fixed fallback: one image every 5 s.
+- Maximum configured operational rate: one image per second.
+- Speed-data timeout: 2.5 s.
+
+The speed provider is intentionally separated from the capture scheduler.
+
+The GNSS provider can be used with the current software.
+
+A robot CAN, RS-232, or UART provider can be added later without replacing the scheduler after the robot interface is documented.
 
 ---
 
@@ -136,32 +179,35 @@ flowchart LR
   - Supports USB-C Power Delivery 3.0.
   - Provides the RUBIK Pi 3's required 12 V / 3 A power profile.
   - Uses essentially the same enclosure dimensions as the previous CG-PD100C.
-  - Listed by Coolgear at the same item weight as the previous converter.
+  - Coolgear lists the CG-PD82HVV at the same nominal item weight as the previously considered CG-PD100C, so selecting the 82 W model does not increase the current converter-weight allowance.
+  - The CG-PD82HVV remains a development product.
+  - Availability and product revision shall be checked again before purchase.
+  - The received unit shall be electrically validated before robot installation.
 
 - **PoE Injector: *Tycon Power TP-DCDC-1248GD-M Industrial Gigabit PoE Injector***
   - Provides IEEE 802.3af Gigabit PoE power and data to the LUCID Triton camera over a single Ethernet cable.
   - Accepts a wide 9–36 VDC input range, allowing it to connect directly to the robot's nominal 24 V power system without requiring an additional DC-DC converter.
   - Supplies up to 17 W of PoE power, providing ample margin above the camera's approximately 3.1 W power requirement while avoiding the unnecessary capacity of larger PoE switches.
   - Compact form factor reduces weight and required mounting space, addressing the robot's limited internal space.
-  - Low self-power consumption (approximately 1 W) minimizes the impact on robot battery life.
+  - Low self-power consumption minimizes the impact on robot battery life.
   - Industrial Gigabit Ethernet design simplifies system architecture by replacing the previously considered multi-port PoE switch with a smaller, lighter, and more cost-effective single-port injector.
 
 - **Camera Ethernet Cable: *LUCID M12 X-coded 8-pin to RJ45 Cat6a Cable***
-  - Connects the LUCID Triton camera to the PoE switch.
-  - M12 X-coded side connects to the camera.
-  - RJ45 side connects to a PoE port on the switch.
+  - Connects the LUCID Triton camera to the Tycon PoE injector.
+  - The M12 X-coded side connects to the camera.
+  - The RJ45 side connects to the injector's PoE output.
   - Carries both camera power and image data through one cable.
-  - Cat6a rating gives enough bandwidth margin for gigabit Ethernet.
+  - Cat6a rating gives enough bandwidth margin for Gigabit Ethernet.
 
 - **RUBIK Pi Ethernet Cable: *Short Shielded Cat6a RJ45 Patch Cable***
-  - Connects the RUBIK Pi 3 Ethernet port to the PoE switch LAN/uplink port.
+  - Connects the RUBIK Pi 3 Ethernet port to the Tycon PoE injector's data input.
   - Carries image data from the camera network to the RUBIK Pi 3.
   - Shielded Cat6a is preferred because the robot may have electrical noise from motors and power wiring.
   - Short cable length keeps the electronics box cleaner and easier to manage.
 
 - *Optional:* **Fused Distribution Block: *Blue Sea Systems 5025 ST Blade Fuse Block, 6 Circuits with Negative Bus and Cover***
   - Splits the robot’s 24 V vision power branch into multiple protected outputs.
-  - Allows separate fuses for the RUBIK Pi power branch and the PoE switch branch.
+  - Allows separate fuses for the RUBIK Pi power branch and the PoE injector branch.
   - Cleaner and safer than twisting wires together or making loose splices.
   - Includes a negative bus, which helps organize both 24 V positive and ground wiring.
   - The covered design is safer inside a robot electronics enclosure.
@@ -170,12 +216,12 @@ flowchart LR
   - Protects the vision system wiring and electronics from overcurrent.
   - Use around 5A for the main bus.
   - Use around 3A for the RUBIK Pi power-converter branch.
-  - Use around 1–2A for the PoE switch/camera branch.
+  - Use around 1–2A for the PoE injector and camera branch.
   - Standard blade fuses are easy to replace and easy to find.
 
-- *Optional: * **Power Switch: *Carling Technologies L-Series Sealed Rocker Switch***
+- *Optional:* **Power Switch: *Carling Technologies L-Series Sealed Rocker Switch***
   - Provides a dedicated on/off switch for the whole vision system.
-  - Lets the camera, PoE switch, and RUBIK Pi power system be shut off without turning off the entire robot.
+  - Lets the camera, PoE injector, and RUBIK Pi power system be shut off without turning off the entire robot.
   - Sealed design is better for a robot environment than an open, exposed switch.
   - Current rating is much higher than the expected current draw of the vision branch.
   - Useful as a service disconnect during testing and maintenance.
@@ -195,7 +241,7 @@ flowchart LR
 
 - **Branch Power Wire: *20–22 AWG Stranded Red/Black Wire***
   - Used for short low-current internal power branches.
-  - Good for wiring from the distribution block to the USB-C PD converter and PoE switch.
+  - Good for wiring from the distribution block to the USB-C PD converter and PoE injector.
   - Easier to route inside the enclosure than thicker wire.
   - Still sufficient for the low current draw of the camera and RUBIK Pi power branches.
 
@@ -208,12 +254,13 @@ flowchart LR
 
 - **Location Tracking / Image Geotagging: *NaviSys GR-U01U USB GNSS Receiver***
   - Adds location metadata to each captured image, allowing the final report to show where each detected panel issue or anomaly was found.
+  - Provides GNSS-derived speed to the adaptive capture scheduler when valid RMC speed data is available.
   - Plugs into the RUBIK Pi 3 over USB, making it much easier to integrate than a bare GNSS module that would require UART wiring or custom electronics.
   - Does not require a hotspot, RTK base station, or correction service for the basic GNSS version.
   - Includes the GNSS receiver and antenna in one packaged unit, so a separate external antenna is not needed.
   - Can be mounted on the top of the robot or enclosure to maintain clear sky visibility for better satellite reception.
   - Helps connect camera data with physical robot location, which makes the inspection system more useful for solar farm reporting and maintenance.
 
-  ## 5. Architectcure w/materials
+## 5. Architectcure w/materials
 
-  ![alt text](img/electricalarchitecture.png)
+![alt text](img/electricalarchitecture.png)

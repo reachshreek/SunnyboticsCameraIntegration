@@ -1,6 +1,5 @@
 ## Overview
 
-
 The proposed configuration uses:
 
 - **Camera:** LUCID Triton TRI050S-CC
@@ -51,11 +50,8 @@ Because threaded portions overlap when assembled, the practical optical-stack le
 
 ### Bare camera-head envelope
 
-
 - Approximate assembled camera-head size: 85–90 mm long × 29 mm wide × 29 mm high
-
 - Approximate imperial size: 3.35–3.56 in long × 1.14 in wide × 1.14 in high
-
 
 ## 3. Height added above the robot
 
@@ -157,10 +153,56 @@ This provides a useful balance between:
 
 The mount should therefore allow field adjustment from approximately **30° to 40°**.
 
+### Capture spacing for 30% overlap
+
+The 35° value is the nominal downward camera pitch. It is not the camera field of view.
+
+For capture-spacing planning, use the conservative ends of the estimated visible range:
+
+```text
+Nearest visible panel point = 0.28 m
+Farthest visible panel point = 1.90 m
+
+Conservative along-track coverage
+= 1.90 m - 0.28 m
+= 1.62 m
+```
+
+For at least 30% overlap:
+
+```text
+Capture spacing
+= 1.62 m × (1 - 0.30)
+= 1.134 m
+```
+
+When current speed is available to the RUBIK Pi:
+
+```text
+Capture rate in images per second
+= Robot speed in meters per second ÷ 1.134 m
+```
+
+Examples:
+
+| Robot speed | Calculated capture rate | Approximate time between images |
+|---:|---:|---:|
+| 0.10 m/s | 0.088 images/s | 11.34 s |
+| 0.15 m/s | 0.132 images/s | 7.56 s |
+| 0.20 m/s | 0.176 images/s | 5.67 s |
+| 0.23 m/s | 0.203 images/s | 4.93 s |
+
+The initial fixed-rate fallback is one image every 5 s.
+
+The initial maximum configured capture rate is one image per second.
+
+The 1.62 m coverage and 1.134 m spacing are preliminary design values.
+
+After installation, the actual nearest and farthest usable panel points shall be measured and the configured coverage value shall be updated while retaining at least 30% overlap.
+
 ---
 
 ## 6. Physical arrangement
-
 
 Things on top of the robot:
 
@@ -172,7 +214,7 @@ Things on top of the robot:
 - Antenna in its original or equivalent roof position
 - Optional protective sunshade or weather cover
 
-Things inside the robot
+Things inside the robot:
 
 - RUBIK Pi 3
 - NVMe SSD
@@ -185,6 +227,14 @@ Things inside the robot
 
 Keeping the heavy and heat-generating electronics inside the robot minimizes rooftop weight and prevents them from increasing the camera assembly height.
 
+### Shared nozzle and camera penetration
+
+If the camera is integrated into the same existing external nozzle structure, the camera wiring should use the same approved sealed penetration and waterproofing method.
+
+A separate unsealed chassis opening should not be created.
+
+The shared penetration should include appropriate cable strain relief and should be inspected to confirm that the camera wiring does not reduce the robot's existing IP65 protection.
+
 ---
 
 ## 7. Power and data architecture
@@ -196,11 +246,13 @@ Robot DC Power
     │
     ├── Fuse / optional fused distribution block
     │
-    ├── USB-C PD converter ──> RUBIK Pi 3
+    ├── Coolgear CG-PD82HVV USB-C PD converter
     │                           │
-    │                           ├── NVMe SSD
-    │                           ├── USB GNSS receiver
-    │                           └── Ethernet
+    │                           └──> RUBIK Pi 3
+    │                                  │
+    │                                  ├── NVMe SSD
+    │                                  ├── USB GNSS receiver
+    │                                  └── Gigabit Ethernet
     │
     └── Tycon DC-DC PoE injector
                                 │
@@ -209,7 +261,13 @@ Robot DC Power
 
 The camera receives both power and Ethernet communication through the PoE path.
 
-The RUBIK Pi communicates with the camera over Gigabit Ethernet and stores captured images or video on the NVMe SSD. GNSS data can be associated with each image to support location-based inspection records.
+The RUBIK Pi communicates with the camera over Gigabit Ethernet and stores captured images or video on the NVMe SSD.
+
+GNSS data can be associated with each image to support location-based inspection records.
+
+The GNSS speed value can also be passed to the adaptive capture scheduler.
+
+A future robot-controller speed source can use the same scheduler after the controller interface is documented.
 
 ---
 
@@ -228,7 +286,9 @@ The camera mount should include:
 9. Access to the lens focus and aperture controls
 10. A repeatable alignment reference for yaw and pitch
 
-The optical axis should be centered laterally when possible. If an offset is necessary to retain the antenna, that offset should be recorded in the software calibration.
+The optical axis should be centered laterally when possible.
+
+If an offset is necessary to retain the antenna, that offset should be recorded in the software calibration.
 
 ---
 
@@ -263,8 +323,17 @@ Use the following as the initial design baseline:
 | Horizontal field of view | **60.8°** |
 | Vertical field of view | **46.3°** |
 | Approx. coverage at 2 m | **2.35 m × 1.71 m** |
+| Conservative along-track coverage | **1.62 m** |
+| Required image overlap | **At least 30%** |
+| Initial capture spacing | **1.134 m** |
+| Fixed-rate fallback | **One image every 5 s** |
+| Maximum configured capture rate | **1.00 image/s** |
 
-The 35° setting is a practical starting point, not a fixed final requirement. The bracket should retain enough adjustment for testing on actual solar panels.
+The 35° setting is a practical starting point, not a fixed final requirement.
+
+The bracket should retain enough adjustment for testing on actual solar panels.
+
+The image-coverage and capture-spacing values shall be updated after the installed field of view is measured.
 
 ---
 
@@ -283,7 +352,7 @@ The 35° setting is a practical starting point, not a fixed final requirement. T
 - [RUBIK Pi](https://rubikpi.ai/)
 - [RUBIK Pi - Thundercomm](https://www.thundercomm.com/product/rubik-pi/)
 - [WD Blue SN5000 NVMe SSD](https://www.sandisk.com/products/ssd/internal-ssd/wd-blue-sn5000-nvme-ssd)
-- [Coolgear ChargeIt! 100 W USB-C charger](https://www.coolgear.com/product/chargeit-100-watt-usb-type-c-charger)
+- [Coolgear CG-PD82HVV 82 W USB-C PD converter](https://www.coolgear.com/product/chargeit-mini-82w-usb-type-c-pd-charger-high-w-2448v-dc-input)
 - [Tycon TP-DCDC-1248GD-M PoE injector](https://www.tyconsystems.com/products/tp-dcdc-1248gd-m/6026428000003330297)
 - [Tycon PoE injector datasheet](https://tsi.tyconsystems.com/doc/SpecSheets/TP-DCDC_Gigabit_POE_Inserter-Converter_Spec_Sheet.pdf)
 - [LUCID M12-to-RJ45 Cat6a cable](https://thinklucid.com/product/m12-to-rj45-ip67-cat6a-cable-2m-dark-green/)

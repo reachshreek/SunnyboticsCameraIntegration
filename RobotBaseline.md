@@ -1,4 +1,3 @@
-
 # Robotic Baseline
 
 ## Battery
@@ -29,6 +28,147 @@ The robot battery has the following reported characteristics:
 
 The difference between the mentor-reported 49 kg weight and the datasheet-listed 50 kg weight shall be resolved before the final added-weight calculation is approved.
 
+## Capture and Mission Planning Baseline
+
+The image-capture system shall support distance-based capture when a valid speed value is available.
+
+The existing mission-ID implementation shall be retained. The mission ID shall continue to be supplied through the software configuration and shall be unique and traceable for each mission. A new mission-ID naming format is not required.
+
+### Required Metadata Sources
+
+| Metadata field | Source |
+|---|---|
+| `image_id` | Generated locally by the capture software |
+| `timestamp` | RUBIK Pi system time, with GNSS time available for comparison when present |
+| `robot_id` | System configuration |
+| `mission_id` | Existing mission configuration and mission-start process |
+| `latitude` and `longitude` | NaviSys GNSS receiver |
+| GNSS validity and quality | Calculated from fix age, coordinate range, fix quality, satellite count, and HDOP |
+
+Row and panel identifiers are not required project metadata.
+
+Existing row and panel software support may remain for backward compatibility, but missing row or panel values shall not cause an otherwise valid image record to fail.
+
+### Capture-Spacing Baseline
+
+The current mounting analysis gives a conservative along-track panel view from approximately 0.28 m to 1.90 m ahead of the camera.
+
+```text
+Conservative along-track coverage
+= 1.90 m - 0.28 m
+= 1.62 m
+```
+
+For at least 30% overlap between consecutive images:
+
+```text
+Maximum travel between captures
+= Along-track coverage × (1 - Required overlap)
+= 1.62 m × (1 - 0.30)
+= 1.134 m
+```
+
+When valid speed data is available:
+
+```text
+Required capture rate in images per second
+= Robot speed in meters per second ÷ 1.134 m
+```
+
+The initial software settings are:
+
+| Parameter | Initial value |
+|---|---:|
+| Required image overlap | At least 30% |
+| Conservative along-track coverage | 1.62 m |
+| Maximum travel between captures | 1.134 m |
+| Fixed-rate fallback | 0.20 images/s, or one image every 5 s |
+| Maximum configured operational capture rate | 1.00 image/s |
+| Speed-data timeout | 2.5 s |
+| Minimum speed treated as movement | 0.02 m/s |
+
+The along-track coverage value shall be replaced with a measured value after the final camera, lens, mounting height, and mounting angle are installed.
+
+The 30% overlap requirement shall remain unless the project requirement is formally changed.
+
+### Speed-Source Baseline
+
+The current software already decodes GNSS speed from supported NMEA data.
+
+The initial adaptive-capture implementation may therefore use GNSS speed without requiring a new connection to the robot controller.
+
+A future robot-controller speed source may replace or supplement GNSS speed through the same software speed-provider interface after the electrical and communication interface is documented.
+
+The preferred speed-source order is:
+
+1. Validated robot-controller or wheel-speed data, when available.
+2. Valid GNSS-derived speed.
+3. Configured fixed-rate fallback when no valid speed is available.
+
+### Mission-Storage Baseline
+
+The initial storage calculation shall use:
+
+| Parameter | Planning value |
+|---|---:|
+| Maximum mission duration | 4.5 h, or 16,200 s |
+| Provisional average stored image-record size | 5 MB |
+| Nominal fallback capture rate | 0.20 images/s |
+| Maximum configured capture rate | 1.00 image/s |
+| Required free-space reserve after one mission | 20% |
+
+Nominal fallback case:
+
+```text
+Images per mission
+= 0.20 images/s × 16,200 s
+= 3,240 images
+
+Mission storage
+= 3,240 images × 5 MB
+= 16.2 GB
+
+Capacity needed while retaining 20% free space
+= 16.2 GB ÷ 0.80
+= 20.25 GB
+```
+
+Maximum configured-rate case:
+
+```text
+Images per mission
+= 1.00 image/s × 16,200 s
+= 16,200 images
+
+Mission storage
+= 16,200 images × 5 MB
+= 81 GB
+
+Capacity needed while retaining 20% free space
+= 81 GB ÷ 0.80
+= 101.25 GB
+```
+
+The selected 500 GB SSD exceeds both initial planning cases.
+
+The 5 MB value is provisional and shall be replaced by measured representative image sizes during validation.
+
+The initial peak image-data rate is:
+
+```text
+Peak image-data rate
+= 5 MB/image × 1.00 image/s
+= 5 MB/s
+```
+
+The storage-throughput acceptance target shall therefore be at least:
+
+```text
+Required sustained write speed
+= 2 × 5 MB/s
+= 10 MB/s
+```
+
 ## Existing Interfaces
 
 The robot does not provide an external USB or Ethernet port.
@@ -43,6 +183,21 @@ Available internal communication connections include:
 - CAN and RS-232 communication capability on the 30 A driver.
 
 The protocol, pinout, signal voltage, baud rate, CAN bitrate, and message format have not yet been provided.
+
+The image-capture software shall not assume a robot-controller speed protocol until the interface is documented.
+
+A later CAN, RS-232, or UART robot-speed provider may replace or supplement the GNSS speed provider without changing the capture-scheduling logic, but only after the following information is confirmed:
+
+- Connector and pinout
+- Signal voltage or electrical standard
+- Grounding requirements
+- Communication protocol
+- Baud rate or CAN bitrate
+- Message identifier
+- Speed scaling and units
+- Expected update rate
+- Invalid-data behavior
+- Timeout behavior
 
 ## Environmental Characteristics
 
@@ -71,9 +226,9 @@ The datasheet does not identify which listed dimension corresponds to length, wi
 | ID | Requirement | Verification |
 |---|---|---|
 | SYS-001 | The system shall capture and store images while the robot is operating. | Field test |
-| SYS-002 | Each image shall include a unique ID, timestamp, robot ID, mission ID, and GNSS location when available. | Metadata inspection |
+| SYS-002 | Each image shall include a unique ID, timestamp, robot ID, mission ID, and GNSS latitude and longitude when a valid fix is available. GNSS validity and quality shall be recorded, and image capture shall continue when GNSS is unavailable. | Metadata inspection and GNSS-loss test |
 | SYS-003 | The system shall continue operating without internet access. | Offline test |
-| SYS-004 | The system shall log camera, GNSS, storage, and startup errors. | Log inspection |
+| SYS-004 | The system shall log camera, GNSS, speed-source, capture-mode, storage, and startup errors. | Log inspection |
 | SYS-005 | The system shall not interfere with normal robot operation. | Full-system test |
 
 ---
@@ -83,7 +238,7 @@ The datasheet does not identify which listed dimension corresponds to length, wi
 | ID | Requirement | Verification |
 |---|---|---|
 | IMG-001 | The camera shall use a global shutter and provide approximately 5 MP resolution. | Datasheet review |
-| IMG-002 | Exposure, gain, and capture rate shall be adjustable. | Software test |
+| IMG-002 | Exposure, gain, and capture timing shall be adjustable. When valid speed data is available, capture timing shall be distance-based and shall target at least 30% overlap using the calibrated along-track image coverage. When speed is unavailable or stale, the software shall use the configured fixed-rate fallback. | Software and field test |
 | IMG-003 | Images shall remain clear while the robot moves at normal speed. | Field test |
 | IMG-004 | The lens, polarizer, camera angle, and mounting position shall provide clear panel coverage without blocking the image. | Image and mounting test |
 
@@ -95,7 +250,7 @@ The datasheet does not identify which listed dimension corresponds to length, wi
 |---|---|---|
 | DAT-001 | Each image shall be matched to the correct metadata record. | Metadata test |
 | DAT-002 | Images shall still be saved when GNSS is unavailable, with location marked as invalid. | GNSS-loss test |
-| DAT-003 | Local storage shall hold at least one complete mission with 20% free space remaining. | Storage calculation |
+| DAT-003 | Local storage shall hold at least one 4.5-hour mission at the maximum configured capture rate with 20% free space remaining. The initial planning case is 1.00 image/s at 5 MB per stored image record, requiring at least 101.25 GB before replacement by measured image-size data. | Storage calculation and storage test |
 | DAT-004 | Completed image files shall remain readable after shutdown or unexpected power loss. | Power-loss test |
 
 ---
@@ -119,7 +274,15 @@ The datasheet does not identify which listed dimension corresponds to length, wi
 | MEC-002 | The installation shall not block the robot's brushes, tracks, sprinklers, controls, battery, or service panels. | Clearance inspection |
 | MEC-003 | Cables and battery-voltage wiring shall be secured, insulated, fused, and protected from water, vibration, abrasion, and moving parts. | Safety inspection |
 | MEC-004 | The exposed camera assembly shall target IP67 protection without reducing the robot's existing IP65 protection. | Documentation and water test |
-| MEC-005 | The system's temperature and added weight shall remain within approved limits. | Temperature and weight test |
+| MEC-005 | Component temperatures shall remain below approved vendor limits, and the complete installed camera system shall add less than 1.00 kg to the robot. | Temperature and measured-weight test |
+
+### Camera Cable Penetration Condition
+
+If the camera is integrated into the same existing external structure as the nozzle, the camera wiring shall use the same approved sealed penetration and waterproofing method.
+
+A separate unsealed chassis opening shall not be created.
+
+The shared penetration shall include appropriate cable strain relief and shall be inspected to confirm that adding the camera wiring does not reduce the robot's existing IP65 protection.
 
 ---
 
@@ -161,7 +324,14 @@ Main switch / relay
                          +------ Ethernet Data ------+
                          |
                          +------ GNSS Receiver
+                         |           |
+                         |           +------ Position
+                         |           +------ Time
+                         |           +------ Speed
                          |
                          +------ Local SSD Storage
                          |
+                         +------ Optional Future Robot-Speed Interface
+                         |
                          +------ Optional Internet Connection
+```
