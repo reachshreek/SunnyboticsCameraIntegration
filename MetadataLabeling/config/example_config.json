@@ -34,7 +34,10 @@
     "max_hdop": 5.0,
     "require_fix_quality": true
   },
-  "layout_file": "example_layout.geojson",
-  "required_fields": ["latitude", "longitude", "row", "panel"],
+  "layout_file": null,
+  "required_fields": [
+    "latitude",
+    "longitude"
+  ],
   "log_level": "INFO"
 }

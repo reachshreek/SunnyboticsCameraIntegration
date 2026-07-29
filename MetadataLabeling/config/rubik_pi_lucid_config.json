@@ -8,8 +8,8 @@
     "compute_sha256": true,
     "validate_images": true,
     "preserve_source": false,
-    "min_free_gb": 10.0,
-    "emergency_free_gb": 2.0
+    "min_free_gb": 110.0,
+    "emergency_free_gb": 20.0
   },
   "camera": {
     "source": "lucid",
@@ -33,9 +33,14 @@
     "chunk_mode_active": true
   },
   "capture": {
-    "trigger_mode": "file",
-    "trigger_directory": "/opt/ssd/sunnybotics/triggers",
-    "trigger_poll_s": 0.2,
+    "trigger_mode": "distance",
+    "along_track_coverage_m": 1.62,
+    "required_overlap_fraction": 0.30,
+    "speed_timeout_s": 2.5,
+    "speed_poll_s": 0.1,
+    "fallback_interval_s": 5.0,
+    "min_capture_interval_s": 1.0,
+    "min_moving_speed_mps": 0.02,
     "continue_on_error": true,
     "health_interval_s": 5.0
   },
@@ -52,12 +57,10 @@
     "max_hdop": 5.0,
     "require_fix_quality": true
   },
-  "layout_file": "/etc/solar-tagger/site-layout.geojson",
+  "layout_file": null,
   "required_fields": [
     "latitude",
-    "longitude",
-    "row",
-    "panel"
+    "longitude"
   ],
   "hardware": {
     "edge_computer": "RUBIK Pi 3",

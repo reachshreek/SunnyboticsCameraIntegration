@@ -31,7 +31,10 @@
     "min_satellites": 4,
     "max_hdop": 5.0
   },
-  "layout_file": "example_layout.geojson",
-  "required_fields": ["latitude", "longitude", "row", "panel"],
+  "layout_file": null,
+  "required_fields": [
+    "latitude",
+    "longitude"
+  ],
   "log_level": "INFO"
 }
