@@ -1,0 +1,2 @@
+[console_scripts]
+solar-tagger = solar_metadata_tagger.cli:main
