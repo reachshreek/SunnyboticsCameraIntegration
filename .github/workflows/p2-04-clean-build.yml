@@ -1,0 +1,103 @@
+name: P2-04 Clean Build
+
+on:
+  push:
+    branches:
+      - main
+      - p2-04-clean-build
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  clean-build:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - "3.10"
+          - "3.13"
+
+    defaults:
+      run:
+        working-directory: MetadataLabeling
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: MetadataLabeling/pyproject.toml
+
+      - name: Create evidence directory
+        run: mkdir -p p2-04-evidence
+
+      - name: Record environment
+        run: |
+          python --version | tee p2-04-evidence/python-version.txt
+          python -m pip --version | tee p2-04-evidence/pip-version.txt
+
+      - name: Install development environment
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install build
+          python -m pip install -e ".[dev]"
+          python -m pip freeze > p2-04-evidence/dependencies.txt
+
+      - name: Import package
+        run: |
+          python -c "import solar_metadata_tagger; print(solar_metadata_tagger.__version__)" \
+            | tee p2-04-evidence/package-version.txt
+
+      - name: Run automated tests
+        run: |
+          set -o pipefail
+          pytest -ra 2>&1 | tee p2-04-evidence/pytest.txt
+
+      - name: Build wheel and source package
+        run: |
+          set -o pipefail
+          python -m build 2>&1 | tee p2-04-evidence/package-build.txt
+
+      - name: Install built wheel in separate environment
+        run: |
+          python -m venv .wheel-venv
+          .wheel-venv/bin/python -m pip install --upgrade pip
+          .wheel-venv/bin/python -m pip install dist/*.whl
+
+      - name: Test installed command
+        run: |
+          set -o pipefail
+          .wheel-venv/bin/solar-tagger --help \
+            2>&1 | tee p2-04-evidence/cli-help.txt
+
+      - name: Validate example configuration
+        run: |
+          set -o pipefail
+          .wheel-venv/bin/solar-tagger validate-config \
+            --config config/example_config.json \
+            2>&1 | tee p2-04-evidence/config-validation.txt
+
+      - name: Test simulated camera
+        run: |
+          set -o pipefail
+          .wheel-venv/bin/solar-tagger camera-test \
+            --config config/example_config.json \
+            2>&1 | tee p2-04-evidence/camera-test.txt
+
+      - name: Upload P2-04 evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: p2-04-python-${{ matrix.python-version }}
+          path: MetadataLabeling/p2-04-evidence/
+          retention-days: 90

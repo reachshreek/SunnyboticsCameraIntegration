@@ -1,0 +1,35 @@
+# Python environments
+.venv/
+venv/
+**/.venv/
+**/.wheel-venv/
+
+# Python caches
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+**/.pytest_cache/
+
+# Python packaging output
+build/
+dist/
+*.egg-info/
+
+# Sunnybotics generated runtime data
+MetadataLabeling/runtime-data/
+MetadataLabeling/runtime-data-webcam/
+
+# P2-04 generated evidence
+MetadataLabeling/p2-04-evidence/
+
+# Local environment and credential files
+.env
+.env.*
+*.local.json
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
