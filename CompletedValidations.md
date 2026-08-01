@@ -1,17 +1,6 @@
-# Phase 2 Pre-Purchase Reviews: P2-01, P2-02, and P2-03
+# Validations
 
-**Repository:** `reachshreek/SunnyboticsCameraIntegration`  
-**Branch reviewed:** `main`  
-**Latest commit reviewed:** `8bbc074629d060323a42e6eeca3254eb18582783` (`MetadataTagging test`)  
-**Review date:** July 29, 2026
 
-## Executive Result
-
-| Review | Result | Summary |
-|---|---|---|
-| P2-01 Requirements traceability review | **Pass** | All 27 baseline requirements are mapped to at least one verification activity, evidence item, and responsible role. Actual named owners still need to replace role-only assignments. |
-| P2-02 Electrical interface review | **Pass** | The selected Coolgear converter, RUBIK Pi, Tycon injector, and LUCID camera are electrically compatible with the documented robot voltage range. Final approval is blocked by the still-pending BMS rating, lack of measured robot peak current, unassigned connector pin polarity, and unmeasured converter input current/efficiency. |
-| P2-03 Network interface review | **Pass** | The camera-to-RUBIK Pi Gigabit path is complete and technically compatible. A proposed static addressing plan is provided. Final approval is blocked by the undefined cloud endpoint/upload protocol and the need to validate the final NIC/MTU settings on hardware. |
 
 ---
 
@@ -281,3 +270,293 @@ The current source manifest contains camera, storage, trigger, metadata, GNSS, h
 5. Defining and implementing the cloud endpoint, authentication, upload protocol, and retry behavior.
 
 ---
+
+---
+
+# P2-04 - Software Repository Build Validation
+
+## Validation Objective
+
+Confirm that the software repository can be installed and started from a clean development environment without undocumented files, dependencies, or manual source-code changes.
+
+## Environment
+
+| Item                | Value                                      |
+| ------------------- | ------------------------------------------ |
+| Repository          | `reachshreek/SunnyboticsCameraIntegration` |
+| Branch              | `main`                                     |
+| Software directory  | `MetadataLabeling/`                        |
+| Operating system    | Windows                                    |
+| Python version      | Python 3.14.4                              |
+| Environment type    | Python virtual environment                 |
+| Dependency manager  | `pip`                                      |
+| Build configuration | `pyproject.toml`                           |
+
+## Procedure Performed
+
+The following general procedure was completed:
+
+1. Opened the repository from the local development environment.
+2. Entered the `MetadataLabeling` directory.
+3. Created an isolated Python virtual environment named `.venv`.
+4. Activated the virtual environment.
+5. Updated `pip`.
+6. Installed the project and its development dependencies from `pyproject.toml`.
+7. Confirmed that the `solar-tagger` command was installed.
+8. Confirmed that pytest could discover the project configuration and test directory.
+9. Confirmed that no undocumented source-code changes were required to install the software.
+
+The primary setup commands were:
+
+```powershell
+cd MetadataLabeling
+
+py -m venv .venv
+
+.\.venv\Scripts\Activate.ps1
+
+python -m pip install --upgrade pip
+
+python -m pip install -e ".[dev]"
+```
+
+PowerShell script execution was temporarily enabled for the current terminal session when required:
+
+```powershell
+Set-ExecutionPolicy -Scope Process Bypass
+```
+
+## Dependencies Installed
+
+The project dependencies were installed using the package definitions in `pyproject.toml`.
+
+The main runtime dependencies include:
+
+* Pillow
+* pyserial
+
+The development dependencies include:
+
+* pytest
+
+The project was installed in editable mode so the installed package uses the current repository source code.
+
+## Results
+
+* The virtual environment was created successfully.
+* The virtual environment activated successfully.
+* The project dependencies installed successfully.
+* The project package installed successfully.
+* The `pyproject.toml` configuration was recognized.
+* Pytest found the configured `tests` directory.
+* The software did not require undocumented local files.
+* The source code did not require manual modification to complete installation.
+* No missing critical dependency prevented the project from running.
+
+## Required Evidence
+
+The following evidence was produced or observed:
+
+* Successful virtual-environment creation
+* Successful dependency-installation output
+* Installed package and dependency list
+* Recognized `pyproject.toml` configuration
+* Successful pytest test discovery
+* Repository commit showing completion of P2-04
+
+## Limitations
+
+This validation confirms the software build and dependency process on the Windows development computer.
+
+It does not yet confirm:
+
+* Installation on the RUBIK Pi 3
+* ARM64 compatibility
+* LUCID Arena SDK installation
+* Communication with the physical LUCID camera
+* Communication with the physical GNSS receiver
+* Automatic startup through the final Linux system service
+
+Those items are addressed by later hardware and compatibility validations.
+
+## P2-04 Finding
+
+**Pass.**
+
+The software repository can be installed in a clean Python virtual environment using the documented project configuration and dependency manager. No undocumented source-code changes were required.
+
+---
+
+# P2-05 - Unit-Test Execution
+
+## Validation Objective
+
+Confirm that all current critical unit tests for capture, metadata, GNSS, speed handling, trigger scheduling, storage behavior, and failure handling pass successfully.
+
+## Test Environment
+
+| Item                        | Value                                       |
+| --------------------------- | ------------------------------------------- |
+| Operating system            | Windows                                     |
+| Platform reported by pytest | `win32`                                     |
+| Python version              | Python 3.14.4                               |
+| pytest version              | 8.4.2                                       |
+| pluggy version              | 1.6.0                                       |
+| Python executable           | `MetadataLabeling/.venv/Scripts/python.exe` |
+| Project root                | `MetadataLabeling/`                         |
+| Configuration file          | `pyproject.toml`                            |
+| Test directory              | `tests/`                                    |
+| Tests collected             | 28                                          |
+
+## Procedure Performed
+
+The complete unit-test suite was executed from the activated virtual environment.
+
+```powershell
+python -m pytest -v `
+    --junitxml=..\ValidationEvidence\P2-05\pytest-results.xml `
+    2>&1 |
+    Tee-Object ..\ValidationEvidence\P2-05\pytest-output.txt
+```
+
+Pytest automatically loaded the project configuration from `pyproject.toml` and collected tests from the `tests` directory.
+
+## Test Coverage
+
+The executed suite included tests for:
+
+| Area                   | Test coverage                                                                                         |
+| ---------------------- | ----------------------------------------------------------------------------------------------------- |
+| Simulated camera       | Directory-camera image ordering                                                                       |
+| Command-line interface | Structured handling of invalid timestamps                                                             |
+| GNSS history           | Closest-fix selection and future-fix tolerance                                                        |
+| Image IDs              | Uniqueness and sortable prefixes                                                                      |
+| Site layout            | Polygon-based location assignment                                                                     |
+| Mission statistics     | Metadata-completeness calculations                                                                    |
+| NMEA parsing           | GGA and RMC sentence parsing                                                                          |
+| Metadata service       | IDs, timestamps, mission IDs, coordinates, optional fields, quarantine behavior, and image validation |
+| Speed provider         | Fresh, missing, stale, and invalid speed samples                                                      |
+| Capture scheduling     | Distance capture, fallback capture, overlap spacing, and stationary behavior                          |
+| Trigger handling       | File-trigger claiming, completion, and optional row/panel values                                      |
+
+## Initial Test Result
+
+The first complete execution produced:
+
+```text
+28 tests collected
+26 passed
+2 failed
+```
+
+The two failures were investigated rather than being ignored.
+
+### Issue 1: Incorrect Manifest Test Path
+
+The mission-manifest test calculated the expected manifest path from the metadata file using an incorrect number of parent-directory operations.
+
+The software correctly wrote the manifest under:
+
+```text
+output/manifests/<mission_id>.jsonl
+```
+
+The test incorrectly checked under:
+
+```text
+output/metadata/manifests/<mission_id>.jsonl
+```
+
+The test was corrected to calculate the expected path from the configured storage root.
+
+### Issue 2: Speed-Sample Timestamp Ordering
+
+The distance-trigger test exposed a timing-order issue.
+
+The scheduler recorded the comparison time immediately before requesting the current speed sample. The test speed provider then created a sample with a timestamp slightly later than the comparison time.
+
+This produced a very small negative calculated age, causing the valid speed sample to be treated as unavailable. The scheduler then used fixed-rate fallback instead of distance-based capture.
+
+The scheduler was corrected so that the comparison time is recorded after obtaining the speed sample.
+
+## Corrective Verification
+
+After both corrections, the two previously failing tests were rerun individually and passed.
+
+The complete unit-test suite was then executed again.
+
+## Final Test Result
+
+```text
+28 passed
+0 failed
+```
+
+All collected unit tests passed.
+
+## Final Coverage Result
+
+| Required P2-05 area                     | Result   |
+| --------------------------------------- | -------- |
+| Capture tests                           | **Pass** |
+| Metadata tests                          | **Pass** |
+| GNSS tests                              | **Pass** |
+| Speed-provider tests                    | **Pass** |
+| Trigger-scheduler tests                 | **Pass** |
+| Basic storage and manifest tests        | **Pass** |
+| Invalid-data and quarantine tests       | **Pass** |
+| Current software failure-handling tests | **Pass** |
+
+## Evidence
+
+The validation evidence includes:
+
+```text
+ValidationEvidence/
+└── P2-05/
+    ├── collected-tests.txt
+    ├── pytest-output.txt
+    └── pytest-results.xml
+```
+
+The evidence records:
+
+* The tests collected by pytest
+* Individual test results
+* The final pass/fail summary
+* Machine-readable JUnit XML results
+* The Python and pytest environment used for the validation
+
+## Remaining Limitations
+
+P2-05 validates the current unit-test suite, but it does not replace later integration and fault-injection testing.
+
+Additional later validations are still required for:
+
+* Actual SSD write performance
+* Full-disk behavior
+* Sudden power loss
+* Interrupted metadata writes
+* Physical camera disconnection
+* Physical GNSS disconnection
+* Network interruption
+* Cloud-upload retries
+* Full-system recovery
+* Long-duration operation
+
+These behaviors are addressed by P2-08, P2-09, P2-10, P2-18, and P2-21.
+
+## P2-05 Finding
+
+**Pass.**
+
+All 28 collected unit tests passed after correcting one invalid test-path assertion and one genuine speed-sample timestamp-ordering defect.
+
+The final test result was:
+
+```text
+28 passed
+0 failed
+```
+
+The software currently satisfies the P2-05 unit-test execution requirement.

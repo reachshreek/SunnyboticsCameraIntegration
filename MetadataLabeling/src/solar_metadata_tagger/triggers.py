@@ -157,13 +157,14 @@ class TriggerProvider:
             )
 
             last_tick = now_monotonic
-            now_utc = datetime.now(timezone.utc)
 
             sample = (
                 self.speed_provider.sample()
                 if self.speed_provider is not None
                 else None
             )
+
+            now_utc = datetime.now(timezone.utc)
 
             fresh_sample = (
                 sample

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="28" time="2.310" timestamp="2026-07-31T19:45:02.948001-07:00" hostname="Shrekys_laptop"><testcase classname="tests.test_camera_directory" name="test_directory_camera_captures_in_order" time="0.101" /><testcase classname="tests.test_cli" name="test_bad_timestamp_returns_structured_error" time="0.035" /><testcase classname="tests.test_gnss_history" name="test_selects_closest_fix_at_or_before_capture" time="0.001" /><testcase classname="tests.test_gnss_history" name="test_future_fix_used_only_within_tolerance" time="0.001" /><testcase classname="tests.test_ids" name="test_image_ids_are_unique_and_sortable_prefix" time="0.001" /><testcase classname="tests.test_layout" name="test_polygon_assignment" time="0.001" /><testcase classname="tests.test_mission" name="test_metadata_goal_calculation" time="0.005" /><testcase classname="tests.test_nmea" name="test_parse_gga" time="0.001" /><testcase classname="tests.test_nmea" name="test_parse_rmc" time="0.001" /><testcase classname="tests.test_service" name="test_tag_image_with_optional_manual_values" time="0.209" /><testcase classname="tests.test_service" name="test_row_and_panel_are_not_required" time="0.050" /><testcase classname="tests.test_service" name="test_existing_mission_id_is_preserved" time="0.046"><failure message="AssertionError: assert False&#10; +  where False = exists()&#10; +    where exists = ((WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata') / 'manifests') / 'existing-mission-format-a.jsonl').exists&#10; +      where WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata') = WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026').parent&#10; +        where WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026') = WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026/07').parent&#10; +          where WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026/07') = WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026/07/15').parent&#10; +            where WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026/07/15') = WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026/07/15/robot-1--existing-mission-format-a--20260715T120000.000000Z--49834cbeafc2.json').parent&#10; +              where WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026/07/15/robot-1--existing-mission-format-a--20260715T120000.000000Z--49834cbeafc2.json') = TagResult(image_id='robot-1--existing-mission-format-a--20260715T120000.000000Z--49834cbeafc2', image_path=WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/images/2026/07/15/robot-1--existing-mission-format-a--20260715T120000.000000Z--49834cbeafc2.png'), metadata_path=WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026/07/15/robot-1--existing-mission-format-a--20260715T120000.000000Z--49834cbeafc2.json'), status='complete', warnings=()).metadata_path">tmp_path = WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0')
+png_factory = &lt;function png_factory.&lt;locals&gt;.make at 0x000001A63E53FED0&gt;
+
+    def test_existing_mission_id_is_preserved(
+        tmp_path,
+        png_factory,
+    ) -&gt; None:
+        source = png_factory(
+            tmp_path / "frame.png"
+        )
+    
+        mission_id = (
+            "existing-mission-format-a"
+        )
+    
+        captured = datetime(
+            2026,
+            7,
+            15,
+            12,
+            0,
+            0,
+            tzinfo=timezone.utc,
+        )
+    
+        result = MetadataTaggingService(
+            make_config(
+                tmp_path,
+                mission=mission_id,
+            )
+        ).tag_image(
+            source,
+            captured_at_utc=captured,
+            manual_fix=valid_fix(
+                captured
+            ),
+        )
+    
+        metadata = json.loads(
+            result.metadata_path.read_text()
+        )
+    
+        assert (
+            metadata["mission_id"]
+            == mission_id
+        )
+    
+        assert (
+            mission_id
+            in result.image_id
+        )
+    
+&gt;       assert (
+            result.metadata_path
+            .parent
+            .parent
+            .parent
+            .parent
+            / "manifests"
+            / f"{mission_id}.jsonl"
+        ).exists()
+E       AssertionError: assert False
+E        +  where False = exists()
+E        +    where exists = ((WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata') / 'manifests') / 'existing-mission-format-a.jsonl').exists
+E        +      where WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata') = WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026').parent
+E        +        where WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026') = WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026/07').parent
+E        +          where WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026/07') = WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026/07/15').parent
+E        +            where WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026/07/15') = WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026/07/15/robot-1--existing-mission-format-a--20260715T120000.000000Z--49834cbeafc2.json').parent
+E        +              where WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026/07/15/robot-1--existing-mission-format-a--20260715T120000.000000Z--49834cbeafc2.json') = TagResult(image_id='robot-1--existing-mission-format-a--20260715T120000.000000Z--49834cbeafc2', image_path=WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/images/2026/07/15/robot-1--existing-mission-format-a--20260715T120000.000000Z--49834cbeafc2.png'), metadata_path=WindowsPath('C:/Users/reach/AppData/Local/Temp/pytest-of-reach/pytest-0/test_existing_mission_id_is_pr0/output/metadata/2026/07/15/robot-1--existing-mission-format-a--20260715T120000.000000Z--49834cbeafc2.json'), status='complete', warnings=()).metadata_path
+
+tests\test_service.py:264: AssertionError</failure></testcase><testcase classname="tests.test_service" name="test_missing_metadata_is_quarantined_not_dropped" time="0.058" /><testcase classname="tests.test_service" name="test_invalid_coordinates_can_never_be_complete" time="0.084" /><testcase classname="tests.test_service" name="test_nonfinite_coordinates_can_never_be_complete" time="0.039" /><testcase classname="tests.test_service" name="test_corrupt_image_is_quarantined" time="0.255" /><testcase classname="tests.test_speed" name="test_speed_sample_freshness" time="0.001" /><testcase classname="tests.test_speed" name="test_gnss_speed_provider_returns_latest_speed" time="0.001" /><testcase classname="tests.test_speed" name="test_gnss_speed_provider_rejects_missing_speed" time="0.001" /><testcase classname="tests.test_speed" name="test_later_gga_does_not_refresh_rmc_speed_time" time="0.001" /><testcase classname="tests.test_speed" name="test_negative_speed_is_invalid" time="0.001" /><testcase classname="tests.test_triggers" name="test_capture_spacing_calculation" time="0.001" /><testcase classname="tests.test_triggers" name="test_file_trigger_claim_and_complete" time="0.056" /><testcase classname="tests.test_triggers" name="test_file_trigger_does_not_require_row_or_panel" time="0.033" /><testcase classname="tests.test_triggers" name="test_distance_trigger_uses_speed" time="1.006"><failure message="AssertionError: assert 'fixed-rate-fallback' == 'distance'&#10;  &#10;  - distance&#10;  + fixed-rate-fallback">def test_distance_trigger_uses_speed() -&gt; None:
+        provider = TriggerProvider(
+            CaptureConfig(
+                trigger_mode="distance",
+                along_track_coverage_m=0.01,
+                required_overlap_fraction=0.0,
+                speed_timeout_s=1.0,
+                speed_poll_s=0.001,
+                fallback_interval_s=1.0,
+                min_capture_interval_s=0.001,
+                min_moving_speed_mps=0.0,
+                max_images=2,
+            ),
+            speed_provider=(
+                ConstantSpeedProvider(
+                    speed_mps=10.0
+                )
+            ),
+        )
+    
+        triggers = iter(
+            provider
+        )
+    
+        first = next(
+            triggers
+        )
+    
+        second = next(
+            triggers
+        )
+    
+        assert (
+            first.metadata["capture_mode"]
+            == "distance-initial"
+        )
+    
+&gt;       assert (
+            second.metadata["capture_mode"]
+            == "distance"
+        )
+E       AssertionError: assert 'fixed-rate-fallback' == 'distance'
+E         
+E         - distance
+E         + fixed-rate-fallback
+
+tests\test_triggers.py:234: AssertionError</failure></testcase><testcase classname="tests.test_triggers" name="test_distance_trigger_falls_back_without_speed" time="0.008" /><testcase classname="tests.test_triggers" name="test_stale_speed_uses_fallback" time="0.007" /><testcase classname="tests.test_triggers" name="test_zero_speed_does_not_create_distance_capture" time="0.002" /></testsuite></testsuites>

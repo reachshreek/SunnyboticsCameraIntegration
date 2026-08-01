@@ -261,15 +261,14 @@ def test_existing_mission_id_is_preserved(
         in result.image_id
     )
 
-    assert (
-        result.metadata_path
-        .parent
-        .parent
-        .parent
-        .parent
-        / "manifests"
-        / f"{mission_id}.jsonl"
-    ).exists()
+    manifest_path = (
+    tmp_path
+    / "output"
+    / "manifests"
+    / f"{mission_id}.jsonl"
+)
+
+    assert manifest_path.exists()
 
 
 def test_missing_metadata_is_quarantined_not_dropped(
