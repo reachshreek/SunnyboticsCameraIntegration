@@ -234,11 +234,13 @@ def test_existing_mission_id_is_preserved(
         tzinfo=timezone.utc,
     )
 
+    config = make_config(
+        tmp_path,
+        mission=mission_id,
+    )
+
     result = MetadataTaggingService(
-        make_config(
-            tmp_path,
-            mission=mission_id,
-        )
+        config
     ).tag_image(
         source,
         captured_at_utc=captured,
@@ -261,15 +263,13 @@ def test_existing_mission_id_is_preserved(
         in result.image_id
     )
 
-    assert (
-        result.metadata_path
-        .parent
-        .parent
-        .parent
-        .parent
+    manifest_path = (
+        config.storage.root
         / "manifests"
         / f"{mission_id}.jsonl"
-    ).exists()
+    )
+
+    assert manifest_path.exists()
 
 
 def test_missing_metadata_is_quarantined_not_dropped(
