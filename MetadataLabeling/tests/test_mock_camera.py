@@ -316,6 +316,26 @@ def test_minimum_capture_interval_enforced() -> None:
     )
     assert config.maximum_capture_rate_hz == pytest.approx(1.0)
 
+def test_mock_camera_timeout_is_configurable(tmp_path: Path) -> None:
+    cam = MockCamera(fault=CameraFault.TIMEOUT, timeout_s=0.05)
+    cam.open()
+    start = time.monotonic()
+    with pytest.raises(RuntimeError, match="timed out"):
+        cam.capture(tmp_path)
+    elapsed = time.monotonic() - start
+    assert elapsed >= 0.05
+    assert elapsed < 5.0
+
+
+def test_mock_camera_fixed_capture_interval(tmp_path: Path) -> None:
+    cam = MockCamera(capture_interval_s=0.05)
+    cam.open()
+    cam.capture(tmp_path)
+    start = time.monotonic()
+    cam.capture(tmp_path)
+    elapsed = time.monotonic() - start
+    cam.close()
+    assert elapsed >= 0.05
 
 def test_missing_speed_activates_fallback() -> None:
     from solar_metadata_tagger.config import CaptureConfig
