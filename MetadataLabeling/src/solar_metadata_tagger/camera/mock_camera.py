@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import time
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from enum import Enum, auto
 from pathlib import Path
 from typing import Any
@@ -15,6 +15,7 @@ PLANNED_WIDTH_PX = 2448
 PLANNED_HEIGHT_PX = 2048
 PLANNED_PIXEL_FORMAT = "BayerRG8"
 
+
 class CameraFault(Enum):
     NONE = auto()
     DISCONNECTED = auto()
@@ -24,6 +25,7 @@ class CameraFault(Enum):
     DELAYED_FRAME = auto()
     INCOMPLETE_FRAME = auto()
     INVALID_FRAME = auto()
+
 
 class MockCamera:
     """
@@ -42,10 +44,18 @@ class MockCamera:
     frame_delay_s:
         Extra delay injected before capture() returns. Used by
         CameraFault.DELAYED_FRAME.
+    timeout_s:
+        How long TIMEOUT fault sleeps before raising. Defaults to 30 s
+        for production realism but should be set to a short value in
+        tests.
     width, height:
         Image dimensions. Default to the planned LUCID resolution.
     pixel_format:
         Pixel format label written into camera_metadata.
+    capture_interval_s:
+        When set, capture() sleeps until this many seconds have elapsed
+        since the previous capture. Simulates the configured fixed
+        capture interval without a separate scheduler.
     """
 
     def __init__(
@@ -54,19 +64,24 @@ class MockCamera:
         fault: CameraFault = CameraFault.NONE,
         prerecorded_image_path: Path | None = None,
         frame_delay_s: float = 0.0,
+        timeout_s: float = 30.0,
         width: int = PLANNED_WIDTH_PX,
         height: int = PLANNED_HEIGHT_PX,
         pixel_format: str = PLANNED_PIXEL_FORMAT,
+        capture_interval_s: float | None = None,
     ) -> None:
         self.fault = fault
         self.prerecorded_image_path = prerecorded_image_path
         self.frame_delay_s = frame_delay_s
+        self.timeout_s = timeout_s
         self.width = width
         self.height = height
         self.pixel_format = pixel_format
+        self.capture_interval_s = capture_interval_s
 
         self._open = False
         self._frame_count = 0
+        self._last_capture_monotonic: float | None = None
 
     def open(self) -> None:
         """
@@ -93,12 +108,16 @@ class MockCamera:
         Behaviour changes according to the active fault mode:
 
         - DISCONNECTED      raises RuntimeError immediately.
-        - TIMEOUT           sleeps for 30 s then raises RuntimeError.
+        - TIMEOUT           sleeps for timeout_s then raises RuntimeError.
         - DROPPED_FRAME     raises RuntimeError (frame never arrives).
         - DELAYED_FRAME     sleeps for frame_delay_s before returning.
         - INCOMPLETE_FRAME  writes a truncated file and returns it.
         - INVALID_FRAME     writes a zero-byte file and returns it.
         - NONE              writes a valid synthetic or prerecorded image.
+
+        When capture_interval_s is set, the method sleeps until the
+        configured interval has elapsed since the previous capture,
+        simulating a fixed-rate capture schedule.
         """
         if not self._open:
             raise RuntimeError("MockCamera: camera is not open")
@@ -108,7 +127,7 @@ class MockCamera:
             raise RuntimeError("MockCamera: camera disconnected during capture")
 
         if self.fault == CameraFault.TIMEOUT:
-            time.sleep(30.0)
+            time.sleep(self.timeout_s)
             raise RuntimeError("MockCamera: camera timed out")
 
         if self.fault == CameraFault.DROPPED_FRAME:
@@ -116,6 +135,15 @@ class MockCamera:
 
         if self.fault == CameraFault.DELAYED_FRAME:
             time.sleep(self.frame_delay_s)
+
+        if self.capture_interval_s is not None:
+            now = time.monotonic()
+            if self._last_capture_monotonic is not None:
+                elapsed = now - self._last_capture_monotonic
+                remaining = self.capture_interval_s - elapsed
+                if remaining > 0:
+                    time.sleep(remaining)
+            self._last_capture_monotonic = time.monotonic()
 
         spool_dir.mkdir(parents=True, exist_ok=True)
 
@@ -125,11 +153,8 @@ class MockCamera:
         image_path = spool_dir / f"mock_{frame_id}.png"
 
         if self.fault == CameraFault.INVALID_FRAME:
-            # Zero-byte file — pipeline must reject this.
             image_path.write_bytes(b"")
         elif self.fault == CameraFault.INCOMPLETE_FRAME:
-            # A few valid PNG header bytes followed by nothing —
-            # pipeline must detect and reject truncation.
             image_path.write_bytes(b"\x89PNG\r\n\x1a\n")
         elif self.prerecorded_image_path is not None:
             import shutil
@@ -160,6 +185,7 @@ class MockCamera:
             "width_px": self.width,
             "height_px": self.height,
             "pixel_format": self.pixel_format,
+            "capture_interval_s": self.capture_interval_s,
         }
 
     def reconnect(self) -> None:
@@ -172,13 +198,9 @@ class MockCamera:
         self._open = False
         self.open()
 
-
     def _write_synthetic_image(self, path: Path) -> None:
         """
         Write a synthetic Bayer-pattern PNG at the planned resolution.
-
-        Uses numpy and a minimal PNG encoder so the file is a valid
-        image the pipeline can open and inspect.
         """
         try:
             import cv2
@@ -188,7 +210,6 @@ class MockCamera:
             )
             cv2.imwrite(str(path), pixels)
         except ImportError:
-            # Fall back to a raw numpy save when OpenCV is unavailable.
             rng = np.random.default_rng(seed=self._frame_count)
             pixels = rng.integers(
                 0, 256, size=(self.height, self.width), dtype=np.uint8
@@ -204,7 +225,6 @@ class MockCamera:
             "mock": True,
             "fault": self.fault.name,
         }
-
 
 
 class MockSpeedProvider:
@@ -227,13 +247,13 @@ class MockSpeedProvider:
     """
 
     MODES = frozenset({
-        "fixed",       # constant speed — produces distance triggers
-        "stationary",  # always 0.0 m/s — no distance triggers
-        "changing",    # alternates between 0 and fixed_speed_mps
-        "missing",     # sample() always returns None
-        "invalid",     # sample() returns a NaN speed (fails .valid)
-        "stale",       # sample() returns a sample older than timeout
-        "sequence",    # cycles through speeds_mps list
+        "fixed",
+        "stationary",
+        "changing",
+        "missing",
+        "invalid",
+        "stale",
+        "sequence",
     })
 
     def __init__(
@@ -257,8 +277,6 @@ class MockSpeedProvider:
 
     def sample(self):
         """Return a SpeedSample or None depending on the active mode."""
-        # Import here so this file can be imported without the full
-        # package installed (useful in isolated unit tests).
         from .speed import SpeedSample
 
         self._call_count += 1
@@ -274,7 +292,6 @@ class MockSpeedProvider:
             )
 
         if self.mode == "stale":
-            from datetime import timedelta
             stale_time = (
                 datetime.now(timezone.utc)
                 - timedelta(seconds=self.stale_age_s)
@@ -293,7 +310,6 @@ class MockSpeedProvider:
             )
 
         if self.mode == "changing":
-            # Alternate between stopped and moving every 5 calls.
             speed = (
                 0.0
                 if (self._call_count // 5) % 2 == 0
@@ -315,7 +331,6 @@ class MockSpeedProvider:
                 source="mock-sequence",
             )
 
-        # Default: fixed speed
         return SpeedSample(
             speed_mps=self.fixed_speed_mps,
             measured_at_utc=datetime.now(timezone.utc),
