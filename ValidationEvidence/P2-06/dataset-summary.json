@@ -1,0 +1,15 @@
+{
+  "repository": "roboticsSunnyApp/sunnybotics-solar-panel-challenge",
+  "repository_path": "C:\\Users\\reach\\Work\\sunnybotics-solar-panel-challenge",
+  "commit": "a9d9350b4432819e02b5ae4258986e860e1dcabe",
+  "supported_source_images": 119,
+  "total_supported_source_bytes": 888894858,
+  "suffix_counts": {
+    ".jpg": 114,
+    ".jpeg": 5
+  },
+  "category_counts": {
+    "clean": 31,
+    "damaged": 88
+  }
+}

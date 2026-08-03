@@ -1,0 +1,44 @@
+{
+  "camera": {
+    "directory": "C:\\Users\\reach\\Work\\sunnybotics-solar-panel-challenge\\sample_images",
+    "image_count": 119,
+    "next_index": 43,
+    "open": false,
+    "source": "directory"
+  },
+  "gnss": {
+    "coordinates_valid": false,
+    "enabled": false,
+    "last_error": null,
+    "last_fix_received_at_utc": null,
+    "port": null,
+    "reader_alive": false
+  },
+  "host": "Shrekys_laptop",
+  "machine": "AMD64",
+  "mission": {
+    "capture_attempts": 400,
+    "capture_failures": 0,
+    "complete_metadata_images": 400,
+    "final": true,
+    "images_written": 400,
+    "last_error": null,
+    "last_image_id": "sunnybot-01--p2-06-adaptive-distance--20260803T222134.305664Z--8cc1a6b07764",
+    "meets_95_percent_metadata_goal": true,
+    "metadata_complete_percent": 100.0,
+    "mission_id": "p2-06-adaptive-distance",
+    "partial_images": 0,
+    "quarantined_images": 0,
+    "started_at_utc": "2026-08-03T22:14:45.635Z",
+    "tagging_failures": 0,
+    "updated_at_utc": "2026-08-03T22:21:34.464Z"
+  },
+  "pid": 48444,
+  "service_state": "stopped",
+  "storage": {
+    "free_bytes": 246501597184,
+    "total_bytes": 1021821579264,
+    "used_bytes": 775319982080
+  },
+  "timestamp_utc": "2026-08-03T22:21:34.464Z"
+}

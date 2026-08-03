@@ -1,0 +1,114 @@
+{
+  "camera": {
+    "model": "Sunnybotics representative solar-panel dataset",
+    "sequence_index": 50,
+    "source": "directory-simulator",
+    "source_path": "C:\\Users\\reach\\Work\\sunnybotics-solar-panel-challenge\\sample_images\\damaged\\2 (7).jpg"
+  },
+  "captured_at_utc": "2026-08-03T22:19:40.669Z",
+  "coordinates": {
+    "altitude_m": null,
+    "course_deg": null,
+    "fix_after_capture_ms": null,
+    "fix_age_ms": null,
+    "fix_quality": null,
+    "fix_time_utc": null,
+    "fresh": false,
+    "hdop": null,
+    "latitude": null,
+    "longitude": null,
+    "quality_accepted": false,
+    "received_at_utc": null,
+    "satellites": null,
+    "speed_mps": null,
+    "valid": false
+  },
+  "hardware": {
+    "branch_power_wire": "20-22 AWG Stranded Red/Black Wire",
+    "camera_cable": "LUCID CAB-MR-2M M12 X-coded to RJ45 Cat6a",
+    "camera_enclosure": "LUCID IPTC-D355L399 IP67 C-Mount Lens Tube",
+    "edge_computer": "RUBIK Pi 3",
+    "fused_distribution_block": "Blue Sea Systems 5025 ST Blade Fuse Block (optional)",
+    "fuses": "Littelfuse ATO / ATOF Blade Fuses",
+    "gnss_receiver": "NaviSys GR-U01U USB GNSS Receiver",
+    "lens": "LUCID / Universe UC080-5M / BL080C 8mm C-Mount 5MP 2/3-inch Lens",
+    "main_power_wire": "18 AWG Stranded Red/Black Wire",
+    "optical_filter": "Edmund Optics M22.5 x 0.50 Linear Glass Polarizing Filter",
+    "poe_injector": "Tycon Power TP-DCDC-1248GD-M",
+    "power_converter": "Coolgear ChargeIT Mini 82W CG-PD82HVV",
+    "robot_power_connector": "TE Connectivity / DEUTSCH DT 2-Pin Connector Set",
+    "rubik_pi_ethernet_cable": "Short Shielded Cat6a RJ45 Patch Cable",
+    "storage_device": "WD Blue SN5000 500GB NVMe M.2 2280 SSD",
+    "wiring_hardware": "Ferrules, Crimp Terminals, Heat Shrink, Labels, Strain Relief, and Wire Loom"
+  },
+  "image": {
+    "byte_size": 8118387,
+    "filename": "sunnybot-01--p2-06-adaptive-distance--20260803T221940.669957Z--16cb44dc1f2c.jpg",
+    "format": "JPEG",
+    "height_px": 3072,
+    "media_type": "image/jpeg",
+    "mode": "RGB",
+    "quality_diagnostics": {
+      "advisory_only": true,
+      "bright_pixel_percent": 4.102,
+      "dark_pixel_percent": 1.666,
+      "edge_mean": 20.284,
+      "luma_stddev": 56.666,
+      "mean_luma_0_255": 121.897
+    },
+    "relative_path": "images\\2026\\08\\03\\sunnybot-01--p2-06-adaptive-distance--20260803T221940.669957Z--16cb44dc1f2c.jpg",
+    "sha256": "8d880fecdbff22327955fa1f8c28dc8e56165a16f906c5cbb07c10b760e09af4",
+    "validation_error": null,
+    "width_px": 4096
+  },
+  "image_id": "sunnybot-01--p2-06-adaptive-distance--20260803T221940.669957Z--16cb44dc1f2c",
+  "mission_id": "p2-06-adaptive-distance",
+  "robot_id": "sunnybot-01",
+  "schema_version": "2.0.0",
+  "site": {
+    "assignment_distance_m": null,
+    "assignment_method": "not-required",
+    "layout_feature_id": null,
+    "panel": null,
+    "required": false,
+    "row": null
+  },
+  "software": {
+    "hostname": "Shrekys_laptop",
+    "machine": "AMD64",
+    "name": "solar-metadata-tagger",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.4",
+    "version": "0.3.0"
+  },
+  "status": "complete",
+  "storage": {
+    "device_label": "WD Blue SN5000 500GB NVMe M.2 2280 SSD",
+    "free_bytes_after_copy": 247338844160,
+    "free_bytes_before": 247346966528,
+    "root": "C:\\Users\\reach\\Work\\SunnyboticsCameraIntegration\\ValidationEvidence\\P2-06\\adaptive-distance"
+  },
+  "timing": {
+    "captured_at_utc": "2026-08-03T22:19:40.669Z",
+    "captured_monotonic_ns": 334221965591500,
+    "metadata_completed_at_utc": "2026-08-03T22:19:40.822Z",
+    "tagging_duration_ms": 152.943
+  },
+  "trigger": {
+    "capture_mode": "distance",
+    "capture_spacing_m": 1.134,
+    "estimated_distance_since_previous_capture_m": 9.097,
+    "mission_point_id": null,
+    "required_overlap_fraction": 0.3,
+    "sequence": 288,
+    "source": "distance",
+    "speed_mps": 1.134,
+    "speed_sample_age_s": 0.0,
+    "speed_source": "p2-06-constant-speed",
+    "trigger_id": "distance-bcb21be42f9e",
+    "triggered_at_utc": "2026-08-03T22:19:40.669929Z"
+  },
+  "warnings": [
+    "gnss_fix_missing_or_outside_capture_window"
+  ]
+}

@@ -560,3 +560,356 @@ The final test result was:
 ```
 
 The software currently satisfies the P2-05 unit-test execution requirement.
+---
+---
+
+# P2-06 - Synthetic Image Pipeline Test
+
+## Validation Objective
+
+Confirm that the local image-processing pipeline can process at least 1,000 representative solar-panel image captures without:
+
+- Corrupted output images
+- Missing image files
+- Missing metadata records
+- Duplicate image IDs
+- Incorrect image-to-metadata associations
+- Capture failures
+- Tagging failures
+
+The validation also confirms operation in:
+
+- Interval capture mode
+- Adaptive-distance capture mode
+- Fixed-rate-fallback capture mode
+
+## Test Environment
+
+| Item | Value |
+|---|---|
+| Validation ID | `P2-06` |
+| Test date | August 3, 2026 |
+| Operating system | Windows |
+| Software directory | `MetadataLabeling/` |
+| Python environment | Project `.venv` virtual environment |
+| Camera source | Directory-based simulated camera |
+| Physical camera required | No |
+| Physical GNSS required | No |
+| Evidence directory | `ValidationEvidence/P2-06/` |
+
+## Representative Image Dataset
+
+The validation used representative solar-panel images from:
+
+```text
+roboticsSunnyApp/sunnybotics-solar-panel-challenge
+```
+
+The dataset commit used was:
+
+```text
+a9d9350b4432819e02b5ae4258986e860e1dcabe
+```
+
+The repository contained images of both clean and damaged solar panels.
+
+| Dataset item | Count |
+|---|---:|
+| Total image files | 129 |
+| Supported JPG/JPEG images used | 119 |
+| Unsupported HEIC images excluded | 10 |
+
+The existing directory-camera simulator supports:
+
+```text
+.jpg
+.jpeg
+.png
+.tif
+.tiff
+.bmp
+```
+
+The ten HEIC images were ignored because HEIC is not currently supported by the directory-camera simulator.
+
+The 119 supported images were looped repeatedly until the software completed 1,000 simulated capture events.
+
+The original dataset images were preserved and were not modified or deleted.
+
+## Test Architecture
+
+The physical LUCID camera was replaced with the existing directory-camera simulator.
+
+For each simulated capture, the software:
+
+1. Selected the next supported solar-panel image.
+2. Generated a capture trigger.
+3. Created a unique image ID.
+4. Copied the image into the validation output directory.
+5. Created a matching JSON metadata file.
+6. Added the record to the mission manifest.
+7. Calculated and recorded a SHA-256 checksum.
+8. Recorded the capture mode.
+9. Recorded image-processing timing.
+10. Verified that the saved image could be opened successfully.
+11. Recalculated the SHA-256 checksum.
+12. Compared the recalculated checksum with the recorded checksum.
+13. Confirmed that the image had one matching metadata record.
+
+## Capture Scenarios
+
+| Scenario | Captures | Trigger behavior |
+|---|---:|---|
+| Interval capture | 500 | One capture generated every one second |
+| Adaptive-distance capture | 400 | Simulated speed generated a capture after each estimated 1.134 m |
+| Fixed-rate fallback | 100 | Missing speed generated captures using the five-second fallback interval |
+| **Total** | **1,000** | All required P2-06 capture modes were exercised |
+
+## Interval-Capture Scenario
+
+The interval scenario generated:
+
+```text
+500 captures
+```
+
+The scheduler generated one capture request every second.
+
+This mode did not use robot speed or estimated distance.
+
+The interval scenario verified repeated operation of:
+
+- Timed capture triggering
+- Image selection
+- Image copying
+- Image validation
+- Metadata generation
+- Manifest generation
+- Checksum generation
+- Mission reporting
+
+## Adaptive-Distance Scenario
+
+The adaptive-distance scenario generated:
+
+```text
+400 captures
+```
+
+The configured image coverage was:
+
+```text
+1.62 meters
+```
+
+The required image overlap was:
+
+```text
+30%
+```
+
+The resulting capture spacing was:
+
+```text
+1.62 m × (1 - 0.30) = 1.134 m
+```
+
+The test supplied a simulated constant speed of:
+
+```text
+1.134 meters per second
+```
+
+The software estimated distance using:
+
+```text
+Estimated distance = speed × elapsed time
+```
+
+At the simulated speed:
+
+```text
+1.134 m/s × 1 second = 1.134 m
+```
+
+The scheduler therefore generated an adaptive-distance capture approximately once every second.
+
+The expected adaptive-distance trigger records were:
+
+```text
+1 distance-initial capture
+399 distance captures
+```
+
+The repository images themselves did not contain distance information.
+
+The image dataset acted only as the simulated camera input. The speed and distance calculations were produced independently by the trigger scheduler.
+
+This scenario verified that:
+
+- A valid speed sample was accepted.
+- Speed was integrated over elapsed time.
+- A capture was triggered after the estimated distance reached 1.134 m.
+- The correct capture mode was recorded in the metadata.
+- Every adaptive trigger produced a valid image and metadata record.
+
+This scenario did not validate the physical distance between the original dataset images.
+
+## Fixed-Rate-Fallback Scenario
+
+The fixed-rate-fallback scenario generated:
+
+```text
+100 captures
+```
+
+No valid speed provider was supplied.
+
+The scheduler first generated one initial distance-mode capture and then switched to the configured fallback interval:
+
+```text
+5 seconds
+```
+
+The expected fallback trigger records were:
+
+```text
+1 distance-initial capture
+99 fixed-rate-fallback captures
+```
+
+This scenario verified that the system continues capturing images when speed information is:
+
+- Missing
+- Unavailable
+- Invalid
+- Too old to be considered fresh
+
+Instead of stopping capture completely, the system used the slower fixed-rate fallback.
+
+## Automated Verification Checks
+
+The validation script checked the following conditions:
+
+- The expected number of capture events occurred.
+- The expected number of output images was written.
+- The expected number of metadata JSON files was written.
+- The expected number of manifest records was written.
+- Every image ID was unique.
+- Every output image had one matching metadata record.
+- Every metadata record contained the correct robot ID.
+- Every metadata record contained the correct mission ID.
+- Every output image could be opened successfully.
+- Every recorded SHA-256 checksum matched the saved image.
+- No unexpected duplicate output filename was created.
+- No capture failure occurred.
+- No tagging failure occurred.
+- Each scenario contained the expected capture modes.
+- Processing time was recorded.
+- Every output image remained traceable to a source dataset image.
+
+## Final Results
+
+| Result | Value |
+|---|---:|
+| Total simulated captures | 1,000 |
+| Total output images | 1,000 |
+| Total metadata JSON files | 1,000 |
+| Total unique image IDs | 1,000 |
+| Missing output images | 0 |
+| Missing metadata records | 0 |
+| Corrupted output images | 0 |
+| SHA-256 checksum mismatches | 0 |
+| Duplicate image IDs | 0 |
+| Capture failures | 0 |
+| Tagging failures | 0 |
+| Interval scenario | **Pass** |
+| Adaptive-distance scenario | **Pass** |
+| Fixed-rate-fallback scenario | **Pass** |
+| Overall P2-06 result | **Pass** |
+
+The final console output was:
+
+```text
+interval: PASS (500 images)
+adaptive-distance: PASS (400 images)
+fixed-rate-fallback: PASS (100 images)
+
+P2-06: PASS
+1,000 images processed successfully.
+```
+
+## Evidence
+
+The P2-06 evidence is stored under:
+
+```text
+ValidationEvidence/
+└── P2-06/
+    ├── dataset-summary.json
+    ├── P2-06-final-report.json
+    ├── interval/
+    │   ├── images/
+    │   ├── metadata/
+    │   ├── manifests/
+    │   ├── reports/
+    │   └── logs/
+    ├── adaptive-distance/
+    │   ├── images/
+    │   ├── metadata/
+    │   ├── manifests/
+    │   ├── reports/
+    │   └── logs/
+    └── fixed-rate-fallback/
+        ├── images/
+        ├── metadata/
+        ├── manifests/
+        ├── reports/
+        └── logs/
+```
+
+The primary overall report is:
+
+```text
+ValidationEvidence/P2-06/P2-06-final-report.json
+```
+
+The dataset summary is:
+
+```text
+ValidationEvidence/P2-06/dataset-summary.json
+```
+
+The individual image metadata files are stored under:
+
+```text
+ValidationEvidence/P2-06/interval/metadata/
+ValidationEvidence/P2-06/adaptive-distance/metadata/
+ValidationEvidence/P2-06/fixed-rate-fallback/metadata/
+```
+
+The mission manifests are stored at:
+
+```text
+ValidationEvidence/P2-06/interval/manifests/p2-06-interval.jsonl
+ValidationEvidence/P2-06/adaptive-distance/manifests/p2-06-adaptive-distance.jsonl
+ValidationEvidence/P2-06/fixed-rate-fallback/manifests/p2-06-fixed-rate-fallback.jsonl
+```
+
+The individual verification reports are stored under:
+
+```text
+ValidationEvidence/P2-06/interval/reports/
+ValidationEvidence/P2-06/adaptive-distance/reports/
+ValidationEvidence/P2-06/fixed-rate-fallback/reports/
+```
+
+## P2-06 Finding
+
+**Pass.**
+
+The local image-processing pipeline successfully processed 1,000 representative solar-panel image captures across interval, adaptive-distance, and fixed-rate-fallback operation.
+
+All 1,000 output images were readable and traceable to matching metadata records.
+
+All image IDs were unique, all recorded SHA-256 checksums matched the saved files, and no capture failures, tagging failures, missing records, duplicate IDs, or corrupted outputs were detected.

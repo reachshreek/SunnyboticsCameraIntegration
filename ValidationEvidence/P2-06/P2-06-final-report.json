@@ -1,0 +1,75 @@
+{
+  "validation": "P2-06",
+  "total_expected_images": 1000,
+  "total_output_images": 1000,
+  "total_metadata_files": 1000,
+  "total_unique_image_ids": 1000,
+  "scenarios": {
+    "interval": {
+      "mission_id": "p2-06-interval",
+      "expected_images": 500,
+      "manifest_records": 500,
+      "output_images": 500,
+      "metadata_files": 500,
+      "unique_image_ids": 500,
+      "unique_source_images_used": 119,
+      "maximum_source_reuse_count": 5,
+      "capture_modes": {
+        "None": 500
+      },
+      "mean_tagging_duration_ms": 210.759,
+      "maximum_tagging_duration_ms": 839.667,
+      "capture_failures": 0,
+      "tagging_failures": 0,
+      "errors": [],
+      "passed": true,
+      "elapsed_seconds": 499.245,
+      "average_total_seconds_per_image": 0.99849
+    },
+    "adaptive-distance": {
+      "mission_id": "p2-06-adaptive-distance",
+      "expected_images": 400,
+      "manifest_records": 400,
+      "output_images": 400,
+      "metadata_files": 400,
+      "unique_image_ids": 400,
+      "unique_source_images_used": 119,
+      "maximum_source_reuse_count": 4,
+      "capture_modes": {
+        "distance-initial": 1,
+        "distance": 399
+      },
+      "mean_tagging_duration_ms": 189.255,
+      "maximum_tagging_duration_ms": 592.285,
+      "capture_failures": 0,
+      "tagging_failures": 0,
+      "errors": [],
+      "passed": true,
+      "elapsed_seconds": 408.833,
+      "average_total_seconds_per_image": 1.022084
+    },
+    "fixed-rate-fallback": {
+      "mission_id": "p2-06-fixed-rate-fallback",
+      "expected_images": 100,
+      "manifest_records": 100,
+      "output_images": 100,
+      "metadata_files": 100,
+      "unique_image_ids": 100,
+      "unique_source_images_used": 100,
+      "maximum_source_reuse_count": 1,
+      "capture_modes": {
+        "distance-initial": 1,
+        "fixed-rate-fallback": 99
+      },
+      "mean_tagging_duration_ms": 209.633,
+      "maximum_tagging_duration_ms": 551.605,
+      "capture_failures": 0,
+      "tagging_failures": 0,
+      "errors": [],
+      "passed": true,
+      "elapsed_seconds": 497.476,
+      "average_total_seconds_per_image": 4.974759
+    }
+  },
+  "passed": true
+}

@@ -1,0 +1,22 @@
+{
+  "mission_id": "p2-06-fixed-rate-fallback",
+  "expected_images": 100,
+  "manifest_records": 100,
+  "output_images": 100,
+  "metadata_files": 100,
+  "unique_image_ids": 100,
+  "unique_source_images_used": 100,
+  "maximum_source_reuse_count": 1,
+  "capture_modes": {
+    "distance-initial": 1,
+    "fixed-rate-fallback": 99
+  },
+  "mean_tagging_duration_ms": 209.633,
+  "maximum_tagging_duration_ms": 551.605,
+  "capture_failures": 0,
+  "tagging_failures": 0,
+  "errors": [],
+  "passed": true,
+  "elapsed_seconds": 497.476,
+  "average_total_seconds_per_image": 4.974759
+}

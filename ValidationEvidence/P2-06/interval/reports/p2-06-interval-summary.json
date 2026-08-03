@@ -1,0 +1,17 @@
+{
+  "capture_attempts": 500,
+  "capture_failures": 0,
+  "complete_metadata_images": 500,
+  "final": true,
+  "images_written": 500,
+  "last_error": null,
+  "last_image_id": "sunnybot-01--p2-06-interval--20260803T221433.460902Z--0c16db34c06b",
+  "meets_95_percent_metadata_goal": true,
+  "metadata_complete_percent": 100.0,
+  "mission_id": "p2-06-interval",
+  "partial_images": 0,
+  "quarantined_images": 0,
+  "started_at_utc": "2026-08-03T22:06:14.365Z",
+  "tagging_failures": 0,
+  "updated_at_utc": "2026-08-03T22:14:33.605Z"
+}
