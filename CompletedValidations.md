@@ -916,6 +916,8 @@ All image IDs were unique, all recorded SHA-256 checksums matched the saved file
 
 ---
 
+---
+
 # P2-07 - Metadata and Geotagging Validation
 
 ## Validation Criterion
@@ -985,3 +987,80 @@ tests/test_ids.py
 tests/test_gnss_history.py
 tests/test_nmea.py
 tests/test_service.py
+```
+
+Test result:
+
+```text
+12 passed in 0.39 seconds
+```
+
+## Validation Results
+
+| Result | Recorded value |
+|---|---:|
+| Overall result | **PASS** |
+| Scenarios executed | 18 |
+| Scenarios passed | 18 |
+| Scenarios failed | 0 |
+| Unique image IDs | 18 |
+| Manifest entries | 18 |
+| Supporting unit tests passed | 12 |
+| Failed case IDs | None |
+
+## Global Checks
+
+| Check | Result |
+|---|---|
+| All validation cases passed | **Pass** |
+| All image IDs were unique | **Pass** |
+| All images were retained | **Pass** |
+| All metadata records were retained | **Pass** |
+| Duplicate timestamps produced unique IDs | **Pass** |
+| Manifest record count was correct | **Pass** |
+| Manifest image IDs matched generated image IDs | **Pass** |
+| Missing GNSS did not reuse previous coordinates | **Pass** |
+| Row and panel remained optional | **Pass** |
+
+## Invalid-GNSS Handling
+
+Records with missing or unacceptable GNSS data were placed in the quarantine directories:
+
+```text
+ValidationEvidence/P2-07/quarantine/images/
+ValidationEvidence/P2-07/quarantine/metadata/
+```
+
+Quarantine preserved the image and metadata while clearly indicating that the required valid latitude and longitude were unavailable.
+
+Valid records were stored under:
+
+```text
+ValidationEvidence/P2-07/images/
+ValidationEvidence/P2-07/metadata/
+```
+
+## Evidence
+
+- `MetadataLabeling/run_p2_07.py`
+- `ValidationEvidence/P2-07/P2-07-test-inputs.json`
+- `ValidationEvidence/P2-07/P2-07-comparison.json`
+- `ValidationEvidence/P2-07/P2-07-comparison.csv`
+- `ValidationEvidence/P2-07/P2-07-final-report.json`
+- `ValidationEvidence/P2-07/pytest-output.txt`
+- `ValidationEvidence/P2-07/logs/p2-07.log`
+- `ValidationEvidence/P2-07/manifests/p2-07-metadata-geotagging.jsonl`
+- Generated normal image and metadata records
+- Generated quarantined image and metadata records
+
+## P2-07 Finding
+
+**Pass.**
+
+All 18 controlled metadata and geotagging scenarios passed. Every generated image received a unique image ID, correct timestamp, robot ID, and mission ID.
+
+Valid mock GNSS fixes produced the expected coordinates. Missing, malformed, stale, future-dated, low-satellite, and invalid-coordinate inputs were detected and marked invalid without losing the associated image or metadata.
+
+Duplicate timestamps still produced unique image IDs, missing GNSS did not silently reuse previous coordinates, timezone and midnight handling were correct, and row and panel remained optional.
+
+P2-07 is complete.
