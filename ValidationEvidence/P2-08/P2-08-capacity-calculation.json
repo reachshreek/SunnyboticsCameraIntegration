@@ -1,0 +1,35 @@
+{
+  "checks": {
+    "enough_space_for_benchmark": true,
+    "minimum_capacity_is_101_25_gb": true,
+    "mission_storage_is_81_gb": true,
+    "tested_volume_leaves_20_percent_free": false,
+    "tested_volume_meets_minimum_capacity": true
+  },
+  "planning": {
+    "average_image_record_bytes": 5000000,
+    "average_image_record_mb": 5.0,
+    "maximum_capture_rate_hz": 1.0,
+    "maximum_image_count": 16200,
+    "minimum_sustained_write_mbps": 10.0,
+    "minimum_total_capacity_bytes": 101250000000,
+    "minimum_total_capacity_gb": 101.25,
+    "mission_hours": 4.5,
+    "mission_seconds": 16200,
+    "mission_storage_bytes": 81000000000,
+    "mission_storage_gb": 81.0,
+    "peak_planning_data_rate_mbps": 5.0,
+    "required_free_percent": 20.0
+  },
+  "tested_volume": {
+    "free_bytes_before_test": 230642266112,
+    "free_gb_before_test": 230.642,
+    "projected_free_after_mission_bytes": 149642266112,
+    "projected_free_after_mission_gb": 149.642,
+    "required_reserve_bytes": 204364315853,
+    "required_reserve_gb": 204.364,
+    "total_bytes": 1021821579264,
+    "total_gb": 1021.822
+  },
+  "validation_id": "P2-08"
+}

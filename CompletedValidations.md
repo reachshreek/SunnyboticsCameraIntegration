@@ -1064,3 +1064,220 @@ Valid mock GNSS fixes produced the expected coordinates. Missing, malformed, sta
 Duplicate timestamps still produced unique image IDs, missing GNSS did not silently reuse previous coordinates, timezone and midnight handling were correct, and row and panel remained optional.
 
 P2-07 is complete.
+
+---
+
+# P2-08 - Local Storage Validation
+
+## Validation Criterion
+
+The local-storage system must:
+
+- Sustain a write speed of at least 10 MB/s
+- Successfully write and retain representative image-sized files
+- Preserve file integrity
+- Produce no missing or duplicate files
+- Support one 4.5-hour maximum-rate mission
+- Retain at least 20% free capacity after the planned mission
+- Produce a throughput log, file listing, checksums, and capacity calculation
+
+Because the selected 500 GB SSD was not physically available, the pre-purchase validation used:
+
+1. Actual host-storage measurements for write speed and file integrity
+2. A clearly identified 500 GB planned-capacity simulation for the selected SSD
+
+The physical performance of the final SSD must be confirmed after the hardware is available.
+
+## Test Configuration
+
+| Item | Test value |
+|---|---|
+| Validation runner | `MetadataLabeling/run_p2_08.py` |
+| Throughput test device | Windows host `C:` storage |
+| Planned storage device | 500 GB SSD |
+| Temporary benchmark size | 10 GB |
+| Representative file size | 5 MB |
+| Number of temporary files | 2,000 |
+| Minimum required write speed | 10 MB/s |
+| Mission duration | 4.5 hours |
+| Maximum capture rate | 1 image/second |
+| Planned average image-record size | 5 MB |
+| Maximum mission image count | 16,200 |
+| Planned mission storage | 81 GB |
+| Required remaining capacity | 20% |
+| Planned-capacity simulation | 500 GB |
+| Temporary payload retained | No |
+
+## Mission-Capacity Calculation
+
+The maximum mission duration is:
+
+```text
+4.5 hours × 60 minutes/hour × 60 seconds/minute
+= 16,200 seconds
+```
+
+At the maximum capture rate:
+
+```text
+16,200 seconds × 1 image/second
+= 16,200 image records
+```
+
+Using the provisional average record size:
+
+```text
+16,200 image records × 5 MB/record
+= 81,000 MB
+= 81 GB
+```
+
+The minimum completely available capacity required to store 81 GB while retaining 20% free is:
+
+```text
+81 GB ÷ 0.80
+= 101.25 GB
+```
+
+The selected 500 GB planned SSD exceeds the minimum capacity requirement.
+
+## Planned 500 GB Capacity Simulation
+
+For the planned 500 GB SSD:
+
+```text
+Planned capacity = 500 GB
+Mission storage  = 81 GB
+```
+
+Projected remaining capacity after one maximum-rate mission:
+
+```text
+500 GB - 81 GB
+= 419 GB remaining
+```
+
+Required 20% reserve:
+
+```text
+500 GB × 0.20
+= 100 GB required reserve
+```
+
+Capacity comparison:
+
+```text
+419 GB remaining ≥ 100 GB required
+```
+
+**Planned-capacity result: Pass**
+
+The planned drive would retain approximately:
+
+```text
+419 GB ÷ 500 GB × 100
+= 83.8% free
+```
+
+after one 81 GB mission when beginning empty.
+
+## Representative Throughput Test
+
+The benchmark created:
+
+```text
+10 GB ÷ 5 MB/file
+= 2,000 temporary files
+```
+
+For every file, the validation runner:
+
+- Generated a unique filename
+- Wrote the expected number of bytes
+- Flushed the file through the operating-system storage path
+- Recorded the write duration
+- Calculated the expected SHA-256 checksum
+- Reopened the completed file
+- Confirmed that the file was readable
+- Confirmed that its size was correct
+- Recalculated its SHA-256 checksum
+- Compared the expected and actual checksums
+
+The temporary 10 GB payload was deleted after verification.
+
+## Throughput Results
+
+| Result | Recorded value |
+|---|---:|
+| Benchmark data written | 10.000 GB |
+| Expected files | 2,000 |
+| Files written | 2,000 |
+| Files verified | 2,000 |
+| Sustained write speed | 280.818 MB/s |
+| Minimum required write speed | 10.000 MB/s |
+| Write-speed margin | 28.08 times the requirement |
+| Checksum matches | 2,000 of 2,000 |
+| File-size matches | 2,000 of 2,000 |
+| Missing files | 0 |
+| Unreadable files | 0 |
+| Duplicate filenames | 0 |
+| Temporary payload cleanup | Successful |
+
+## Validation Checks
+
+| Check | Result |
+|---|---|
+| Mission storage calculated as 81 GB | **Pass** |
+| Minimum total capacity calculated as 101.25 GB | **Pass** |
+| Planned 500 GB device exceeds minimum capacity | **Pass** |
+| Planned device retains at least 20% free capacity | **Pass** |
+| Enough host-storage space existed for the benchmark | **Pass** |
+| All 2,000 expected files were written | **Pass** |
+| Sustained write speed was at least 10 MB/s | **Pass** |
+| All files existed and were readable | **Pass** |
+| All file sizes matched | **Pass** |
+| All SHA-256 checksums matched | **Pass** |
+| No duplicate filenames were created | **Pass** |
+| Temporary 10 GB payload was deleted | **Pass** |
+
+## Interpretation of the Pre-Purchase Result
+
+The actual host-storage test demonstrated that the software and storage workflow can:
+
+- Write representative 5 MB records at substantially more than 10 MB/s
+- Create 2,000 separate files without a missing output
+- Read every written file successfully
+- Detect file corruption using SHA-256 checksums
+- Preserve correct file sizes
+- Avoid duplicate filenames
+- Remove the temporary benchmark payload after verification
+
+The capacity simulation demonstrated that the planned 500 GB SSD has sufficient nominal capacity for the 81 GB planning mission while leaving more than the required 20% free.
+
+The host `C:` drive was used only to measure throughput and integrity. Its actual current free-space condition was not represented as the capacity of the planned SSD.
+
+
+
+## Evidence
+
+- `MetadataLabeling/run_p2_08.py`
+- `ValidationEvidence/P2-08/P2-08-system-info.json`
+- `ValidationEvidence/P2-08/P2-08-capacity-calculation.json`
+- `ValidationEvidence/P2-08/P2-08-throughput-summary.json`
+- `ValidationEvidence/P2-08/P2-08-throughput-log.csv`
+- `ValidationEvidence/P2-08/P2-08-file-list.csv`
+- `ValidationEvidence/P2-08/P2-08-checksum-verification.json`
+- `ValidationEvidence/P2-08/P2-08-final-report.json`
+- `ValidationEvidence/P2-08/logs/p2-08.log`
+
+## P2-08 Finding
+
+**Pass**
+
+The representative host-storage benchmark wrote and verified all 2,000 temporary 5 MB files. The measured sustained write speed was 280.818 MB/s, exceeding the 10 MB/s requirement by approximately 28 times.
+
+All file sizes and SHA-256 checksums matched. No file was missing, unreadable, corrupted, or duplicated. The temporary 10 GB payload was successfully removed after verification.
+
+The planned 500 GB SSD capacity calculation also passed. One maximum-rate 4.5-hour mission requires 81 GB, and the planned drive would retain 419 GB, or approximately 83.8% of its nominal capacity, after storing that mission when beginning empty.
+
+P2-08 is complete as a before-purchase storage validation. Actual performance and formatted capacity of the selected SSD must be confirmed after hardware acquisition.

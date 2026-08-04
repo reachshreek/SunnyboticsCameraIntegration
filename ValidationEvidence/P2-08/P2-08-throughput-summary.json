@@ -1,0 +1,27 @@
+{
+  "disk_after_write": {
+    "captured_at_utc": "2026-08-04T20:34:38.801Z",
+    "free_bytes": 220403650560,
+    "free_gb": 220.404,
+    "path": "C:\\P2-08-storage-test",
+    "total_bytes": 1021821579264,
+    "total_gb": 1021.822,
+    "used_bytes": 801417928704,
+    "used_gb": 801.418,
+    "volume_root": "C:\\"
+  },
+  "expected_file_count": 2000,
+  "fsync_after_each_file": true,
+  "minimum_required_write_mbps": 10.0,
+  "overall_sustained_write_mbps": 280.818,
+  "requested_test_bytes": 10000000000,
+  "requested_test_gb": 10.0,
+  "throughput_pass": true,
+  "total_bytes_written": 10000000000,
+  "total_gb_written": 10.0,
+  "validation_id": "P2-08",
+  "write_completed_utc": "2026-08-04T20:34:38.819Z",
+  "write_elapsed_seconds": 35.610295,
+  "write_started_utc": "2026-08-04T20:34:03.191Z",
+  "written_file_count": 2000
+}

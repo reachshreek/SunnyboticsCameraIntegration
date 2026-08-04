@@ -1,0 +1,36 @@
+{
+  "benchmark_request": {
+    "expected_file_count": 2000,
+    "file_size_bytes": 5000000,
+    "file_size_mb": 5.0,
+    "fsync_after_each_file": true,
+    "safety_gb": 1.0,
+    "test_bytes": 10000000000,
+    "test_gb": 10.0
+  },
+  "device_label": "Windows host SSD representative storage",
+  "disk_before_test": {
+    "captured_at_utc": "2026-08-04T20:34:02.991Z",
+    "free_bytes": 230642266112,
+    "free_gb": 230.642,
+    "path": "C:\\P2-08-storage-test",
+    "total_bytes": 1021821579264,
+    "total_gb": 1021.822,
+    "used_bytes": 791179313152,
+    "used_gb": 791.179,
+    "volume_root": "C:\\"
+  },
+  "evidence_root": "C:\\Users\\reach\\Work\\SunnyboticsCameraIntegration\\ValidationEvidence\\P2-08",
+  "host": {
+    "hostname": "Shrekys_laptop",
+    "machine": "AMD64",
+    "operating_system": "Windows",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "python_version": "3.14.4",
+    "release": "11"
+  },
+  "payload_root": "C:\\P2-08-storage-test\\p2-08-payload",
+  "target": "C:\\P2-08-storage-test",
+  "validation_id": "P2-08"
+}

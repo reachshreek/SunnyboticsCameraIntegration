@@ -1,0 +1,108 @@
+{
+  "benchmark": {
+    "checksum_match_count": 2000,
+    "expected_file_count": 2000,
+    "file_size_mb": 5.0,
+    "minimum_required_write_mbps": 10.0,
+    "overall_sustained_write_mbps": 280.818,
+    "requested_test_gb": 10.0,
+    "size_match_count": 2000,
+    "verified_file_count": 2000,
+    "written_file_count": 2000
+  },
+  "capacity": {
+    "minimum_total_capacity_gb": 101.25,
+    "mission_storage_gb": 81.0,
+    "projected_free_after_mission_gb": 149.642,
+    "required_reserve_gb": 204.364,
+    "tested_volume_free_gb_before_test": 230.642,
+    "tested_volume_total_gb": 1021.822
+  },
+  "cleanup_error": null,
+  "device_label": "Windows host SSD representative storage",
+  "disk_snapshots": {
+    "after_cleanup": {
+      "captured_at_utc": "2026-08-04T20:35:47.469Z",
+      "free_bytes": 230445666304,
+      "free_gb": 230.446,
+      "path": "C:\\P2-08-storage-test",
+      "total_bytes": 1021821579264,
+      "total_gb": 1021.822,
+      "used_bytes": 791375912960,
+      "used_gb": 791.376,
+      "volume_root": "C:\\"
+    },
+    "after_write": {
+      "captured_at_utc": "2026-08-04T20:34:38.801Z",
+      "free_bytes": 220403650560,
+      "free_gb": 220.404,
+      "path": "C:\\P2-08-storage-test",
+      "total_bytes": 1021821579264,
+      "total_gb": 1021.822,
+      "used_bytes": 801417928704,
+      "used_gb": 801.418,
+      "volume_root": "C:\\"
+    },
+    "before_test": {
+      "captured_at_utc": "2026-08-04T20:34:02.991Z",
+      "free_bytes": 230642266112,
+      "free_gb": 230.642,
+      "path": "C:\\P2-08-storage-test",
+      "total_bytes": 1021821579264,
+      "total_gb": 1021.822,
+      "used_bytes": 791179313152,
+      "used_gb": 791.179,
+      "volume_root": "C:\\"
+    }
+  },
+  "evidence_files": [
+    "P2-08-system-info.json",
+    "P2-08-capacity-calculation.json",
+    "P2-08-throughput-summary.json",
+    "P2-08-throughput-log.csv",
+    "P2-08-file-list.csv",
+    "P2-08-checksum-verification.json",
+    "P2-08-final-report.json",
+    "logs/p2-08.log"
+  ],
+  "executed_at_utc": "2026-08-04T20:35:47.470Z",
+  "failed_checks": [
+    "tested_volume_leaves_20_percent_free"
+  ],
+  "global_checks": {
+    "all_checksums_match": true,
+    "all_expected_files_written": true,
+    "all_file_sizes_match": true,
+    "all_files_exist_and_are_readable": true,
+    "enough_space_for_benchmark": true,
+    "minimum_capacity_is_101_25_gb": true,
+    "mission_storage_is_81_gb": true,
+    "no_duplicate_filenames": true,
+    "sustained_write_speed_at_least_10_mbps": true,
+    "temporary_payload_cleanup_ok": true,
+    "tested_volume_leaves_20_percent_free": false,
+    "tested_volume_meets_minimum_capacity": true
+  },
+  "passed": false,
+  "payload_retained": false,
+  "planning": {
+    "average_image_record_bytes": 5000000,
+    "average_image_record_mb": 5.0,
+    "maximum_capture_rate_hz": 1.0,
+    "maximum_image_count": 16200,
+    "minimum_sustained_write_mbps": 10.0,
+    "minimum_total_capacity_bytes": 101250000000,
+    "minimum_total_capacity_gb": 101.25,
+    "mission_hours": 4.5,
+    "mission_seconds": 16200,
+    "mission_storage_bytes": 81000000000,
+    "mission_storage_gb": 81.0,
+    "peak_planning_data_rate_mbps": 5.0,
+    "required_free_percent": 20.0
+  },
+  "result": "FAIL",
+  "target": "C:\\P2-08-storage-test",
+  "test_type": "Representative local-storage benchmark",
+  "title": "Local Storage Validation",
+  "validation_id": "P2-08"
+}
