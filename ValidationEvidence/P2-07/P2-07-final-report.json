@@ -1,0 +1,35 @@
+{
+  "evidence_files": [
+    "P2-07-test-inputs.json",
+    "P2-07-comparison.json",
+    "P2-07-comparison.csv",
+    "P2-07-final-report.json",
+    "logs/p2-07.log",
+    "manifests/p2-07-metadata-geotagging.jsonl"
+  ],
+  "executed_at_utc": "2026-08-03T23:55:12.244Z",
+  "failed_case_ids": [],
+  "failed_scenarios": 0,
+  "global_checks": {
+    "all_cases_passed": true,
+    "all_image_ids_unique": true,
+    "all_images_retained": true,
+    "all_metadata_retained": true,
+    "duplicate_timestamp_ids_unique": true,
+    "manifest_count_correct": true,
+    "manifest_ids_correct": true,
+    "missing_fix_did_not_reuse_coordinates": true,
+    "row_and_panel_optional": true
+  },
+  "manifest_entries": 18,
+  "mission_id": "p2-07-metadata-geotagging",
+  "passed": true,
+  "passed_scenarios": 18,
+  "result": "PASS",
+  "robot_id": "sunnybot-01",
+  "scenario_count": 18,
+  "source_image": "C:\\Users\\reach\\Work\\SunnyboticsCameraIntegration\\MetadataLabeling\\sample_images\\Sample1.jpg",
+  "title": "Metadata and Geotagging Validation",
+  "unique_image_ids": 18,
+  "validation_id": "P2-07"
+}

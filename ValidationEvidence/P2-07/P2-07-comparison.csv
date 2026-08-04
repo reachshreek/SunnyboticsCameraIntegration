@@ -1,0 +1,19 @@
+case_id,mock_location,expected_status,actual_status,expected_valid,actual_valid,expected_latitude,actual_latitude,expected_longitude,actual_longitude,image_exists,metadata_exists,warnings,passed
+valid-location-01,"Hollywood, California",complete,complete,True,True,34.0982287,34.0982287,-118.3416747,-118.3416747,True,True,,True
+valid-location-02,"Keizer, Oregon",complete,complete,True,True,45.010641,45.010641,-122.99472,-122.99472,True,True,,True
+optional-row-panel,"Las Vegas, Nevada",complete,complete,True,True,36.1013316,36.1013316,-115.1822285,-115.1822285,True,True,,True
+missing-gnss,,quarantined,quarantined,False,False,,,,,True,True,"gnss_fix_missing_or_outside_capture_window | missing_required_fields:latitude,longitude",True
+malformed-nmea,,quarantined,quarantined,False,False,,,,,True,True,"gnss_fix_missing_or_outside_capture_window | missing_required_fields:latitude,longitude",True
+invalid-latitude,"Los Angeles, California",quarantined,quarantined,False,False,,,,,True,True,"gnss_coordinates_invalid | missing_required_fields:latitude,longitude",True
+invalid-longitude,"Colorado Springs, Colorado",quarantined,quarantined,False,False,,,,,True,True,"gnss_coordinates_invalid | missing_required_fields:latitude,longitude",True
+stale-fix,"Alhambra, California",quarantined,quarantined,False,False,34.1060014,34.1060014,-118.1343926,-118.1343926,True,True,"gnss_fix_outside_window:5.000s | missing_required_fields:latitude,longitude",True
+future-fix-outside-tolerance,"Goleta, California",quarantined,quarantined,False,False,34.4429037,34.4429037,-119.7907206,-119.7907206,True,True,"gnss_fix_outside_window:-1.000s | missing_required_fields:latitude,longitude",True
+low-satellite-count,"National City, California",quarantined,quarantined,False,False,32.6596772,32.6596772,-117.1066369,-117.1066369,True,True,"gnss_satellites_low:2 | missing_required_fields:latitude,longitude",True
+duplicate-timestamp-a,"Austin, Texas",complete,complete,True,True,30.3043639,30.3043639,-97.7154002,-97.7154002,True,True,,True
+duplicate-timestamp-b,"Baldwin Park, California",complete,complete,True,True,34.0676639,34.0676639,-117.9735105,-117.9735105,True,True,,True
+after-midnight-processed-first,"Hollywood, California",complete,complete,True,True,34.0982287,34.0982287,-118.3416747,-118.3416747,True,True,,True
+before-midnight-processed-second,"Keizer, Oregon",complete,complete,True,True,45.010641,45.010641,-122.99472,-122.99472,True,True,,True
+timezone-normalization,"Las Vegas, Nevada",complete,complete,True,True,36.1013316,36.1013316,-115.1822285,-115.1822285,True,True,,True
+recovery-valid-before-loss,"Los Angeles, California",complete,complete,True,True,33.9537066,33.9537066,-118.3967839,-118.3967839,True,True,,True
+recovery-missing,,quarantined,quarantined,False,False,,,,,True,True,"gnss_fix_missing_or_outside_capture_window | missing_required_fields:latitude,longitude",True
+recovery-valid-after-loss,"Colorado Springs, Colorado",complete,complete,True,True,38.990242,38.990242,-104.797053,-104.797053,True,True,,True

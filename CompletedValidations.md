@@ -913,3 +913,75 @@ The local image-processing pipeline successfully processed 1,000 representative 
 All 1,000 output images were readable and traceable to matching metadata records.
 
 All image IDs were unique, all recorded SHA-256 checksums matched the saved files, and no capture failures, tagging failures, missing records, duplicate IDs, or corrupted outputs were detected.
+
+---
+
+# P2-07 - Metadata and Geotagging Validation
+
+## Validation Criterion
+
+Every captured image must receive:
+
+- A unique image ID
+- The correct UTC capture timestamp
+- The correct robot ID
+- The correct mission ID
+- A valid GNSS result when acceptable GNSS data is available
+- An invalid GNSS result when GNSS data is missing, malformed, stale, outside the permitted timing window, or otherwise unacceptable
+
+Row and panel values are optional.
+
+Missing or invalid GNSS data must not cause the corresponding image or metadata record to be lost.
+
+## Test Configuration
+
+| Item | Test value |
+|---|---|
+| Robot ID | `sunnybot-01` |
+| Mission ID | `p2-07-metadata-geotagging` |
+| Test method | Controlled mock GNSS data and predetermined timestamps |
+| Representative image | `MetadataLabeling/sample_images/Sample1.jpg` |
+| Scenario count | 18 |
+| Maximum accepted GNSS age | 2.5 seconds |
+| Future-fix tolerance | 0.25 seconds |
+| Minimum accepted satellites | 4 |
+| Real GNSS receiver required | No |
+| Validation runner | `MetadataLabeling/run_p2_07.py` |
+
+## Mock GNSS Inputs
+
+Known coordinates associated with multiple In-N-Out location labels were used as recognizable mock GNSS inputs.
+
+The location order was randomized with the fixed seed `207`, making the test repeatable while still exercising multiple coordinate values.
+
+The location names were included only as test labels. The validation result was determined from the expected latitude, longitude, timestamp, freshness, and quality values.
+
+## Validation Scenarios
+
+| Scenario | Expected behavior |
+|---|---|
+| Two valid GNSS locations | Coordinates accepted and metadata marked complete |
+| Optional row and panel | Values accepted but not required |
+| Missing GNSS fix | Coordinates marked invalid and image retained |
+| Malformed NMEA checksum | Malformed input detected and image retained |
+| Invalid latitude | Coordinates rejected and image quarantined |
+| Invalid longitude | Coordinates rejected and image quarantined |
+| Stale GNSS fix | Fix rejected because it exceeded the 2.5-second maximum age |
+| Future-dated GNSS fix | Fix rejected because it exceeded the 0.25-second future tolerance |
+| Low satellite count | Fix rejected because only two satellites were reported |
+| Duplicate timestamps | Both images received unique image IDs |
+| Midnight rollover | Images stored under the correct UTC date folders |
+| Out-of-order timestamps | Records stored according to capture time rather than processing order |
+| Timezone normalization | Timezone-aware input converted correctly to UTC |
+| GNSS loss and recovery | Valid fix, missing fix, and valid recovered fix handled correctly |
+| Missing-fix coordinate reuse | Previous coordinates were not silently reused |
+
+## Supporting Unit Tests
+
+The following test files were run:
+
+```text
+tests/test_ids.py
+tests/test_gnss_history.py
+tests/test_nmea.py
+tests/test_service.py

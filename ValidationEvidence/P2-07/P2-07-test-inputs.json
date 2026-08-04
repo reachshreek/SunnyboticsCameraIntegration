@@ -1,0 +1,430 @@
+{
+  "cases": [
+    {
+      "case_id": "valid-location-01",
+      "expected": {
+        "fresh": true,
+        "latitude": 34.0982287,
+        "longitude": -118.3416747,
+        "quality_accepted": true,
+        "status": "complete",
+        "valid": true,
+        "warning_fragments": []
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T20:00:00.000Z",
+        "latitude": 34.0982287,
+        "longitude": -118.3416747,
+        "panel": null,
+        "received_at_utc": "2026-08-03T20:00:00.000Z",
+        "row": null,
+        "satellites": 10
+      },
+      "mock_location": "Hollywood, California"
+    },
+    {
+      "case_id": "valid-location-02",
+      "expected": {
+        "fresh": true,
+        "latitude": 45.010641,
+        "longitude": -122.99472,
+        "quality_accepted": true,
+        "status": "complete",
+        "valid": true,
+        "warning_fragments": []
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T20:00:01.000Z",
+        "latitude": 45.010641,
+        "longitude": -122.99472,
+        "panel": null,
+        "received_at_utc": "2026-08-03T20:00:01.000Z",
+        "row": null,
+        "satellites": 10
+      },
+      "mock_location": "Keizer, Oregon"
+    },
+    {
+      "case_id": "optional-row-panel",
+      "expected": {
+        "fresh": true,
+        "latitude": 36.1013316,
+        "longitude": -115.1822285,
+        "quality_accepted": true,
+        "status": "complete",
+        "valid": true,
+        "warning_fragments": []
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T20:00:02.000Z",
+        "latitude": 36.1013316,
+        "longitude": -115.1822285,
+        "panel": "TEST-PANEL",
+        "received_at_utc": "2026-08-03T20:00:02.000Z",
+        "row": "TEST-ROW",
+        "satellites": 10
+      },
+      "mock_location": "Las Vegas, Nevada"
+    },
+    {
+      "case_id": "missing-gnss",
+      "expected": {
+        "fresh": false,
+        "latitude": null,
+        "longitude": null,
+        "quality_accepted": false,
+        "status": "quarantined",
+        "valid": false,
+        "warning_fragments": [
+          "gnss_fix_missing_or_outside_capture_window",
+          "missing_required_fields:"
+        ]
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T20:00:03.000Z",
+        "latitude": null,
+        "longitude": null,
+        "panel": null,
+        "received_at_utc": null,
+        "row": null,
+        "satellites": null
+      },
+      "mock_location": null
+    },
+    {
+      "case_id": "malformed-nmea",
+      "expected": {
+        "fresh": false,
+        "latitude": null,
+        "longitude": null,
+        "quality_accepted": false,
+        "status": "quarantined",
+        "valid": false,
+        "warning_fragments": [
+          "gnss_fix_missing_or_outside_capture_window",
+          "missing_required_fields:"
+        ]
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T20:00:04.000Z",
+        "latitude": null,
+        "longitude": null,
+        "panel": null,
+        "received_at_utc": null,
+        "row": null,
+        "satellites": null
+      },
+      "mock_location": null
+    },
+    {
+      "case_id": "invalid-latitude",
+      "expected": {
+        "fresh": true,
+        "latitude": null,
+        "longitude": null,
+        "quality_accepted": true,
+        "status": "quarantined",
+        "valid": false,
+        "warning_fragments": [
+          "gnss_coordinates_invalid",
+          "missing_required_fields:"
+        ]
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T20:00:05.000Z",
+        "latitude": 95.0,
+        "longitude": -118.3967839,
+        "panel": null,
+        "received_at_utc": "2026-08-03T20:00:05.000Z",
+        "row": null,
+        "satellites": 10
+      },
+      "mock_location": "Los Angeles, California"
+    },
+    {
+      "case_id": "invalid-longitude",
+      "expected": {
+        "fresh": true,
+        "latitude": null,
+        "longitude": null,
+        "quality_accepted": true,
+        "status": "quarantined",
+        "valid": false,
+        "warning_fragments": [
+          "gnss_coordinates_invalid",
+          "missing_required_fields:"
+        ]
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T20:00:06.000Z",
+        "latitude": 38.990242,
+        "longitude": -181.0,
+        "panel": null,
+        "received_at_utc": "2026-08-03T20:00:06.000Z",
+        "row": null,
+        "satellites": 10
+      },
+      "mock_location": "Colorado Springs, Colorado"
+    },
+    {
+      "case_id": "stale-fix",
+      "expected": {
+        "fresh": false,
+        "latitude": 34.1060014,
+        "longitude": -118.1343926,
+        "quality_accepted": true,
+        "status": "quarantined",
+        "valid": false,
+        "warning_fragments": [
+          "gnss_fix_outside_window:",
+          "missing_required_fields:"
+        ]
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T20:00:07.000Z",
+        "latitude": 34.1060014,
+        "longitude": -118.1343926,
+        "panel": null,
+        "received_at_utc": "2026-08-03T20:00:02.000Z",
+        "row": null,
+        "satellites": 10
+      },
+      "mock_location": "Alhambra, California"
+    },
+    {
+      "case_id": "future-fix-outside-tolerance",
+      "expected": {
+        "fresh": false,
+        "latitude": 34.4429037,
+        "longitude": -119.7907206,
+        "quality_accepted": true,
+        "status": "quarantined",
+        "valid": false,
+        "warning_fragments": [
+          "gnss_fix_outside_window:",
+          "missing_required_fields:"
+        ]
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T20:00:08.000Z",
+        "latitude": 34.4429037,
+        "longitude": -119.7907206,
+        "panel": null,
+        "received_at_utc": "2026-08-03T20:00:09.000Z",
+        "row": null,
+        "satellites": 10
+      },
+      "mock_location": "Goleta, California"
+    },
+    {
+      "case_id": "low-satellite-count",
+      "expected": {
+        "fresh": true,
+        "latitude": 32.6596772,
+        "longitude": -117.1066369,
+        "quality_accepted": false,
+        "status": "quarantined",
+        "valid": false,
+        "warning_fragments": [
+          "gnss_satellites_low:2",
+          "missing_required_fields:"
+        ]
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T20:00:09.000Z",
+        "latitude": 32.6596772,
+        "longitude": -117.1066369,
+        "panel": null,
+        "received_at_utc": "2026-08-03T20:00:09.000Z",
+        "row": null,
+        "satellites": 2
+      },
+      "mock_location": "National City, California"
+    },
+    {
+      "case_id": "duplicate-timestamp-a",
+      "expected": {
+        "fresh": true,
+        "latitude": 30.3043639,
+        "longitude": -97.7154002,
+        "quality_accepted": true,
+        "status": "complete",
+        "valid": true,
+        "warning_fragments": []
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T20:00:15.000Z",
+        "latitude": 30.3043639,
+        "longitude": -97.7154002,
+        "panel": null,
+        "received_at_utc": "2026-08-03T20:00:15.000Z",
+        "row": null,
+        "satellites": 10
+      },
+      "mock_location": "Austin, Texas"
+    },
+    {
+      "case_id": "duplicate-timestamp-b",
+      "expected": {
+        "fresh": true,
+        "latitude": 34.0676639,
+        "longitude": -117.9735105,
+        "quality_accepted": true,
+        "status": "complete",
+        "valid": true,
+        "warning_fragments": []
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T20:00:15.000Z",
+        "latitude": 34.0676639,
+        "longitude": -117.9735105,
+        "panel": null,
+        "received_at_utc": "2026-08-03T20:00:15.000Z",
+        "row": null,
+        "satellites": 10
+      },
+      "mock_location": "Baldwin Park, California"
+    },
+    {
+      "case_id": "after-midnight-processed-first",
+      "expected": {
+        "fresh": true,
+        "latitude": 34.0982287,
+        "longitude": -118.3416747,
+        "quality_accepted": true,
+        "status": "complete",
+        "valid": true,
+        "warning_fragments": []
+      },
+      "input": {
+        "captured_at_utc": "2026-08-04T00:00:00.100Z",
+        "latitude": 34.0982287,
+        "longitude": -118.3416747,
+        "panel": null,
+        "received_at_utc": "2026-08-04T00:00:00.100Z",
+        "row": null,
+        "satellites": 10
+      },
+      "mock_location": "Hollywood, California"
+    },
+    {
+      "case_id": "before-midnight-processed-second",
+      "expected": {
+        "fresh": true,
+        "latitude": 45.010641,
+        "longitude": -122.99472,
+        "quality_accepted": true,
+        "status": "complete",
+        "valid": true,
+        "warning_fragments": []
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T23:59:59.900Z",
+        "latitude": 45.010641,
+        "longitude": -122.99472,
+        "panel": null,
+        "received_at_utc": "2026-08-03T23:59:59.900Z",
+        "row": null,
+        "satellites": 10
+      },
+      "mock_location": "Keizer, Oregon"
+    },
+    {
+      "case_id": "timezone-normalization",
+      "expected": {
+        "fresh": true,
+        "latitude": 36.1013316,
+        "longitude": -115.1822285,
+        "quality_accepted": true,
+        "status": "complete",
+        "valid": true,
+        "warning_fragments": []
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T22:30:00.000Z",
+        "latitude": 36.1013316,
+        "longitude": -115.1822285,
+        "panel": null,
+        "received_at_utc": "2026-08-03T22:30:00.000Z",
+        "row": null,
+        "satellites": 10
+      },
+      "mock_location": "Las Vegas, Nevada"
+    },
+    {
+      "case_id": "recovery-valid-before-loss",
+      "expected": {
+        "fresh": true,
+        "latitude": 33.9537066,
+        "longitude": -118.3967839,
+        "quality_accepted": true,
+        "status": "complete",
+        "valid": true,
+        "warning_fragments": []
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T20:00:30.000Z",
+        "latitude": 33.9537066,
+        "longitude": -118.3967839,
+        "panel": null,
+        "received_at_utc": "2026-08-03T20:00:30.000Z",
+        "row": null,
+        "satellites": 10
+      },
+      "mock_location": "Los Angeles, California"
+    },
+    {
+      "case_id": "recovery-missing",
+      "expected": {
+        "fresh": false,
+        "latitude": null,
+        "longitude": null,
+        "quality_accepted": false,
+        "status": "quarantined",
+        "valid": false,
+        "warning_fragments": [
+          "gnss_fix_missing_or_outside_capture_window",
+          "missing_required_fields:"
+        ]
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T20:00:31.000Z",
+        "latitude": null,
+        "longitude": null,
+        "panel": null,
+        "received_at_utc": null,
+        "row": null,
+        "satellites": null
+      },
+      "mock_location": null
+    },
+    {
+      "case_id": "recovery-valid-after-loss",
+      "expected": {
+        "fresh": true,
+        "latitude": 38.990242,
+        "longitude": -104.797053,
+        "quality_accepted": true,
+        "status": "complete",
+        "valid": true,
+        "warning_fragments": []
+      },
+      "input": {
+        "captured_at_utc": "2026-08-03T20:00:32.000Z",
+        "latitude": 38.990242,
+        "longitude": -104.797053,
+        "panel": null,
+        "received_at_utc": "2026-08-03T20:00:32.000Z",
+        "row": null,
+        "satellites": 10
+      },
+      "mock_location": "Colorado Springs, Colorado"
+    }
+  ],
+  "mission_id": "p2-07-metadata-geotagging",
+  "random_seed": 207,
+  "robot_id": "sunnybot-01",
+  "scenario_count": 18,
+  "source_image": "C:\\Users\\reach\\Work\\SunnyboticsCameraIntegration\\MetadataLabeling\\sample_images\\Sample1.jpg",
+  "validation_id": "P2-07"
+}

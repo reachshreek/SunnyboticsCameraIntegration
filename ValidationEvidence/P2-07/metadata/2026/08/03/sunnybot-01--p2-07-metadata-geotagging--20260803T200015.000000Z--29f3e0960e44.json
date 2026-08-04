@@ -1,0 +1,102 @@
+{
+  "camera": {
+    "model": "P2-07 representative image",
+    "sequence_index": 10,
+    "source": "p2-07-representative-image"
+  },
+  "captured_at_utc": "2026-08-03T20:00:15.000Z",
+  "coordinates": {
+    "altitude_m": 10.0,
+    "course_deg": 90.0,
+    "fix_after_capture_ms": 0,
+    "fix_age_ms": 0,
+    "fix_quality": 1,
+    "fix_time_utc": "2026-08-03T20:00:15.000Z",
+    "fresh": true,
+    "hdop": 0.8,
+    "latitude": 30.3043639,
+    "longitude": -97.7154002,
+    "quality_accepted": true,
+    "received_at_utc": "2026-08-03T20:00:15.000Z",
+    "satellites": 10,
+    "speed_mps": 0.25,
+    "valid": true
+  },
+  "hardware": {
+    "branch_power_wire": "20-22 AWG Stranded Red/Black Wire",
+    "camera_cable": "LUCID CAB-MR-2M M12 X-coded to RJ45 Cat6a",
+    "camera_enclosure": "LUCID IPTC-D355L399 IP67 C-Mount Lens Tube",
+    "edge_computer": "RUBIK Pi 3",
+    "fused_distribution_block": "Blue Sea Systems 5025 ST Blade Fuse Block (optional)",
+    "fuses": "Littelfuse ATO / ATOF Blade Fuses",
+    "gnss_receiver": "NaviSys GR-U01U USB GNSS Receiver",
+    "lens": "LUCID / Universe UC080-5M / BL080C 8mm C-Mount 5MP 2/3-inch Lens",
+    "main_power_wire": "18 AWG Stranded Red/Black Wire",
+    "optical_filter": "Edmund Optics M22.5 x 0.50 Linear Glass Polarizing Filter",
+    "poe_injector": "Tycon Power TP-DCDC-1248GD-M",
+    "power_converter": "Coolgear ChargeIT Mini 82W CG-PD82HVV",
+    "robot_power_connector": "TE Connectivity / DEUTSCH DT 2-Pin Connector Set",
+    "rubik_pi_ethernet_cable": "Short Shielded Cat6a RJ45 Patch Cable",
+    "storage_device": "WD Blue SN5000 500GB NVMe M.2 2280 SSD",
+    "wiring_hardware": "Ferrules, Crimp Terminals, Heat Shrink, Labels, Strain Relief, and Wire Loom"
+  },
+  "image": {
+    "byte_size": 7366471,
+    "filename": "sunnybot-01--p2-07-metadata-geotagging--20260803T200015.000000Z--29f3e0960e44.jpg",
+    "format": "JPEG",
+    "height_px": 3072,
+    "media_type": "image/jpeg",
+    "mode": "RGB",
+    "quality_diagnostics": {
+      "advisory_only": true,
+      "bright_pixel_percent": 0.004,
+      "dark_pixel_percent": 1.851,
+      "edge_mean": 15.225,
+      "luma_stddev": 47.431,
+      "mean_luma_0_255": 98.371
+    },
+    "relative_path": "images\\2026\\08\\03\\sunnybot-01--p2-07-metadata-geotagging--20260803T200015.000000Z--29f3e0960e44.jpg",
+    "sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "validation_error": null,
+    "width_px": 4096
+  },
+  "image_id": "sunnybot-01--p2-07-metadata-geotagging--20260803T200015.000000Z--29f3e0960e44",
+  "mission_id": "p2-07-metadata-geotagging",
+  "robot_id": "sunnybot-01",
+  "schema_version": "2.0.0",
+  "site": {
+    "assignment_distance_m": null,
+    "assignment_method": "not-required",
+    "layout_feature_id": null,
+    "panel": null,
+    "required": false,
+    "row": null
+  },
+  "software": {
+    "hostname": "Shrekys_laptop",
+    "machine": "AMD64",
+    "name": "solar-metadata-tagger",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.4",
+    "version": "0.3.0"
+  },
+  "status": "complete",
+  "storage": {
+    "device_label": "WD Blue SN5000 500GB NVMe M.2 2280 SSD",
+    "free_bytes_after_copy": 232638021632,
+    "free_bytes_before": 232645390336,
+    "root": "C:\\Users\\reach\\Work\\SunnyboticsCameraIntegration\\ValidationEvidence\\P2-07"
+  },
+  "timing": {
+    "captured_at_utc": "2026-08-03T20:00:15.000Z",
+    "captured_monotonic_ns": 1000000010,
+    "metadata_completed_at_utc": "2026-08-03T23:55:11.332Z",
+    "tagging_duration_ms": 114.647
+  },
+  "trigger": {
+    "case_id": "duplicate-timestamp-a",
+    "mock_location": "Austin, Texas",
+    "source": "p2-07-mock-gnss"
+  },
+  "warnings": []
+}
