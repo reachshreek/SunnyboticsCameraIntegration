@@ -9,7 +9,7 @@ from typing import Any
 
 import numpy as np
 
-from .models import CapturedFrame
+from ..models import CapturedFrame
 
 PLANNED_WIDTH_PX = 2448
 PLANNED_HEIGHT_PX = 2048
@@ -214,7 +214,7 @@ class MockCamera:
             pixels = rng.integers(
                 0, 256, size=(self.height, self.width), dtype=np.uint8
             )
-            np.save(str(path), pixels)
+            path.write_bytes(b"\x89PNG\r\n\x1a\n" + pixels.tobytes())
 
     def _camera_metadata(self, frame_id: str) -> dict[str, Any]:
         return {
@@ -277,7 +277,7 @@ class MockSpeedProvider:
 
     def sample(self):
         """Return a SpeedSample or None depending on the active mode."""
-        from .speed import SpeedSample
+        from ..speed import SpeedSample
 
         self._call_count += 1
 

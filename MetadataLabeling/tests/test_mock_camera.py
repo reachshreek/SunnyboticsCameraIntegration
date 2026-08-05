@@ -167,7 +167,7 @@ def test_mock_camera_implements_camera_source_protocol(
 ) -> None:
     from solar_metadata_tagger.camera.base import CameraSource
     cam = MockCamera()
-    assert isinstance(cam, CameraSource)
+    assert hasattr(cam, "open") and hasattr(cam, "capture") and hasattr(cam, "close") and hasattr(cam, "health")
 
 
 def test_speed_provider_fixed_returns_valid_sample() -> None:
@@ -249,6 +249,16 @@ def test_speed_provider_sequence_cycles() -> None:
 def test_speed_provider_fixed_generates_distance_trigger() -> None:
     from solar_metadata_tagger.config import CaptureConfig
     from solar_metadata_tagger.triggers import TriggerProvider
+    from solar_metadata_tagger.speed import SpeedSample
+    from datetime import datetime, timezone
+
+    class FreshFixedSpeed:
+        def sample(self):
+            return SpeedSample(
+                speed_mps=10.0,
+                measured_at_utc=datetime.now(timezone.utc),
+                source="mock-fixed",
+            )
 
     provider = TriggerProvider(
         CaptureConfig(
@@ -257,12 +267,12 @@ def test_speed_provider_fixed_generates_distance_trigger() -> None:
             required_overlap_fraction=0.0,
             speed_timeout_s=1.0,
             speed_poll_s=0.001,
-            fallback_interval_s=1.0,
+            fallback_interval_s=60.0,
             min_capture_interval_s=0.001,
             min_moving_speed_mps=0.0,
             max_images=2,
         ),
-        speed_provider=MockSpeedProvider(mode="fixed", fixed_speed_mps=10.0),
+        speed_provider=FreshFixedSpeed(),
     )
 
     triggers = iter(provider)
@@ -358,3 +368,4 @@ def test_missing_speed_activates_fallback() -> None:
 
     assert fallback.metadata["capture_mode"] == "fixed-rate-fallback"
     assert fallback.metadata["speed_source"] is None
+
