@@ -1,0 +1,86 @@
+{
+  "checks": {
+    "all_expected_bundles_generated": true,
+    "all_items_marked_uploaded": true,
+    "all_local_checksums_match": true,
+    "all_local_files_still_exist": true,
+    "all_offline_bundles_entered_queue": true,
+    "all_server_checksums_match": true,
+    "all_server_receipts_exist": true,
+    "capture_continued_during_outage": true,
+    "local_files_survived_outage": true,
+    "lost_commit_response_recovered_idempotently": true,
+    "mid_upload_disconnect_recovered": true,
+    "no_duplicate_final_receipts": true,
+    "no_in_progress_items_remain": true,
+    "offline_failures_were_logged": true,
+    "queue_drained_after_recovery": true,
+    "queue_survived_restart": true,
+    "server_has_one_receipt_per_bundle": true,
+    "transient_500_retry_recovered": true
+  },
+  "completed_at_utc": "2026-08-04T23:55:36.163Z",
+  "configuration": {
+    "endpoint": "http://127.0.0.1:59507",
+    "endpoint_after_restart": "http://127.0.0.1:59507",
+    "expected_total": 100,
+    "keep_runtime": false,
+    "normal_count": 20,
+    "offline_count": 40,
+    "recovered_count": 40,
+    "sample_bytes": 7366471,
+    "sample_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "sample_source": "C:\\Users\\reach\\Work\\SunnyboticsCameraIntegration\\MetadataLabeling\\sample_images\\Sample1.jpg",
+    "sample_type": "representative_image"
+  },
+  "counts": {
+    "captured_during_outage": 40,
+    "duplicate_final_receipts": 0,
+    "failed_upload_attempts": 9,
+    "generated_bundles": 100,
+    "local_checksum_mismatches": 0,
+    "pending_after_restart": 40,
+    "pending_before_offline_attempts": 40,
+    "pending_queue_items": 0,
+    "server_checksum_mismatches": 0,
+    "server_files_checked": 200,
+    "server_receipts": 100,
+    "upload_attempts": 109,
+    "uploaded_queue_items": 100
+  },
+  "evidence": [
+    "P2-09-upload-queue.sqlite3",
+    "P2-09-queue-before-outage.json",
+    "P2-09-queue-during-outage.json",
+    "P2-09-queue-after-recovery.json",
+    "P2-09-capture-log.csv",
+    "P2-09-upload-attempts.csv",
+    "P2-09-local-files-during-outage.csv",
+    "P2-09-local-file-inventory.csv",
+    "P2-09-checksum-comparison.csv",
+    "P2-09-server-request-log.csv",
+    "P2-09-server-receipts.json",
+    "logs/p2-09.log"
+  ],
+  "failures": {
+    "bad_local_checksums": [],
+    "bad_server_checksums": [],
+    "duplicate_receipt_ids": [],
+    "missing_local_files": [],
+    "missing_receipts": []
+  },
+  "host": {
+    "hostname": "Shrekys_laptop",
+    "machine": "AMD64",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.4"
+  },
+  "result": "PASS",
+  "special_scenarios": {
+    "lost_commit_response_image_id": "sunnybot-01_p2-09_000023",
+    "mid_upload_disconnect_image_id": "sunnybot-01_p2-09_000022",
+    "transient_500_image_id": "sunnybot-01_p2-09_000021"
+  },
+  "title": "Upload Interruption and Retry Validation",
+  "validation_id": "P2-09"
+}

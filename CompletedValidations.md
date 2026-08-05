@@ -1281,3 +1281,330 @@ All file sizes and SHA-256 checksums matched. No file was missing, unreadable, c
 The planned 500 GB SSD capacity calculation also passed. One maximum-rate 4.5-hour mission requires 81 GB, and the planned drive would retain 419 GB, or approximately 83.8% of its nominal capacity, after storing that mission when beginning empty.
 
 P2-08 is complete as a before-purchase storage validation. Actual performance and formatted capacity of the selected SSD must be confirmed after hardware acquisition.
+
+# P2-09 - Upload Interruption and Retry Validation
+
+## Validation Criterion
+
+The upload system must continue operating when internet connectivity is unavailable.
+
+The system must:
+
+* Continue capturing and storing images while the upload server is unavailable
+* Preserve each image and matching metadata file locally
+* Add each unuploaded bundle to a persistent upload queue
+* Record unsuccessful upload attempts
+* Preserve the queue across an application restart
+* Resume uploading automatically after connectivity is restored
+* Recover from temporary server errors
+* Recover from an interrupted file transfer
+* Prevent duplicate final server records when a successful response is lost
+* Verify that uploaded files match the original local files
+* Finish with no missing, corrupted, duplicated, or pending bundles
+
+## Test Configuration
+
+| Item                             | Test value                                                         |
+| -------------------------------- | ------------------------------------------------------------------ |
+| Validation runner                | `MetadataLabeling/run_p2_09.py`                                    |
+| Robot ID                         | `sunnybot-01`                                                      |
+| Mission ID                       | `p2-09-upload-retry`                                               |
+| Representative image             | `MetadataLabeling/sample_images/Sample1.jpg`                       |
+| Representative image size        | 7,366,471 bytes                                                    |
+| Representative image SHA-256     | `af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c` |
+| Initial online captures          | 20                                                                 |
+| Captures during outage           | 40                                                                 |
+| Captures after recovery          | 40                                                                 |
+| Total image and metadata bundles | 100                                                                |
+| Persistent queue                 | SQLite                                                             |
+| Mock server type                 | Local HTTP server                                                  |
+| Runtime cleanup                  | Enabled                                                            |
+| Host operating system            | Windows 11                                                         |
+| Python version                   | 3.14.4                                                             |
+| Final hardware required          | No                                                                 |
+
+## Test Architecture
+
+The validation used the following workflow:
+
+```text
+Representative image capture
+        ↓
+Local image and metadata storage
+        ↓
+Persistent SQLite upload queue
+        ↓
+Local mock HTTP upload server
+        ↓
+Simulated connection failures
+        ↓
+Automatic retry and recovery
+        ↓
+Checksum and receipt verification
+```
+
+Each captured bundle contained:
+
+* One representative image
+* One matching metadata JSON file
+* A unique image ID
+* An image SHA-256 checksum
+* A metadata SHA-256 checksum
+* A persistent upload-queue record
+
+## Validation Procedure
+
+### Phase 1 - Normal Online Operation
+
+The mock upload server was started.
+
+The validation runner created 20 image and metadata bundles.
+
+For each bundle, the software:
+
+1. Copied the representative image into local storage
+2. Created a matching metadata record
+3. Calculated image and metadata SHA-256 checksums
+4. Added the bundle to the persistent upload queue
+5. Uploaded the image and metadata to the mock server
+6. Received a server receipt
+7. Marked the queue item as uploaded
+
+All 20 initial bundles uploaded successfully.
+
+### Phase 2 - Simulated Internet Outage
+
+The mock server was stopped to simulate unavailable internet connectivity.
+
+The validation runner continued operating and created 40 additional image and metadata bundles.
+
+During the outage:
+
+* All 40 images were saved locally
+* All 40 metadata files were saved locally
+* All 40 bundles were added to the persistent queue
+* Upload attempts failed as expected
+* Failed attempts were logged
+* No local image or metadata file was deleted
+* Capture continued without depending on the upload connection
+
+The queue contained all 40 offline bundles.
+
+### Phase 3 - Application Restart Simulation
+
+One pending queue item was deliberately placed into the `in_progress` state.
+
+The SQLite database was then closed and reopened to simulate an application restart.
+
+After the restart:
+
+* The persistent queue remained available
+* All 40 offline bundles remained pending
+* The interrupted `in_progress` item was returned safely to the `pending` state
+* No bundle was lost
+
+### Phase 4 - Connectivity Recovery
+
+The mock server was restarted using the same local endpoint.
+
+The upload worker resumed processing the persistent queue.
+
+All pending bundles were eventually uploaded successfully.
+
+### Phase 5 - Controlled Failure Scenarios
+
+Three controlled failure conditions were included.
+
+#### Temporary HTTP 500 Errors
+
+Bundle:
+
+```text
+sunnybot-01_p2-09_000021
+```
+
+received temporary HTTP 500 server errors.
+
+The queue retained the bundle and retried it until the upload succeeded.
+
+#### Interrupted Mid-Upload Transfer
+
+Bundle:
+
+```text
+sunnybot-01_p2-09_000022
+```
+
+experienced a simulated connection interruption during the image upload.
+
+The incomplete transfer was not accepted as a complete server file.
+
+The bundle remained queued and was successfully retransmitted.
+
+#### Lost Successful Server Response
+
+Bundle:
+
+```text
+sunnybot-01_p2-09_000023
+```
+
+was stored successfully by the server, but the successful response was deliberately lost.
+
+The uploader retried the same image ID.
+
+The server recognized that the bundle had already been committed and returned an idempotent success instead of creating a duplicate final record.
+
+### Phase 6 - Post-Recovery Capture
+
+After all offline bundles had been recovered, the system created and uploaded another 40 image and metadata bundles.
+
+This confirmed that normal capture and upload operation continued after recovery.
+
+## Results
+
+| Result                                  | Recorded value |
+| --------------------------------------- | -------------: |
+| Total bundles generated                 |            100 |
+| Bundles captured during outage          |             40 |
+| Bundles pending before offline attempts |             40 |
+| Bundles pending after restart           |             40 |
+| Total upload attempts                   |            109 |
+| Failed upload attempts recovered        |              9 |
+| Queue items uploaded successfully       |            100 |
+| Queue items pending at completion       |              0 |
+| Server receipts                         |            100 |
+| Server files checked                    |            200 |
+| Missing local files                     |              0 |
+| Local checksum mismatches               |              0 |
+| Server checksum mismatches              |              0 |
+| Duplicate final receipts                |              0 |
+
+## Validation Checks
+
+| Check                                                   | Result   |
+| ------------------------------------------------------- | -------- |
+| All 100 expected bundles were generated                 | **Pass** |
+| Capture continued while the server was unavailable      | **Pass** |
+| All 40 offline bundles entered the persistent queue     | **Pass** |
+| Failed upload attempts were recorded                    | **Pass** |
+| Local files survived the outage                         | **Pass** |
+| The queue survived the simulated restart                | **Pass** |
+| The interrupted queue item recovered after restart      | **Pass** |
+| The queue drained after connectivity returned           | **Pass** |
+| No item remained in the `in_progress` state             | **Pass** |
+| All 100 queue items were marked uploaded                | **Pass** |
+| All local files still existed after recovery            | **Pass** |
+| All local checksums matched                             | **Pass** |
+| The server produced one receipt per bundle              | **Pass** |
+| All server receipts existed                             | **Pass** |
+| All server checksums matched                            | **Pass** |
+| Temporary HTTP 500 errors were recovered                | **Pass** |
+| The interrupted mid-upload transfer was recovered       | **Pass** |
+| The lost successful response was recovered idempotently | **Pass** |
+| No duplicate final receipt was created                  | **Pass** |
+
+## File-Integrity Verification
+
+A SHA-256 checksum was calculated for every local image and metadata file before upload.
+
+The mock server independently calculated the checksum of each received file.
+
+The final comparison verified:
+
+```text
+Local image checksum      = Uploaded image checksum
+Local metadata checksum   = Uploaded metadata checksum
+```
+
+A total of 200 uploaded files were checked:
+
+```text
+100 image files
+100 metadata files
+```
+
+All 200 server-side files matched their expected checksums.
+
+## Persistent Queue Verification
+
+The SQLite upload queue stored:
+
+* Image ID
+* Local image path
+* Local metadata path
+* Image checksum
+* Metadata checksum
+* Upload status
+* Attempt count
+* Last attempt time
+* Next retry time
+* Last error
+* Upload receipt
+
+The queue used the following states:
+
+```text
+pending
+in_progress
+uploaded
+```
+
+At the end of the validation:
+
+```text
+Uploaded:    100
+Pending:       0
+In progress:   0
+```
+
+## Runtime Cleanup
+
+The validation was run with:
+
+```text
+keep_runtime = false
+```
+
+After the test completed successfully, the temporary runtime directory was removed automatically.
+
+The deleted runtime data included:
+
+* Temporary local image copies
+* Temporary mock-server image copies
+* Temporary metadata copies
+* Temporary server receipts
+* Partial transfer files
+
+The smaller permanent validation evidence was retained.
+
+## Evidence
+
+* `MetadataLabeling/run_p2_09.py`
+* `ValidationEvidence/P2-09/P2-09-upload-queue.sqlite3`
+* `ValidationEvidence/P2-09/P2-09-queue-before-outage.json`
+* `ValidationEvidence/P2-09/P2-09-queue-during-outage.json`
+* `ValidationEvidence/P2-09/P2-09-queue-after-recovery.json`
+* `ValidationEvidence/P2-09/P2-09-capture-log.csv`
+* `ValidationEvidence/P2-09/P2-09-upload-attempts.csv`
+* `ValidationEvidence/P2-09/P2-09-local-files-during-outage.csv`
+* `ValidationEvidence/P2-09/P2-09-local-file-inventory.csv`
+* `ValidationEvidence/P2-09/P2-09-checksum-comparison.csv`
+* `ValidationEvidence/P2-09/P2-09-server-request-log.csv`
+* `ValidationEvidence/P2-09/P2-09-server-receipts.json`
+* `ValidationEvidence/P2-09/P2-09-final-report.json`
+* `ValidationEvidence/P2-09/logs/p2-09.log`
+
+## P2-09 Finding
+
+**Pass**
+
+The system continued capturing and storing image and metadata bundles while the mock upload server was unavailable.
+
+All 40 bundles captured during the outage were preserved locally and retained in the persistent SQLite upload queue. The queue remained intact across a simulated application restart, including recovery of an interrupted `in_progress` item.
+
+After connectivity was restored, all pending bundles uploaded successfully. The uploader also recovered from temporary HTTP 500 errors, an interrupted mid-upload transfer, and a lost successful server response.
+
+All 100 image and metadata bundles produced server receipts. All 200 uploaded files matched their expected SHA-256 checksums. No local file was missing or corrupted, no duplicate final server record was created, and no queue item remained pending at completion.
+
+P2-09 is complete as a pre-hardware upload interruption and retry validation. The final production upload endpoint, authentication method, real network hardware, and real cloud-server compatibility must be confirmed after those interfaces are available.

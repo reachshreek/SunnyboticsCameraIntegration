@@ -1,0 +1,902 @@
+[
+  {
+    "committed_at_utc": "2026-08-04T23:55:12.482Z",
+    "image_filename": "sunnybot-01_p2-09_000001.jpg",
+    "image_id": "sunnybot-01_p2-09_000001",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000001.json",
+    "metadata_sha256": "45f68dd42fe60d8d4705a34553ee39892f44e172782727037a02296c49308b27",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:12.578Z",
+    "image_filename": "sunnybot-01_p2-09_000002.jpg",
+    "image_id": "sunnybot-01_p2-09_000002",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000002.json",
+    "metadata_sha256": "93e0039a2465f7226da864fe0d7cab9ac16490f758aaf3cd449bf94b48575ba1",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:12.631Z",
+    "image_filename": "sunnybot-01_p2-09_000003.jpg",
+    "image_id": "sunnybot-01_p2-09_000003",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000003.json",
+    "metadata_sha256": "13958c03d0f541d6701fd93f3d68bef27624bf6d11b6ab535aba2d3cf9cc82fc",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:12.688Z",
+    "image_filename": "sunnybot-01_p2-09_000004.jpg",
+    "image_id": "sunnybot-01_p2-09_000004",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000004.json",
+    "metadata_sha256": "6f11298805a34dae6a31c788902d73cc47d0d5b4f4835c178c3866072e895a33",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:12.734Z",
+    "image_filename": "sunnybot-01_p2-09_000005.jpg",
+    "image_id": "sunnybot-01_p2-09_000005",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000005.json",
+    "metadata_sha256": "6aeb60eff37962027032ff07723d1a0396839ef139917f4fbe7c19d37e68e928",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:12.830Z",
+    "image_filename": "sunnybot-01_p2-09_000006.jpg",
+    "image_id": "sunnybot-01_p2-09_000006",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000006.json",
+    "metadata_sha256": "ff0d70e621efe7b9c852e6db54edb97b58f4ef81c19efbf9775905ade9385921",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:12.875Z",
+    "image_filename": "sunnybot-01_p2-09_000007.jpg",
+    "image_id": "sunnybot-01_p2-09_000007",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000007.json",
+    "metadata_sha256": "91f7fc9fde3b8a1a85f623276cc223a396e5a05520473aa5abff02933c2a64f5",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:12.962Z",
+    "image_filename": "sunnybot-01_p2-09_000008.jpg",
+    "image_id": "sunnybot-01_p2-09_000008",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000008.json",
+    "metadata_sha256": "f1974b7b8dbc6e1925904f4e45a0f9e99316d9b7f1c9cda76c5e121e3e5657fb",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:13.025Z",
+    "image_filename": "sunnybot-01_p2-09_000009.jpg",
+    "image_id": "sunnybot-01_p2-09_000009",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000009.json",
+    "metadata_sha256": "f8f12eb8af818bb1acf8c3424363cce977fcbfe92d82d5e2823d3695aab5d23c",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:13.071Z",
+    "image_filename": "sunnybot-01_p2-09_000010.jpg",
+    "image_id": "sunnybot-01_p2-09_000010",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000010.json",
+    "metadata_sha256": "cef93843da9217f448e4fdf1dfe7cbafdd85629011980c191078ac59893100fa",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:13.135Z",
+    "image_filename": "sunnybot-01_p2-09_000011.jpg",
+    "image_id": "sunnybot-01_p2-09_000011",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000011.json",
+    "metadata_sha256": "7b492dccecf1bed8b84b6f7b524e4a829546c046551dc1aabdcf2a35e04e9b08",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:13.210Z",
+    "image_filename": "sunnybot-01_p2-09_000012.jpg",
+    "image_id": "sunnybot-01_p2-09_000012",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000012.json",
+    "metadata_sha256": "7b19104b9772e95e9df4449664c56f29b698ffc10e73d98222f0d5c67efe38dc",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:13.276Z",
+    "image_filename": "sunnybot-01_p2-09_000013.jpg",
+    "image_id": "sunnybot-01_p2-09_000013",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000013.json",
+    "metadata_sha256": "ecf269ad6b213717db003ba731bf137fa20e3f0de7c304853d0d4028a680e7dc",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:13.339Z",
+    "image_filename": "sunnybot-01_p2-09_000014.jpg",
+    "image_id": "sunnybot-01_p2-09_000014",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000014.json",
+    "metadata_sha256": "86edbea4f92c453a9b3257904a121ef12002d8126bd218529113349a017b8c17",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:13.414Z",
+    "image_filename": "sunnybot-01_p2-09_000015.jpg",
+    "image_id": "sunnybot-01_p2-09_000015",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000015.json",
+    "metadata_sha256": "bece301ad71b9b74a5a6dc0caf52c5c05f9d0008ca0c6307f72efdd4561ce9b5",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:13.461Z",
+    "image_filename": "sunnybot-01_p2-09_000016.jpg",
+    "image_id": "sunnybot-01_p2-09_000016",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000016.json",
+    "metadata_sha256": "02c34309894ff4d76046523214801311b20859b0e7210a598899311ceb0107e1",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:13.525Z",
+    "image_filename": "sunnybot-01_p2-09_000017.jpg",
+    "image_id": "sunnybot-01_p2-09_000017",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000017.json",
+    "metadata_sha256": "cd950ad37f88b5ee8a4fdf36f6fd2c35660f67b5aae34331f96634c963a79470",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:13.610Z",
+    "image_filename": "sunnybot-01_p2-09_000018.jpg",
+    "image_id": "sunnybot-01_p2-09_000018",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000018.json",
+    "metadata_sha256": "ba2a44229ab16087f28979d981297b1331a7b1d6cb63a3f8d4abcf552f283fb8",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:13.675Z",
+    "image_filename": "sunnybot-01_p2-09_000019.jpg",
+    "image_id": "sunnybot-01_p2-09_000019",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000019.json",
+    "metadata_sha256": "5990a96d1147c9fde1fa642820ef0e961b58effa3b1285fb86d38681f7f71e4d",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:13.723Z",
+    "image_filename": "sunnybot-01_p2-09_000020.jpg",
+    "image_id": "sunnybot-01_p2-09_000020",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000020.json",
+    "metadata_sha256": "d86587d2ecc72613eaed4fcd7f3527e71ced9442db0ce023948751fa7fdd5244",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:29.238Z",
+    "image_filename": "sunnybot-01_p2-09_000021.jpg",
+    "image_id": "sunnybot-01_p2-09_000021",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000021.json",
+    "metadata_sha256": "e2ac9b66b22b25f8606fa684141994a31d3d7ec284ef328ecc5e2288f6fa1dd9",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:27.563Z",
+    "image_filename": "sunnybot-01_p2-09_000022.jpg",
+    "image_id": "sunnybot-01_p2-09_000022",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000022.json",
+    "metadata_sha256": "6a8830ec7fe13ac3424d5bf44127a4dd4e6e105b533aa08aa3511872001f7091",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:26.747Z",
+    "image_filename": "sunnybot-01_p2-09_000023.jpg",
+    "image_id": "sunnybot-01_p2-09_000023",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000023.json",
+    "metadata_sha256": "a83ab3ef6fb4ede400f4bc67303d0b8a4556f769c625beb2c91d0a878eed80ff",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:26.826Z",
+    "image_filename": "sunnybot-01_p2-09_000024.jpg",
+    "image_id": "sunnybot-01_p2-09_000024",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000024.json",
+    "metadata_sha256": "edd579e134340b0c0d552af9fbb4384a4fc82f28a257ff85e4c9ea5ef6368469",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:26.891Z",
+    "image_filename": "sunnybot-01_p2-09_000025.jpg",
+    "image_id": "sunnybot-01_p2-09_000025",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000025.json",
+    "metadata_sha256": "4c438835d9ee4cfe01b73724d98c28ebdce98f0c84e26ca6aa019c86e1797df8",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:26.946Z",
+    "image_filename": "sunnybot-01_p2-09_000026.jpg",
+    "image_id": "sunnybot-01_p2-09_000026",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000026.json",
+    "metadata_sha256": "978d077759a4736380faa028e291d88e3f93c57648d5eb07ed194c0b9ee04496",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:27.082Z",
+    "image_filename": "sunnybot-01_p2-09_000027.jpg",
+    "image_id": "sunnybot-01_p2-09_000027",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000027.json",
+    "metadata_sha256": "14b0627d6d87177c9461dacc4df7699b4f0b413845d1dbe3699c8c69374535c9",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:27.179Z",
+    "image_filename": "sunnybot-01_p2-09_000028.jpg",
+    "image_id": "sunnybot-01_p2-09_000028",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000028.json",
+    "metadata_sha256": "d47cc55ad917f61a5671e0c2305f9b26f1b3eb1b620d387ca6f6cc11287e2c4c",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:27.274Z",
+    "image_filename": "sunnybot-01_p2-09_000029.jpg",
+    "image_id": "sunnybot-01_p2-09_000029",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000029.json",
+    "metadata_sha256": "7433bbacc3cdf1e604f0cdf225e80f3dea7cb4a3874cb4d852a6a05437180e84",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:27.357Z",
+    "image_filename": "sunnybot-01_p2-09_000030.jpg",
+    "image_id": "sunnybot-01_p2-09_000030",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000030.json",
+    "metadata_sha256": "bf526b3a192252759165c06a131b97d6830cc16636132f761d8de01cbc77aa56",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:27.404Z",
+    "image_filename": "sunnybot-01_p2-09_000031.jpg",
+    "image_id": "sunnybot-01_p2-09_000031",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000031.json",
+    "metadata_sha256": "ecab80c51227ffa48b0ba49fb8325f64292e4fa3f386590de796458a92bcf871",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:27.451Z",
+    "image_filename": "sunnybot-01_p2-09_000032.jpg",
+    "image_id": "sunnybot-01_p2-09_000032",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000032.json",
+    "metadata_sha256": "583e5035fc284832e1af2b8586c42fd50932e97e2c2da598d0c113442a2a6272",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:27.505Z",
+    "image_filename": "sunnybot-01_p2-09_000033.jpg",
+    "image_id": "sunnybot-01_p2-09_000033",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000033.json",
+    "metadata_sha256": "d1bd69bb38959c4c3eda9e75ae0f433ae68422e97119ddd31d576b6e022959d8",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:27.611Z",
+    "image_filename": "sunnybot-01_p2-09_000034.jpg",
+    "image_id": "sunnybot-01_p2-09_000034",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000034.json",
+    "metadata_sha256": "9da6232867d5ef9d663031cdfa89bda24d3688bb45be07d778fa7f83a2bfa471",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:27.702Z",
+    "image_filename": "sunnybot-01_p2-09_000035.jpg",
+    "image_id": "sunnybot-01_p2-09_000035",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000035.json",
+    "metadata_sha256": "32cc30b372f968c9e43e0398a0ec92cc7a7becca15382223efa31313f313e2cc",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:27.750Z",
+    "image_filename": "sunnybot-01_p2-09_000036.jpg",
+    "image_id": "sunnybot-01_p2-09_000036",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000036.json",
+    "metadata_sha256": "82cf3af7383a92de5a1c7cf26d6ad6cc15a51454baaeb7c992e3f83d871118e9",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:27.844Z",
+    "image_filename": "sunnybot-01_p2-09_000037.jpg",
+    "image_id": "sunnybot-01_p2-09_000037",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000037.json",
+    "metadata_sha256": "3c56bea3c1e36c214b31c33e5280da6452e66fa5e34d43ccfb961fe4c8720c40",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:27.892Z",
+    "image_filename": "sunnybot-01_p2-09_000038.jpg",
+    "image_id": "sunnybot-01_p2-09_000038",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000038.json",
+    "metadata_sha256": "defb9645aad4cf730c4a2b46b1a06df86a9532f15952d984c69c180bfd518cb9",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:27.947Z",
+    "image_filename": "sunnybot-01_p2-09_000039.jpg",
+    "image_id": "sunnybot-01_p2-09_000039",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000039.json",
+    "metadata_sha256": "c52ca430ca718c7a6dfd59451ec3e79b2e4d20a1d839d8170c1e00ff7f67c141",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.006Z",
+    "image_filename": "sunnybot-01_p2-09_000040.jpg",
+    "image_id": "sunnybot-01_p2-09_000040",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000040.json",
+    "metadata_sha256": "f54862fab9e98c2b6f6938cbea9d55594002c37e408fdf212b6658c4a52a6a7c",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.055Z",
+    "image_filename": "sunnybot-01_p2-09_000041.jpg",
+    "image_id": "sunnybot-01_p2-09_000041",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000041.json",
+    "metadata_sha256": "dc4f41dfdc99efa5e2a088da553e8c631a402f58f882ae0c1c19d45559d241bb",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.120Z",
+    "image_filename": "sunnybot-01_p2-09_000042.jpg",
+    "image_id": "sunnybot-01_p2-09_000042",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000042.json",
+    "metadata_sha256": "d2ca37de1e669cfd99683ee6452f661909fe829f79dc3d559f176c873665281e",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.178Z",
+    "image_filename": "sunnybot-01_p2-09_000043.jpg",
+    "image_id": "sunnybot-01_p2-09_000043",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000043.json",
+    "metadata_sha256": "95f3dd73a0762d09a34334709d62d1133cc0a313304d6a98a4a2733ff564ab16",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.261Z",
+    "image_filename": "sunnybot-01_p2-09_000044.jpg",
+    "image_id": "sunnybot-01_p2-09_000044",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000044.json",
+    "metadata_sha256": "d2f898c791c34e5ad3f7089f4f3fb36111a7c7a84165947da1eccce92db32a41",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.322Z",
+    "image_filename": "sunnybot-01_p2-09_000045.jpg",
+    "image_id": "sunnybot-01_p2-09_000045",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000045.json",
+    "metadata_sha256": "253efa1030da74d2b21035fb68dc51eb1a2ad59efc4e8266d66a27f75f668786",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.372Z",
+    "image_filename": "sunnybot-01_p2-09_000046.jpg",
+    "image_id": "sunnybot-01_p2-09_000046",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000046.json",
+    "metadata_sha256": "c8bf91c5846f2ed5d15875b911fb9ed05baae8ae83ecd0ebb6953a061c98b1a9",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.448Z",
+    "image_filename": "sunnybot-01_p2-09_000047.jpg",
+    "image_id": "sunnybot-01_p2-09_000047",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000047.json",
+    "metadata_sha256": "d0b8559f7e9f640205c435571193d7d4df7d1f8f6bef0085ace5ad875a10daec",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.496Z",
+    "image_filename": "sunnybot-01_p2-09_000048.jpg",
+    "image_id": "sunnybot-01_p2-09_000048",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000048.json",
+    "metadata_sha256": "8e14af9db0af15810c7405ee05713443cf3f73b4a211275ce867a0d24a5b0438",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.566Z",
+    "image_filename": "sunnybot-01_p2-09_000049.jpg",
+    "image_id": "sunnybot-01_p2-09_000049",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000049.json",
+    "metadata_sha256": "bf4300bdcb0e8ea36f724353ab4baf6cfc0ea838f5ca38c61e81e00546db3e48",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.613Z",
+    "image_filename": "sunnybot-01_p2-09_000050.jpg",
+    "image_id": "sunnybot-01_p2-09_000050",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000050.json",
+    "metadata_sha256": "b53a5bea5bc97ae1f892198466c6aebfa867da7b1c75cc20da2175a7bcba7a1a",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.678Z",
+    "image_filename": "sunnybot-01_p2-09_000051.jpg",
+    "image_id": "sunnybot-01_p2-09_000051",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000051.json",
+    "metadata_sha256": "1ca61cdd4b87e6eaa91ac9d10a44c93f355e4a3ddf02f40d068f078402778e95",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.751Z",
+    "image_filename": "sunnybot-01_p2-09_000052.jpg",
+    "image_id": "sunnybot-01_p2-09_000052",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000052.json",
+    "metadata_sha256": "41b99db7ab8114b5a5cc5d14704162552fd8ada906d5c46af3e3ca54b6ee7b6b",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.819Z",
+    "image_filename": "sunnybot-01_p2-09_000053.jpg",
+    "image_id": "sunnybot-01_p2-09_000053",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000053.json",
+    "metadata_sha256": "36147d1f02593ac119b3111d64360042626383a0203c4509e9ad8b98858e868a",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.881Z",
+    "image_filename": "sunnybot-01_p2-09_000054.jpg",
+    "image_id": "sunnybot-01_p2-09_000054",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000054.json",
+    "metadata_sha256": "7e760a67bf9ef2876072142d3dc83f0d830dcab2dc2afe5c137072a3d0a80e0b",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.933Z",
+    "image_filename": "sunnybot-01_p2-09_000055.jpg",
+    "image_id": "sunnybot-01_p2-09_000055",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000055.json",
+    "metadata_sha256": "ec9513644c9cd68c0093ff2b4939699b8997d120afdf88ca77de23e44259a46c",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:28.995Z",
+    "image_filename": "sunnybot-01_p2-09_000056.jpg",
+    "image_id": "sunnybot-01_p2-09_000056",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000056.json",
+    "metadata_sha256": "d933afce622d13d0160730aa2adf03f9d157e40d626e34f32f19e66c8d1fe592",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:29.054Z",
+    "image_filename": "sunnybot-01_p2-09_000057.jpg",
+    "image_id": "sunnybot-01_p2-09_000057",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000057.json",
+    "metadata_sha256": "45c8cb776b655b954cd3e66083fbab8fe91ea3ee492dfb296c3f5c3b721b764b",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:29.115Z",
+    "image_filename": "sunnybot-01_p2-09_000058.jpg",
+    "image_id": "sunnybot-01_p2-09_000058",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000058.json",
+    "metadata_sha256": "7a0e3baac338776b54dcb7d20f3aaa77cd5ca079fb7a110b57956f40fb2e9893",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:29.184Z",
+    "image_filename": "sunnybot-01_p2-09_000059.jpg",
+    "image_id": "sunnybot-01_p2-09_000059",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000059.json",
+    "metadata_sha256": "48cf770558372b0bf92867a8da9c639235402cfad2ec9cdd31faaad286504bed",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:29.312Z",
+    "image_filename": "sunnybot-01_p2-09_000060.jpg",
+    "image_id": "sunnybot-01_p2-09_000060",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000060.json",
+    "metadata_sha256": "0014b5bebcff408b170bf973c9c7a8922cae4f2c7bb27d5965903e632021491b",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:31.202Z",
+    "image_filename": "sunnybot-01_p2-09_000061.jpg",
+    "image_id": "sunnybot-01_p2-09_000061",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000061.json",
+    "metadata_sha256": "b036674bc0ffad59fa41585d8775611e7bacba982fac5869bbe8a3f106ccaf00",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:31.285Z",
+    "image_filename": "sunnybot-01_p2-09_000062.jpg",
+    "image_id": "sunnybot-01_p2-09_000062",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000062.json",
+    "metadata_sha256": "c24e42fdbd0d6cc82a1db8ecc6c45aeedc5d4cf0872577f5e17398e891cd96b9",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:31.331Z",
+    "image_filename": "sunnybot-01_p2-09_000063.jpg",
+    "image_id": "sunnybot-01_p2-09_000063",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000063.json",
+    "metadata_sha256": "7f860257dbfa82d114834467468e8419e4bde2d647677534294fc56063d3f023",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:31.423Z",
+    "image_filename": "sunnybot-01_p2-09_000064.jpg",
+    "image_id": "sunnybot-01_p2-09_000064",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000064.json",
+    "metadata_sha256": "0836d660c56f242e87a310b32b9d5f5a0d08cc4466af454bede97b9042103f94",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:31.500Z",
+    "image_filename": "sunnybot-01_p2-09_000065.jpg",
+    "image_id": "sunnybot-01_p2-09_000065",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000065.json",
+    "metadata_sha256": "64bfa5aa8c3d58272fe7add1c31e476e41a2804199409ac7fe6a7780c4834e16",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:31.564Z",
+    "image_filename": "sunnybot-01_p2-09_000066.jpg",
+    "image_id": "sunnybot-01_p2-09_000066",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000066.json",
+    "metadata_sha256": "902f7227c1570e4962dc9950ad4df4520b37eb07cb94b875c1398a66fd12813d",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:31.645Z",
+    "image_filename": "sunnybot-01_p2-09_000067.jpg",
+    "image_id": "sunnybot-01_p2-09_000067",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000067.json",
+    "metadata_sha256": "ecb502e848df444c8be52ee416d8f42efc4bc492b272dc07f96789b978cfdda1",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:31.722Z",
+    "image_filename": "sunnybot-01_p2-09_000068.jpg",
+    "image_id": "sunnybot-01_p2-09_000068",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000068.json",
+    "metadata_sha256": "63d39a24485b07c849aad96b81269fe345454284a6cda3350dd6adaa3bc55bae",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:31.769Z",
+    "image_filename": "sunnybot-01_p2-09_000069.jpg",
+    "image_id": "sunnybot-01_p2-09_000069",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000069.json",
+    "metadata_sha256": "12b525e06cc82e9b584115a09bf134391ee43d00238a975526188df194ee5ae2",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:31.823Z",
+    "image_filename": "sunnybot-01_p2-09_000070.jpg",
+    "image_id": "sunnybot-01_p2-09_000070",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000070.json",
+    "metadata_sha256": "65ca8d357e87106f44a6feb83adf27e9e97ea8a5178dd68b40acac72a4ffbf4b",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:31.868Z",
+    "image_filename": "sunnybot-01_p2-09_000071.jpg",
+    "image_id": "sunnybot-01_p2-09_000071",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000071.json",
+    "metadata_sha256": "fd16478ad5c565dadcb75a8b39dad16453707bad639438aeb903e2d1ffbabff3",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:31.914Z",
+    "image_filename": "sunnybot-01_p2-09_000072.jpg",
+    "image_id": "sunnybot-01_p2-09_000072",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000072.json",
+    "metadata_sha256": "84665308e96cd69f2b0bf1522d1bb44f8bc752fae24fc2af43fb4b57db46993f",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:31.959Z",
+    "image_filename": "sunnybot-01_p2-09_000073.jpg",
+    "image_id": "sunnybot-01_p2-09_000073",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000073.json",
+    "metadata_sha256": "d1fbaca9de5ee40e80364b3f5a6b365b318df6d20d554cad529ea1f6db5b6255",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:32.007Z",
+    "image_filename": "sunnybot-01_p2-09_000074.jpg",
+    "image_id": "sunnybot-01_p2-09_000074",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000074.json",
+    "metadata_sha256": "b9aa8678a1fc80a72d7995fd075d42450c28fac26b473029e23e44948ac8a5c4",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:32.092Z",
+    "image_filename": "sunnybot-01_p2-09_000075.jpg",
+    "image_id": "sunnybot-01_p2-09_000075",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000075.json",
+    "metadata_sha256": "eb13838791f968e0ec682f7b8584770b657345f575e00c60e96a6c0ddbbd4658",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:32.155Z",
+    "image_filename": "sunnybot-01_p2-09_000076.jpg",
+    "image_id": "sunnybot-01_p2-09_000076",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000076.json",
+    "metadata_sha256": "e876a07afbbd35e06429782fc9d381ff8e1d00251fd00afa6c37a53c1a014549",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:32.252Z",
+    "image_filename": "sunnybot-01_p2-09_000077.jpg",
+    "image_id": "sunnybot-01_p2-09_000077",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000077.json",
+    "metadata_sha256": "6dfa74f848d825d29a93d006a3982bbb83a0296d2f399fd9be756968cc67f01c",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:32.343Z",
+    "image_filename": "sunnybot-01_p2-09_000078.jpg",
+    "image_id": "sunnybot-01_p2-09_000078",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000078.json",
+    "metadata_sha256": "2c0ed6ce2c9abb928c98384b9f016c98aaf93a042aa783734ecc4554c537f279",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:32.401Z",
+    "image_filename": "sunnybot-01_p2-09_000079.jpg",
+    "image_id": "sunnybot-01_p2-09_000079",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000079.json",
+    "metadata_sha256": "b768a1ba5dfa3108dd73c88ee8f9e66c159fe373c6ab4c1fc195b9fa12d202bb",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:32.446Z",
+    "image_filename": "sunnybot-01_p2-09_000080.jpg",
+    "image_id": "sunnybot-01_p2-09_000080",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000080.json",
+    "metadata_sha256": "e331a679189f27488d6066748bf84a0bb17cec85b770d29ffe3bebfd344fed05",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:32.499Z",
+    "image_filename": "sunnybot-01_p2-09_000081.jpg",
+    "image_id": "sunnybot-01_p2-09_000081",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000081.json",
+    "metadata_sha256": "f7a5fcd361a3ca68286243a1539eb5114754a9771ca49262148ded36e318b75c",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:32.549Z",
+    "image_filename": "sunnybot-01_p2-09_000082.jpg",
+    "image_id": "sunnybot-01_p2-09_000082",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000082.json",
+    "metadata_sha256": "191fbf1440d12f1a4dcf0bd47dd8eb603b4b8b5808fb7c4eb5674305058ffdbb",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:32.614Z",
+    "image_filename": "sunnybot-01_p2-09_000083.jpg",
+    "image_id": "sunnybot-01_p2-09_000083",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000083.json",
+    "metadata_sha256": "2a8ab58049f765803e9ec6b8bb2c24f0cd7ddaaa273a62481806cc40e7609fa6",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:32.692Z",
+    "image_filename": "sunnybot-01_p2-09_000084.jpg",
+    "image_id": "sunnybot-01_p2-09_000084",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000084.json",
+    "metadata_sha256": "f2fe73b8d4a5ad4fa8a569d38b998f0a942594d0b4056d04a024b700b214580f",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:32.761Z",
+    "image_filename": "sunnybot-01_p2-09_000085.jpg",
+    "image_id": "sunnybot-01_p2-09_000085",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000085.json",
+    "metadata_sha256": "61da014e694882552ee615d874b1f4e481f32c035479cb20c67e5693dcb2ae0e",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:32.852Z",
+    "image_filename": "sunnybot-01_p2-09_000086.jpg",
+    "image_id": "sunnybot-01_p2-09_000086",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000086.json",
+    "metadata_sha256": "b081ad3f8947445e3503cfe03dcf7ad7bdc1a34b6d1124fce78c849440fd1589",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:32.901Z",
+    "image_filename": "sunnybot-01_p2-09_000087.jpg",
+    "image_id": "sunnybot-01_p2-09_000087",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000087.json",
+    "metadata_sha256": "467615adbc72111f2f993b94d7822974d5c123033465c0d44bfc7e743f6c2816",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:32.958Z",
+    "image_filename": "sunnybot-01_p2-09_000088.jpg",
+    "image_id": "sunnybot-01_p2-09_000088",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000088.json",
+    "metadata_sha256": "69f7053ea4b41cb769ca176d654ed88715bd09080563bacd6c93f580e69bde7b",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:33.020Z",
+    "image_filename": "sunnybot-01_p2-09_000089.jpg",
+    "image_id": "sunnybot-01_p2-09_000089",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000089.json",
+    "metadata_sha256": "f1abd1398a9b958da8df9bcd8418c9168d146f993f0966693a3e74fc0720b288",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:33.068Z",
+    "image_filename": "sunnybot-01_p2-09_000090.jpg",
+    "image_id": "sunnybot-01_p2-09_000090",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000090.json",
+    "metadata_sha256": "b00d0c2692e6169389010db942dc5328effa721f7107f592ed3d9d03d930bf1c",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:33.136Z",
+    "image_filename": "sunnybot-01_p2-09_000091.jpg",
+    "image_id": "sunnybot-01_p2-09_000091",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000091.json",
+    "metadata_sha256": "7913d35efcdc48eff7fffdac946c957dbddab3ee0d62e6e1ed68c1f37ce879e2",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:33.218Z",
+    "image_filename": "sunnybot-01_p2-09_000092.jpg",
+    "image_id": "sunnybot-01_p2-09_000092",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000092.json",
+    "metadata_sha256": "dd5942a9a5d490feb79b2ce61892e502fc5f2489eb12698dcf546a2aa98b18ea",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:33.308Z",
+    "image_filename": "sunnybot-01_p2-09_000093.jpg",
+    "image_id": "sunnybot-01_p2-09_000093",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000093.json",
+    "metadata_sha256": "f42f741a78924a26d218680178498721d8a2a39a2493c746651bf2ee155dcb38",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:33.426Z",
+    "image_filename": "sunnybot-01_p2-09_000094.jpg",
+    "image_id": "sunnybot-01_p2-09_000094",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000094.json",
+    "metadata_sha256": "bfc0dd4f3dec665479709ba79b4126c6297d8a405d55e60851ecbe6385ae1506",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:33.534Z",
+    "image_filename": "sunnybot-01_p2-09_000095.jpg",
+    "image_id": "sunnybot-01_p2-09_000095",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000095.json",
+    "metadata_sha256": "de27ed87337c61e169e19e40f76607b2f06ba882fdbc4a0d3274d3b8c12d1418",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:33.614Z",
+    "image_filename": "sunnybot-01_p2-09_000096.jpg",
+    "image_id": "sunnybot-01_p2-09_000096",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000096.json",
+    "metadata_sha256": "6d6bfd8db1dbe21aa8678d5b54bb4bdddeb0fbfa20da717ae9e0baa2897f8176",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:33.713Z",
+    "image_filename": "sunnybot-01_p2-09_000097.jpg",
+    "image_id": "sunnybot-01_p2-09_000097",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000097.json",
+    "metadata_sha256": "827c4deb0a437532192e847515f07914c7651a1ea133d799a92d3c565db0c792",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:33.778Z",
+    "image_filename": "sunnybot-01_p2-09_000098.jpg",
+    "image_id": "sunnybot-01_p2-09_000098",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000098.json",
+    "metadata_sha256": "ac941885efd318a9e24e02f7e6315d88790034902b935bba5be631b262b8265a",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:33.857Z",
+    "image_filename": "sunnybot-01_p2-09_000099.jpg",
+    "image_id": "sunnybot-01_p2-09_000099",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000099.json",
+    "metadata_sha256": "5e25278ca94ac0da34cb8a4e5415e572435ad35424b4101adfa9e93f9b71230c",
+    "result": "stored"
+  },
+  {
+    "committed_at_utc": "2026-08-04T23:55:33.920Z",
+    "image_filename": "sunnybot-01_p2-09_000100.jpg",
+    "image_id": "sunnybot-01_p2-09_000100",
+    "image_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+    "metadata_filename": "sunnybot-01_p2-09_000100.json",
+    "metadata_sha256": "771d02cae31b639ab81fcd5d7e6a2f55dec7683232bb9ae5c36f6a880f0692c5",
+    "result": "stored"
+  }
+]
