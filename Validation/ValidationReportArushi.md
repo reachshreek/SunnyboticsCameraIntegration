@@ -3,7 +3,6 @@
 **Branch:** ArushiValidation  
 **Repository:** SunnyboticsCameraIntegration  
 **Date:** August 2026  
-**Platform:** Development Mac (Apple Silicon) — results are provisional  
 **Total tests passing:** 140  
 
 All results collected on a development Mac running Python 3.11.3. They are provisional and must be repeated on the RUBIK Pi 3 before being treated as final performance evidence.
