@@ -1,0 +1,723 @@
+{
+  "network_queue": {
+    "p2-10-network-00": {
+      "attempts": 1,
+      "last_error": null,
+      "status": "uploaded"
+    },
+    "p2-10-network-01": {
+      "attempts": 2,
+      "last_error": null,
+      "status": "uploaded"
+    },
+    "p2-10-network-02": {
+      "attempts": 2,
+      "last_error": null,
+      "status": "uploaded"
+    },
+    "p2-10-network-03": {
+      "attempts": 2,
+      "last_error": null,
+      "status": "uploaded"
+    },
+    "p2-10-network-04": {
+      "attempts": 2,
+      "last_error": null,
+      "status": "uploaded"
+    }
+  },
+  "scenario_details": {
+    "APP-01": {},
+    "CAM-01": {},
+    "CAM-02": {},
+    "CAM-03": {},
+    "CAM-04": {},
+    "CAM-05": {},
+    "CAM-06": {},
+    "CAM-07": {},
+    "CAM-08": {
+      "delay_s": 0.07519280002452433
+    },
+    "GNSS-01": {
+      "age_s": 0.0,
+      "fresh": true,
+      "latitude": 34.4429037,
+      "longitude": -119.7907206,
+      "quality_accepted": true,
+      "reason": "valid",
+      "satellites": 10,
+      "valid": true
+    },
+    "GNSS-02": {
+      "fresh": false,
+      "latitude": null,
+      "longitude": null,
+      "quality_accepted": false,
+      "reason": "missing_fix",
+      "valid": false
+    },
+    "GNSS-03": {
+      "fresh": false,
+      "latitude": null,
+      "longitude": null,
+      "quality_accepted": false,
+      "reason": "malformed_fix",
+      "valid": false
+    },
+    "GNSS-04": {
+      "age_s": 5.0,
+      "fresh": false,
+      "latitude": null,
+      "longitude": null,
+      "quality_accepted": true,
+      "reason": "stale_or_future",
+      "satellites": 10,
+      "valid": false
+    },
+    "GNSS-05": {
+      "age_s": 0.0,
+      "fresh": true,
+      "latitude": null,
+      "longitude": null,
+      "quality_accepted": true,
+      "reason": "coordinates_invalid",
+      "satellites": 10,
+      "valid": false
+    },
+    "GNSS-06": {
+      "age_s": 0.0,
+      "fresh": true,
+      "latitude": null,
+      "longitude": null,
+      "quality_accepted": false,
+      "reason": "satellites_low",
+      "satellites": 2,
+      "valid": false
+    },
+    "GNSS-07": {
+      "age_s": 0.0,
+      "fresh": true,
+      "latitude": 34.4429037,
+      "longitude": -119.7907206,
+      "quality_accepted": true,
+      "reason": "valid",
+      "satellites": 10,
+      "valid": true
+    },
+    "NET-01": {
+      "attempts": 1,
+      "last_error": null,
+      "status": "uploaded"
+    },
+    "NET-02": {
+      "attempts": 1,
+      "last_error": "offline",
+      "status": "pending"
+    },
+    "NET-03": {
+      "attempts": 1,
+      "last_error": "timeout",
+      "status": "pending"
+    },
+    "NET-04": {
+      "attempts": 1,
+      "last_error": "http_500",
+      "status": "pending"
+    },
+    "NET-05": {
+      "attempts": 1,
+      "last_error": "interrupted",
+      "status": "pending"
+    },
+    "NET-06": {
+      "pending_after": [],
+      "pending_before": [
+        "p2-10-network-01",
+        "p2-10-network-02",
+        "p2-10-network-03",
+        "p2-10-network-04"
+      ]
+    },
+    "SPD-01": {
+      "capture_interval_s": 2.0,
+      "capture_rate_hz": 0.5,
+      "mode": "adaptive_distance",
+      "raw_capture_rate_hz": 0.5,
+      "reason": "valid_speed",
+      "speed_mps": 0.567,
+      "valid": true
+    },
+    "SPD-02": {
+      "capture_interval_s": 5.0,
+      "capture_rate_hz": 0.2,
+      "mode": "fixed_rate_fallback",
+      "reason": "missing_speed",
+      "valid": false
+    },
+    "SPD-03": {
+      "age_s": 5.000021,
+      "capture_interval_s": 5.0,
+      "capture_rate_hz": 0.2,
+      "mode": "fixed_rate_fallback",
+      "reason": "stale_or_future",
+      "valid": false
+    },
+    "SPD-04": {
+      "capture_interval_s": 5.0,
+      "capture_rate_hz": 0.2,
+      "mode": "fixed_rate_fallback",
+      "reason": "negative_speed",
+      "speed_mps": -1.0,
+      "valid": false
+    },
+    "SPD-05": {
+      "capture_interval_s": null,
+      "capture_rate_hz": 0.0,
+      "mode": "stationary",
+      "reason": "below_movement_threshold",
+      "speed_mps": 0.01,
+      "valid": true
+    },
+    "SPD-06": {
+      "capture_interval_s": 1.0,
+      "capture_rate_hz": 1.0,
+      "mode": "adaptive_distance",
+      "raw_capture_rate_hz": 2.645503,
+      "reason": "rate_capped",
+      "speed_mps": 3.0,
+      "valid": true
+    },
+    "SPD-07": {
+      "capture_interval_s": 1.0,
+      "capture_rate_hz": 1.0,
+      "mode": "adaptive_distance",
+      "raw_capture_rate_hz": 1.0,
+      "reason": "valid_speed",
+      "speed_mps": 1.134,
+      "valid": true
+    },
+    "STO-01": {},
+    "STO-02": {},
+    "STO-03": {},
+    "STO-04": {},
+    "STO-05": {
+      "remaining_tmp": []
+    },
+    "STO-06": {}
+  },
+  "source_image_integrity": [
+    {
+      "actual_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+      "checksum_match": true,
+      "exists": true,
+      "expected_sha256": "af2704412ba0ac4bf826943a6c9b3a24ed949f1c6adb82ac92e3e8f559578b0c",
+      "path": "C:\\Users\\reach\\Work\\SunnyboticsCameraIntegration\\MetadataLabeling\\sample_images\\Sample1.jpg"
+    },
+    {
+      "actual_sha256": "ca3073798769885fa0dd86f9a384a84bf9f2031f9cb5b8177d3879e2ab731aed",
+      "checksum_match": true,
+      "exists": true,
+      "expected_sha256": "ca3073798769885fa0dd86f9a384a84bf9f2031f9cb5b8177d3879e2ab731aed",
+      "path": "C:\\Users\\reach\\Work\\SunnyboticsCameraIntegration\\MetadataLabeling\\sample_images\\Sample2.jpg"
+    },
+    {
+      "actual_sha256": "47a5e73ff474a5d81af0405f45bfd393c8fff7c622adb135216376f99df7abef",
+      "checksum_match": true,
+      "exists": true,
+      "expected_sha256": "47a5e73ff474a5d81af0405f45bfd393c8fff7c622adb135216376f99df7abef",
+      "path": "C:\\Users\\reach\\Work\\SunnyboticsCameraIntegration\\MetadataLabeling\\sample_images\\Sample3.jpg"
+    }
+  ],
+  "timeline": [
+    {
+      "detail": "Normal repository image",
+      "recorded_at_utc": "2026-08-05T17:26:24.383Z",
+      "scenario_id": "CAM-01",
+      "state": "started",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Valid image accepted (valid_jpeg)",
+      "recorded_at_utc": "2026-08-05T17:26:24.422Z",
+      "scenario_id": "CAM-01",
+      "state": "passed",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Camera unavailable at startup",
+      "recorded_at_utc": "2026-08-05T17:26:24.423Z",
+      "scenario_id": "CAM-02",
+      "state": "started",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Failure detected; a later valid capture succeeded",
+      "recorded_at_utc": "2026-08-05T17:26:24.423Z",
+      "scenario_id": "CAM-02",
+      "state": "passed",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Camera timeout",
+      "recorded_at_utc": "2026-08-05T17:26:24.423Z",
+      "scenario_id": "CAM-03",
+      "state": "started",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Failure detected; a later valid capture succeeded",
+      "recorded_at_utc": "2026-08-05T17:26:24.423Z",
+      "scenario_id": "CAM-03",
+      "state": "passed",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Camera disconnect",
+      "recorded_at_utc": "2026-08-05T17:26:24.423Z",
+      "scenario_id": "CAM-04",
+      "state": "started",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Failure detected; a later valid capture succeeded",
+      "recorded_at_utc": "2026-08-05T17:26:24.423Z",
+      "scenario_id": "CAM-04",
+      "state": "passed",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Dropped frame",
+      "recorded_at_utc": "2026-08-05T17:26:24.423Z",
+      "scenario_id": "CAM-05",
+      "state": "started",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Dropped frame was not reported as a successful image",
+      "recorded_at_utc": "2026-08-05T17:26:24.423Z",
+      "scenario_id": "CAM-05",
+      "state": "passed",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Truncated image",
+      "recorded_at_utc": "2026-08-05T17:26:24.423Z",
+      "scenario_id": "CAM-06",
+      "state": "started",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Invalid image rejected (jpeg_end_missing); next capture succeeded",
+      "recorded_at_utc": "2026-08-05T17:26:24.430Z",
+      "scenario_id": "CAM-06",
+      "state": "passed",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Empty image",
+      "recorded_at_utc": "2026-08-05T17:26:24.430Z",
+      "scenario_id": "CAM-07",
+      "state": "started",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Invalid image rejected (too_small); next capture succeeded",
+      "recorded_at_utc": "2026-08-05T17:26:24.431Z",
+      "scenario_id": "CAM-07",
+      "state": "passed",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Delayed frame",
+      "recorded_at_utc": "2026-08-05T17:26:24.431Z",
+      "scenario_id": "CAM-08",
+      "state": "started",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Delay detected; valid image retained (valid_jpeg)",
+      "recorded_at_utc": "2026-08-05T17:26:24.507Z",
+      "scenario_id": "CAM-08",
+      "state": "passed",
+      "subsystem": "camera"
+    },
+    {
+      "detail": "Valid fix",
+      "recorded_at_utc": "2026-08-05T17:26:24.507Z",
+      "scenario_id": "GNSS-01",
+      "state": "started",
+      "subsystem": "gnss"
+    },
+    {
+      "detail": "GNSS result=valid; image retained",
+      "recorded_at_utc": "2026-08-05T17:26:24.549Z",
+      "scenario_id": "GNSS-01",
+      "state": "passed",
+      "subsystem": "gnss"
+    },
+    {
+      "detail": "Missing fix",
+      "recorded_at_utc": "2026-08-05T17:26:24.549Z",
+      "scenario_id": "GNSS-02",
+      "state": "started",
+      "subsystem": "gnss"
+    },
+    {
+      "detail": "GNSS result=missing_fix; image retained",
+      "recorded_at_utc": "2026-08-05T17:26:24.572Z",
+      "scenario_id": "GNSS-02",
+      "state": "passed",
+      "subsystem": "gnss"
+    },
+    {
+      "detail": "Malformed fix",
+      "recorded_at_utc": "2026-08-05T17:26:24.572Z",
+      "scenario_id": "GNSS-03",
+      "state": "started",
+      "subsystem": "gnss"
+    },
+    {
+      "detail": "GNSS result=malformed_fix; image retained",
+      "recorded_at_utc": "2026-08-05T17:26:24.619Z",
+      "scenario_id": "GNSS-03",
+      "state": "passed",
+      "subsystem": "gnss"
+    },
+    {
+      "detail": "Stale fix",
+      "recorded_at_utc": "2026-08-05T17:26:24.620Z",
+      "scenario_id": "GNSS-04",
+      "state": "started",
+      "subsystem": "gnss"
+    },
+    {
+      "detail": "GNSS result=stale_or_future; image retained",
+      "recorded_at_utc": "2026-08-05T17:26:24.664Z",
+      "scenario_id": "GNSS-04",
+      "state": "passed",
+      "subsystem": "gnss"
+    },
+    {
+      "detail": "Invalid coordinates",
+      "recorded_at_utc": "2026-08-05T17:26:24.664Z",
+      "scenario_id": "GNSS-05",
+      "state": "started",
+      "subsystem": "gnss"
+    },
+    {
+      "detail": "GNSS result=coordinates_invalid; image retained",
+      "recorded_at_utc": "2026-08-05T17:26:24.687Z",
+      "scenario_id": "GNSS-05",
+      "state": "passed",
+      "subsystem": "gnss"
+    },
+    {
+      "detail": "Low-quality fix",
+      "recorded_at_utc": "2026-08-05T17:26:24.687Z",
+      "scenario_id": "GNSS-06",
+      "state": "started",
+      "subsystem": "gnss"
+    },
+    {
+      "detail": "GNSS result=satellites_low; image retained",
+      "recorded_at_utc": "2026-08-05T17:26:24.729Z",
+      "scenario_id": "GNSS-06",
+      "state": "passed",
+      "subsystem": "gnss"
+    },
+    {
+      "detail": "GNSS recovery",
+      "recorded_at_utc": "2026-08-05T17:26:24.730Z",
+      "scenario_id": "GNSS-07",
+      "state": "started",
+      "subsystem": "gnss"
+    },
+    {
+      "detail": "GNSS result=valid; image retained",
+      "recorded_at_utc": "2026-08-05T17:26:24.771Z",
+      "scenario_id": "GNSS-07",
+      "state": "passed",
+      "subsystem": "gnss"
+    },
+    {
+      "detail": "Valid speed",
+      "recorded_at_utc": "2026-08-05T17:26:24.772Z",
+      "scenario_id": "SPD-01",
+      "state": "started",
+      "subsystem": "speed"
+    },
+    {
+      "detail": "Mode=adaptive_distance; rate=0.500 images/s",
+      "recorded_at_utc": "2026-08-05T17:26:24.772Z",
+      "scenario_id": "SPD-01",
+      "state": "passed",
+      "subsystem": "speed"
+    },
+    {
+      "detail": "Missing speed",
+      "recorded_at_utc": "2026-08-05T17:26:24.772Z",
+      "scenario_id": "SPD-02",
+      "state": "started",
+      "subsystem": "speed"
+    },
+    {
+      "detail": "Mode=fixed_rate_fallback; rate=0.200 images/s",
+      "recorded_at_utc": "2026-08-05T17:26:24.772Z",
+      "scenario_id": "SPD-02",
+      "state": "passed",
+      "subsystem": "speed"
+    },
+    {
+      "detail": "Stale speed",
+      "recorded_at_utc": "2026-08-05T17:26:24.772Z",
+      "scenario_id": "SPD-03",
+      "state": "started",
+      "subsystem": "speed"
+    },
+    {
+      "detail": "Mode=fixed_rate_fallback; rate=0.200 images/s",
+      "recorded_at_utc": "2026-08-05T17:26:24.772Z",
+      "scenario_id": "SPD-03",
+      "state": "passed",
+      "subsystem": "speed"
+    },
+    {
+      "detail": "Negative speed",
+      "recorded_at_utc": "2026-08-05T17:26:24.772Z",
+      "scenario_id": "SPD-04",
+      "state": "started",
+      "subsystem": "speed"
+    },
+    {
+      "detail": "Mode=fixed_rate_fallback; rate=0.200 images/s",
+      "recorded_at_utc": "2026-08-05T17:26:24.772Z",
+      "scenario_id": "SPD-04",
+      "state": "passed",
+      "subsystem": "speed"
+    },
+    {
+      "detail": "Stationary speed",
+      "recorded_at_utc": "2026-08-05T17:26:24.772Z",
+      "scenario_id": "SPD-05",
+      "state": "started",
+      "subsystem": "speed"
+    },
+    {
+      "detail": "Mode=stationary; rate=0.000 images/s",
+      "recorded_at_utc": "2026-08-05T17:26:24.772Z",
+      "scenario_id": "SPD-05",
+      "state": "passed",
+      "subsystem": "speed"
+    },
+    {
+      "detail": "High speed rate cap",
+      "recorded_at_utc": "2026-08-05T17:26:24.772Z",
+      "scenario_id": "SPD-06",
+      "state": "started",
+      "subsystem": "speed"
+    },
+    {
+      "detail": "Mode=adaptive_distance; rate=1.000 images/s",
+      "recorded_at_utc": "2026-08-05T17:26:24.772Z",
+      "scenario_id": "SPD-06",
+      "state": "passed",
+      "subsystem": "speed"
+    },
+    {
+      "detail": "Speed recovery",
+      "recorded_at_utc": "2026-08-05T17:26:24.772Z",
+      "scenario_id": "SPD-07",
+      "state": "started",
+      "subsystem": "speed"
+    },
+    {
+      "detail": "Mode=adaptive_distance; rate=1.000 images/s",
+      "recorded_at_utc": "2026-08-05T17:26:24.772Z",
+      "scenario_id": "SPD-07",
+      "state": "passed",
+      "subsystem": "speed"
+    },
+    {
+      "detail": "Normal write",
+      "recorded_at_utc": "2026-08-05T17:26:24.772Z",
+      "scenario_id": "STO-01",
+      "state": "started",
+      "subsystem": "storage"
+    },
+    {
+      "detail": "Normal atomic image and metadata write succeeded",
+      "recorded_at_utc": "2026-08-05T17:26:24.795Z",
+      "scenario_id": "STO-01",
+      "state": "passed",
+      "subsystem": "storage"
+    },
+    {
+      "detail": "Image write failure",
+      "recorded_at_utc": "2026-08-05T17:26:24.796Z",
+      "scenario_id": "STO-02",
+      "state": "started",
+      "subsystem": "storage"
+    },
+    {
+      "detail": "Image write failure detected; no false final image created",
+      "recorded_at_utc": "2026-08-05T17:26:24.796Z",
+      "scenario_id": "STO-02",
+      "state": "passed",
+      "subsystem": "storage"
+    },
+    {
+      "detail": "Metadata write failure",
+      "recorded_at_utc": "2026-08-05T17:26:24.796Z",
+      "scenario_id": "STO-03",
+      "state": "started",
+      "subsystem": "storage"
+    },
+    {
+      "detail": "Image preserved and recovery record written after metadata failure",
+      "recorded_at_utc": "2026-08-05T17:26:24.802Z",
+      "scenario_id": "STO-03",
+      "state": "passed",
+      "subsystem": "storage"
+    },
+    {
+      "detail": "Disk-full condition",
+      "recorded_at_utc": "2026-08-05T17:26:24.802Z",
+      "scenario_id": "STO-04",
+      "state": "started",
+      "subsystem": "storage"
+    },
+    {
+      "detail": "Simulated disk-full error detected without filling the real drive",
+      "recorded_at_utc": "2026-08-05T17:26:24.802Z",
+      "scenario_id": "STO-04",
+      "state": "passed",
+      "subsystem": "storage"
+    },
+    {
+      "detail": "Interrupted temporary write",
+      "recorded_at_utc": "2026-08-05T17:26:24.803Z",
+      "scenario_id": "STO-05",
+      "state": "started",
+      "subsystem": "storage"
+    },
+    {
+      "detail": "Interrupted temporary write detected; partial files removed",
+      "recorded_at_utc": "2026-08-05T17:26:24.804Z",
+      "scenario_id": "STO-05",
+      "state": "passed",
+      "subsystem": "storage"
+    },
+    {
+      "detail": "Storage recovery",
+      "recorded_at_utc": "2026-08-05T17:26:24.805Z",
+      "scenario_id": "STO-06",
+      "state": "started",
+      "subsystem": "storage"
+    },
+    {
+      "detail": "Normal storage resumed after failures",
+      "recorded_at_utc": "2026-08-05T17:26:24.827Z",
+      "scenario_id": "STO-06",
+      "state": "passed",
+      "subsystem": "storage"
+    },
+    {
+      "detail": "Normal upload",
+      "recorded_at_utc": "2026-08-05T17:26:24.827Z",
+      "scenario_id": "NET-01",
+      "state": "started",
+      "subsystem": "network"
+    },
+    {
+      "detail": "Upload completed",
+      "recorded_at_utc": "2026-08-05T17:26:24.827Z",
+      "scenario_id": "NET-01",
+      "state": "passed",
+      "subsystem": "network"
+    },
+    {
+      "detail": "Network unavailable",
+      "recorded_at_utc": "2026-08-05T17:26:24.827Z",
+      "scenario_id": "NET-02",
+      "state": "started",
+      "subsystem": "network"
+    },
+    {
+      "detail": "Failure detected; item stayed queued",
+      "recorded_at_utc": "2026-08-05T17:26:24.827Z",
+      "scenario_id": "NET-02",
+      "state": "passed",
+      "subsystem": "network"
+    },
+    {
+      "detail": "Network timeout",
+      "recorded_at_utc": "2026-08-05T17:26:24.827Z",
+      "scenario_id": "NET-03",
+      "state": "started",
+      "subsystem": "network"
+    },
+    {
+      "detail": "Failure detected; item stayed queued",
+      "recorded_at_utc": "2026-08-05T17:26:24.827Z",
+      "scenario_id": "NET-03",
+      "state": "passed",
+      "subsystem": "network"
+    },
+    {
+      "detail": "Server error",
+      "recorded_at_utc": "2026-08-05T17:26:24.827Z",
+      "scenario_id": "NET-04",
+      "state": "started",
+      "subsystem": "network"
+    },
+    {
+      "detail": "Failure detected; item stayed queued",
+      "recorded_at_utc": "2026-08-05T17:26:24.827Z",
+      "scenario_id": "NET-04",
+      "state": "passed",
+      "subsystem": "network"
+    },
+    {
+      "detail": "Interrupted transfer",
+      "recorded_at_utc": "2026-08-05T17:26:24.827Z",
+      "scenario_id": "NET-05",
+      "state": "started",
+      "subsystem": "network"
+    },
+    {
+      "detail": "Failure detected; item stayed queued",
+      "recorded_at_utc": "2026-08-05T17:26:24.827Z",
+      "scenario_id": "NET-05",
+      "state": "passed",
+      "subsystem": "network"
+    },
+    {
+      "detail": "Network recovery",
+      "recorded_at_utc": "2026-08-05T17:26:24.827Z",
+      "scenario_id": "NET-06",
+      "state": "started",
+      "subsystem": "network"
+    },
+    {
+      "detail": "Uploaded 4 queued items; remaining=0",
+      "recorded_at_utc": "2026-08-05T17:26:24.827Z",
+      "scenario_id": "NET-06",
+      "state": "passed",
+      "subsystem": "network"
+    },
+    {
+      "detail": "Final post-failure health check",
+      "recorded_at_utc": "2026-08-05T17:26:24.827Z",
+      "scenario_id": "APP-01",
+      "state": "started",
+      "subsystem": "application"
+    },
+    {
+      "detail": "Final camera/storage/network health check passed (valid_jpeg)",
+      "recorded_at_utc": "2026-08-05T17:26:24.874Z",
+      "scenario_id": "APP-01",
+      "state": "passed",
+      "subsystem": "application"
+    }
+  ]
+}

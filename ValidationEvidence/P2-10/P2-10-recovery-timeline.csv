@@ -1,0 +1,71 @@
+recorded_at_utc,scenario_id,subsystem,state,detail
+2026-08-05T17:26:24.383Z,CAM-01,camera,started,Normal repository image
+2026-08-05T17:26:24.422Z,CAM-01,camera,passed,Valid image accepted (valid_jpeg)
+2026-08-05T17:26:24.423Z,CAM-02,camera,started,Camera unavailable at startup
+2026-08-05T17:26:24.423Z,CAM-02,camera,passed,Failure detected; a later valid capture succeeded
+2026-08-05T17:26:24.423Z,CAM-03,camera,started,Camera timeout
+2026-08-05T17:26:24.423Z,CAM-03,camera,passed,Failure detected; a later valid capture succeeded
+2026-08-05T17:26:24.423Z,CAM-04,camera,started,Camera disconnect
+2026-08-05T17:26:24.423Z,CAM-04,camera,passed,Failure detected; a later valid capture succeeded
+2026-08-05T17:26:24.423Z,CAM-05,camera,started,Dropped frame
+2026-08-05T17:26:24.423Z,CAM-05,camera,passed,Dropped frame was not reported as a successful image
+2026-08-05T17:26:24.423Z,CAM-06,camera,started,Truncated image
+2026-08-05T17:26:24.430Z,CAM-06,camera,passed,Invalid image rejected (jpeg_end_missing); next capture succeeded
+2026-08-05T17:26:24.430Z,CAM-07,camera,started,Empty image
+2026-08-05T17:26:24.431Z,CAM-07,camera,passed,Invalid image rejected (too_small); next capture succeeded
+2026-08-05T17:26:24.431Z,CAM-08,camera,started,Delayed frame
+2026-08-05T17:26:24.507Z,CAM-08,camera,passed,Delay detected; valid image retained (valid_jpeg)
+2026-08-05T17:26:24.507Z,GNSS-01,gnss,started,Valid fix
+2026-08-05T17:26:24.549Z,GNSS-01,gnss,passed,GNSS result=valid; image retained
+2026-08-05T17:26:24.549Z,GNSS-02,gnss,started,Missing fix
+2026-08-05T17:26:24.572Z,GNSS-02,gnss,passed,GNSS result=missing_fix; image retained
+2026-08-05T17:26:24.572Z,GNSS-03,gnss,started,Malformed fix
+2026-08-05T17:26:24.619Z,GNSS-03,gnss,passed,GNSS result=malformed_fix; image retained
+2026-08-05T17:26:24.620Z,GNSS-04,gnss,started,Stale fix
+2026-08-05T17:26:24.664Z,GNSS-04,gnss,passed,GNSS result=stale_or_future; image retained
+2026-08-05T17:26:24.664Z,GNSS-05,gnss,started,Invalid coordinates
+2026-08-05T17:26:24.687Z,GNSS-05,gnss,passed,GNSS result=coordinates_invalid; image retained
+2026-08-05T17:26:24.687Z,GNSS-06,gnss,started,Low-quality fix
+2026-08-05T17:26:24.729Z,GNSS-06,gnss,passed,GNSS result=satellites_low; image retained
+2026-08-05T17:26:24.730Z,GNSS-07,gnss,started,GNSS recovery
+2026-08-05T17:26:24.771Z,GNSS-07,gnss,passed,GNSS result=valid; image retained
+2026-08-05T17:26:24.772Z,SPD-01,speed,started,Valid speed
+2026-08-05T17:26:24.772Z,SPD-01,speed,passed,Mode=adaptive_distance; rate=0.500 images/s
+2026-08-05T17:26:24.772Z,SPD-02,speed,started,Missing speed
+2026-08-05T17:26:24.772Z,SPD-02,speed,passed,Mode=fixed_rate_fallback; rate=0.200 images/s
+2026-08-05T17:26:24.772Z,SPD-03,speed,started,Stale speed
+2026-08-05T17:26:24.772Z,SPD-03,speed,passed,Mode=fixed_rate_fallback; rate=0.200 images/s
+2026-08-05T17:26:24.772Z,SPD-04,speed,started,Negative speed
+2026-08-05T17:26:24.772Z,SPD-04,speed,passed,Mode=fixed_rate_fallback; rate=0.200 images/s
+2026-08-05T17:26:24.772Z,SPD-05,speed,started,Stationary speed
+2026-08-05T17:26:24.772Z,SPD-05,speed,passed,Mode=stationary; rate=0.000 images/s
+2026-08-05T17:26:24.772Z,SPD-06,speed,started,High speed rate cap
+2026-08-05T17:26:24.772Z,SPD-06,speed,passed,Mode=adaptive_distance; rate=1.000 images/s
+2026-08-05T17:26:24.772Z,SPD-07,speed,started,Speed recovery
+2026-08-05T17:26:24.772Z,SPD-07,speed,passed,Mode=adaptive_distance; rate=1.000 images/s
+2026-08-05T17:26:24.772Z,STO-01,storage,started,Normal write
+2026-08-05T17:26:24.795Z,STO-01,storage,passed,Normal atomic image and metadata write succeeded
+2026-08-05T17:26:24.796Z,STO-02,storage,started,Image write failure
+2026-08-05T17:26:24.796Z,STO-02,storage,passed,Image write failure detected; no false final image created
+2026-08-05T17:26:24.796Z,STO-03,storage,started,Metadata write failure
+2026-08-05T17:26:24.802Z,STO-03,storage,passed,Image preserved and recovery record written after metadata failure
+2026-08-05T17:26:24.802Z,STO-04,storage,started,Disk-full condition
+2026-08-05T17:26:24.802Z,STO-04,storage,passed,Simulated disk-full error detected without filling the real drive
+2026-08-05T17:26:24.803Z,STO-05,storage,started,Interrupted temporary write
+2026-08-05T17:26:24.804Z,STO-05,storage,passed,Interrupted temporary write detected; partial files removed
+2026-08-05T17:26:24.805Z,STO-06,storage,started,Storage recovery
+2026-08-05T17:26:24.827Z,STO-06,storage,passed,Normal storage resumed after failures
+2026-08-05T17:26:24.827Z,NET-01,network,started,Normal upload
+2026-08-05T17:26:24.827Z,NET-01,network,passed,Upload completed
+2026-08-05T17:26:24.827Z,NET-02,network,started,Network unavailable
+2026-08-05T17:26:24.827Z,NET-02,network,passed,Failure detected; item stayed queued
+2026-08-05T17:26:24.827Z,NET-03,network,started,Network timeout
+2026-08-05T17:26:24.827Z,NET-03,network,passed,Failure detected; item stayed queued
+2026-08-05T17:26:24.827Z,NET-04,network,started,Server error
+2026-08-05T17:26:24.827Z,NET-04,network,passed,Failure detected; item stayed queued
+2026-08-05T17:26:24.827Z,NET-05,network,started,Interrupted transfer
+2026-08-05T17:26:24.827Z,NET-05,network,passed,Failure detected; item stayed queued
+2026-08-05T17:26:24.827Z,NET-06,network,started,Network recovery
+2026-08-05T17:26:24.827Z,NET-06,network,passed,Uploaded 4 queued items; remaining=0
+2026-08-05T17:26:24.827Z,APP-01,application,started,Final post-failure health check
+2026-08-05T17:26:24.874Z,APP-01,application,passed,Final camera/storage/network health check passed (valid_jpeg)

@@ -1,0 +1,70 @@
+{
+  "checks": {
+    "all_generated_checksums_match": true,
+    "all_injected_failures_detected": true,
+    "all_injected_failures_recovered": true,
+    "all_scenarios_passed": true,
+    "fallback_rate_is_0_20_hz": true,
+    "maximum_rate_is_1_00_hz": true,
+    "no_application_crashes": true,
+    "no_network_items_pending": true,
+    "no_silent_data_loss": true,
+    "source_repository_images_unchanged": true
+  },
+  "completed_at_utc": "2026-08-05T17:26:24.956Z",
+  "configuration": {
+    "capture_spacing_m": 1.134,
+    "clean_images_found": 0,
+    "damaged_images_found": 0,
+    "fallback_rate_hz": 0.2,
+    "image_repository": "roboticsSunnyApp/sunnybotics-solar-panel-challenge",
+    "image_root": "C:\\Users\\reach\\Work\\SunnyboticsCameraIntegration\\MetadataLabeling\\sample_images",
+    "keep_runtime": false,
+    "maximum_capture_rate_hz": 1.0,
+    "skipped_formats": [
+      "HEIC",
+      "other unsupported formats"
+    ],
+    "speed_timeout_s": 2.5,
+    "supported_images_found": 3
+  },
+  "counts": {
+    "application_crashes": 0,
+    "failure_scenarios": 29,
+    "failures_detected": 29,
+    "failures_recovered": 29,
+    "integrity_mismatches": 0,
+    "integrity_records": 22,
+    "network_items_pending": 0,
+    "scenarios_executed": 35,
+    "scenarios_passed": 35,
+    "silent_data_loss_events": 0,
+    "source_images_changed": 0,
+    "source_images_checked": 3
+  },
+  "evidence": [
+    "P2-10-scenario-results.csv",
+    "P2-10-failure-log.csv",
+    "P2-10-recovery-timeline.csv",
+    "P2-10-file-integrity.csv",
+    "P2-10-state-transitions.json",
+    "logs/p2-10.log"
+  ],
+  "failures": {
+    "application_crashes": [],
+    "bad_integrity_files": [],
+    "changed_source_images": [],
+    "failed_scenarios": [],
+    "undetected_failures": [],
+    "unrecovered_failures": []
+  },
+  "host": {
+    "hostname": "Shrekys_laptop",
+    "machine": "AMD64",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.4"
+  },
+  "result": "PASS",
+  "title": "Failure Recovery Testing",
+  "validation_id": "P2-10"
+}

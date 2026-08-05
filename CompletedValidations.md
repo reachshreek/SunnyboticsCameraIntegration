@@ -1608,3 +1608,571 @@ After connectivity was restored, all pending bundles uploaded successfully. The 
 All 100 image and metadata bundles produced server receipts. All 200 uploaded files matched their expected SHA-256 checksums. No local file was missing or corrupted, no duplicate final server record was created, and no queue item remained pending at completion.
 
 P2-09 is complete as a pre-hardware upload interruption and retry validation. The final production upload endpoint, authentication method, real network hardware, and real cloud-server compatibility must be confirmed after those interfaces are available.
+
+
+# P2-10 — Failure Recovery Testing
+
+## Validation Criterion
+
+The software must detect and recover from failures involving the camera, GNSS input, speed input, local storage, and network connection.
+
+The system must:
+
+* Detect each injected failure
+* Record the failure in the validation logs
+* Continue running without an unhandled software crash
+* Avoid silently losing valid image data
+* Avoid treating invalid images as successful captures
+* Preserve recoverable files after storage failures
+* Use the approved fallback behavior when speed data is unavailable
+* Preserve pending uploads during network failures
+* Resume normal operation after each subsystem recovers
+* Confirm that the original source images remain unchanged
+
+## Test Configuration
+
+| Item                              | Test value                       |
+| --------------------------------- | -------------------------------- |
+| Validation runner                 | `MetadataLabeling/run_p2_10.py`  |
+| Validation stage                  | Before hardware purchase         |
+| Camera source                     | Folder-based mock camera         |
+| Source image directory            | `MetadataLabeling/sample_images` |
+| Source images available           | 3                                |
+| Supported formats                 | JPG, JPEG, and PNG               |
+| Robot ID                          | `sunnybot-01`                    |
+| Mission ID                        | `p2-10-failure-recovery`         |
+| Capture spacing                   | 1.134 m                          |
+| Fixed-rate fallback               | 0.20 images/s                    |
+| Fixed-rate fallback interval      | 5 seconds                        |
+| Maximum capture rate              | 1.00 image/s                     |
+| Speed-data timeout                | 2.5 seconds                      |
+| Minimum movement speed            | 0.02 m/s                         |
+| Persistent runtime retention      | Disabled                         |
+| Real camera required              | No                               |
+| Real GNSS required                | No                               |
+| Real network endpoint required    | No                               |
+| Real disk-full condition required | No                               |
+
+## Test Architecture
+
+The validation used the following software-only test arrangement:
+
+```text
+Repository sample images
+        ↓
+Folder-based mock camera
+        ↓
+Camera fault injection
+        ↓
+Mock GNSS and speed inputs
+        ↓
+Temporary local storage
+        ↓
+Storage fault injection
+        ↓
+Simulated network queue
+        ↓
+Recovery and integrity verification
+```
+
+The three repository images were reused as representative camera frames.
+
+The original images were never modified. Empty, truncated, and temporary image files were created only inside the P2-10 runtime directory.
+
+## Mock Camera Operation
+
+The mock camera was implemented as a small software wrapper around the repository image folder.
+
+During a normal capture, the mock camera returned the next available repository image.
+
+The same interface was also able to simulate:
+
+* Camera unavailable during startup
+* Camera timeout
+* Camera disconnection
+* Camera reconnection
+* Dropped frame
+* Empty image
+* Truncated image
+* Delayed frame
+
+This allowed camera-failure behavior to be tested without requiring the final LUCID camera or SDK.
+
+## Validation Procedure
+
+## 1. Camera Failure Testing
+
+### CAM-01 — Normal Repository Image
+
+A valid repository image was returned by the mock camera.
+
+The software verified the image format and stored the image and metadata successfully.
+
+**Result: Pass**
+
+### CAM-02 — Camera Unavailable at Startup
+
+The mock camera raised a connection error during startup.
+
+The error was detected and recorded. A later valid capture succeeded.
+
+**Result: Pass**
+
+### CAM-03 — Camera Timeout
+
+The mock camera raised a timeout error during capture.
+
+The timeout was detected without crashing the application. A later valid image was captured successfully.
+
+**Result: Pass**
+
+### CAM-04 — Camera Disconnection and Reconnection
+
+The mock camera simulated a disconnection.
+
+The failure was detected. The camera was then reconnected, and a valid capture succeeded.
+
+**Result: Pass**
+
+### CAM-05 — Dropped Frame
+
+The camera returned no frame.
+
+The missing frame was detected and was not recorded as a successful image capture.
+
+The next valid frame was processed successfully.
+
+**Result: Pass**
+
+### CAM-06 — Truncated Image
+
+A truncated copy of a valid repository image was created in the temporary runtime directory.
+
+The incomplete image was rejected because it did not contain a valid complete image structure.
+
+The next valid image was accepted.
+
+**Result: Pass**
+
+### CAM-07 — Empty Image
+
+An empty temporary image file was returned.
+
+The software rejected the empty file and did not treat it as a successful capture.
+
+The next valid image was accepted.
+
+**Result: Pass**
+
+### CAM-08 — Delayed Frame
+
+The mock camera delayed the return of a valid image.
+
+The delay was detected, and the valid image remained usable.
+
+**Result: Pass**
+
+## 2. GNSS Failure Testing
+
+The GNSS validation used known software-generated GNSS records.
+
+For every GNSS condition, the image was retained even when the coordinates were invalid or unavailable.
+
+### GNSS-01 — Valid Fix
+
+A valid latitude, longitude, timestamp, and satellite count were supplied.
+
+The coordinates were accepted.
+
+**Result: Pass**
+
+### GNSS-02 — Missing Fix
+
+No GNSS record was supplied.
+
+The coordinates were marked unavailable, and the image was retained.
+
+**Result: Pass**
+
+### GNSS-03 — Malformed Fix
+
+A malformed GNSS value was supplied.
+
+The record was rejected as malformed, and the image was retained.
+
+**Result: Pass**
+
+### GNSS-04 — Stale Fix
+
+A GNSS record older than the approved freshness limit was supplied.
+
+The fix was marked stale and was not silently reused as valid coordinates.
+
+The image was retained.
+
+**Result: Pass**
+
+### GNSS-05 — Invalid Coordinates
+
+A latitude outside the valid geographic range was supplied.
+
+The coordinates were rejected, and the image remained stored.
+
+**Result: Pass**
+
+### GNSS-06 — Low-Quality Fix
+
+A GNSS record with an insufficient satellite count was supplied.
+
+The fix was marked as low quality, and the image remained stored.
+
+**Result: Pass**
+
+### GNSS-07 — GNSS Recovery
+
+A valid GNSS record was supplied after the invalid and unavailable cases.
+
+Normal coordinate processing resumed.
+
+**Result: Pass**
+
+## 3. Speed-Input Failure Testing
+
+The speed tests confirmed operation of the adaptive-distance mode, fixed-rate fallback, stationary behavior, and maximum-rate limit.
+
+### SPD-01 — Valid Speed
+
+A fresh speed of 0.567 m/s was supplied.
+
+Using the approved capture-spacing formula:
+
+```text
+Capture rate = speed ÷ capture spacing
+Capture rate = 0.567 m/s ÷ 1.134 m
+Capture rate = 0.50 images/s
+```
+
+Adaptive-distance mode was selected.
+
+**Result: Pass**
+
+### SPD-02 — Missing Speed
+
+No speed record was supplied.
+
+The software selected the approved fixed-rate fallback:
+
+```text
+0.20 images/s
+1 image every 5 seconds
+```
+
+**Result: Pass**
+
+### SPD-03 — Stale Speed
+
+A speed record older than the 2.5-second timeout was supplied.
+
+The stale value was rejected, and fixed-rate fallback was selected.
+
+**Result: Pass**
+
+### SPD-04 — Negative Speed
+
+A negative speed value was supplied.
+
+The value was rejected as invalid, and fixed-rate fallback was selected.
+
+**Result: Pass**
+
+### SPD-05 — Stationary Robot
+
+A speed below the 0.02 m/s movement threshold was supplied.
+
+The system selected stationary mode and did not generate repeated distance-based captures.
+
+**Result: Pass**
+
+### SPD-06 — Maximum-Rate Limiting
+
+A speed that would require more than one image per second was supplied.
+
+The capture rate was limited to:
+
+```text
+1.00 image/s
+```
+
+**Result: Pass**
+
+### SPD-07 — Speed Recovery
+
+A fresh valid speed was supplied after the invalid speed conditions.
+
+Adaptive-distance capture resumed successfully.
+
+**Result: Pass**
+
+## 4. Storage Failure Testing
+
+All storage failures were injected through software inside the temporary validation directory.
+
+The test did not fill the actual computer drive or alter the permissions of the real image repository.
+
+### STO-01 — Normal Storage Write
+
+A valid image and metadata record were written using temporary-file and atomic-replacement behavior.
+
+Both files were stored successfully.
+
+**Result: Pass**
+
+### STO-02 — Image-Write Failure
+
+A simulated input/output error occurred before the image could be written.
+
+The failure was detected, and no false final image file was created.
+
+**Result: Pass**
+
+### STO-03 — Metadata-Write Failure
+
+The image was saved successfully, but a metadata-write error was injected.
+
+The image was preserved, and a recovery record was created identifying:
+
+* The image ID
+* The preserved image path
+* The intended metadata path
+* The failure type
+* The failure message
+* The recovery-record timestamp
+
+**Result: Pass**
+
+### STO-04 — Disk-Full Condition
+
+A simulated `ENOSPC` disk-full error was raised.
+
+The condition was detected without filling the real drive.
+
+**Result: Pass**
+
+### STO-05 — Interrupted Temporary Write
+
+A partial temporary file was created, and the write was interrupted.
+
+The failure was detected, and the incomplete temporary file was removed.
+
+No partial file was silently accepted as complete.
+
+**Result: Pass**
+
+### STO-06 — Storage Recovery
+
+A normal image and metadata record were written after the injected storage failures.
+
+Normal storage operation resumed successfully.
+
+**Result: Pass**
+
+## 5. Network Failure Testing
+
+P2-10 used a simulated upload queue to verify the required state transitions.
+
+P2-09 separately performed the more detailed HTTP server, transfer-interruption, retry, checksum, and idempotency validation.
+
+### NET-01 — Normal Upload
+
+A pending upload item was processed normally and marked uploaded.
+
+**Result: Pass**
+
+### NET-02 — Network Unavailable
+
+A connection-refused condition was simulated.
+
+The failure was detected, and the item remained pending instead of being lost.
+
+**Result: Pass**
+
+### NET-03 — Network Timeout
+
+A network timeout was simulated.
+
+The failure was detected, and the upload item remained queued.
+
+**Result: Pass**
+
+### NET-04 — HTTP 500 Error
+
+A temporary server error was simulated.
+
+The item remained queued for later recovery.
+
+**Result: Pass**
+
+### NET-05 — Interrupted Transfer
+
+A connection-aborted condition was simulated.
+
+The item remained pending and was not falsely marked as uploaded.
+
+**Result: Pass**
+
+### NET-06 — Network Recovery
+
+Connectivity was restored.
+
+All pending network items were marked uploaded, and no upload item remained pending.
+
+**Result: Pass**
+
+## 6. Final Application Health Check
+
+After all camera, GNSS, speed, storage, and network failures had been injected, the software performed another complete camera and storage operation.
+
+The final test confirmed that:
+
+* A valid image could still be captured
+* The image format remained valid
+* The image could still be stored
+* Metadata could still be written
+* No network item remained pending
+* The validation application remained operational
+
+**Result: Pass**
+
+## Results Summary
+
+| Result                                  | Recorded value |
+| --------------------------------------- | -------------: |
+| Total scenarios executed                |             35 |
+| Total scenarios passed                  |             35 |
+| Injected failure and recovery scenarios |             29 |
+| Injected failures detected              |             29 |
+| Injected failures recovered             |             29 |
+| Application crashes                     |              0 |
+| Silent data-loss events                 |              0 |
+| Source repository images checked        |              3 |
+| Source repository images changed        |              0 |
+| Generated integrity records             |             22 |
+| Generated integrity mismatches          |              0 |
+| Network items pending at completion     |              0 |
+| Final result                            |       **Pass** |
+
+## Validation Checks
+
+| Check                                                      | Result   |
+| ---------------------------------------------------------- | -------- |
+| All validation scenarios passed                            | **Pass** |
+| Every injected failure was detected                        | **Pass** |
+| Every injected failure recovered                           | **Pass** |
+| No unhandled application crash occurred                    | **Pass** |
+| No silent data-loss event occurred                         | **Pass** |
+| Invalid camera frames were not accepted as valid           | **Pass** |
+| Camera operation resumed after recovery                    | **Pass** |
+| Missing GNSS did not cause image loss                      | **Pass** |
+| Stale GNSS was not silently reused                         | **Pass** |
+| Missing or stale speed selected the 0.20 images/s fallback | **Pass** |
+| Capture rate remained at or below 1.00 image/s             | **Pass** |
+| Storage failures did not create false success records      | **Pass** |
+| Recoverable images were preserved after metadata failure   | **Pass** |
+| Partial temporary files were removed                       | **Pass** |
+| Storage operation resumed after recovery                   | **Pass** |
+| Network failures preserved pending items                   | **Pass** |
+| The network queue drained after recovery                   | **Pass** |
+| All generated file checksums matched                       | **Pass** |
+| All three original source images remained unchanged        | **Pass** |
+| No network item remained pending                           | **Pass** |
+
+## File-Integrity Verification
+
+SHA-256 checksums were recorded for every successfully generated image and metadata file.
+
+At the end of the validation, each file was checked again.
+
+The final comparison confirmed:
+
+```text
+Recorded image checksum      = Final image checksum
+Recorded metadata checksum   = Final metadata checksum
+```
+
+A total of 22 generated-file integrity records were checked.
+
+No checksum mismatch was detected.
+
+The validation also recorded the SHA-256 checksums of all three original source images before fault injection.
+
+After the test, the source images were checked again.
+
+All three source images remained present and unchanged.
+
+## Data-Loss Prevention
+
+The validation confirmed that failures were handled without silent data loss.
+
+Examples included:
+
+* Dropped frames were not reported as successful captures
+* Empty and truncated images were rejected
+* Missing GNSS did not delete otherwise valid images
+* Storage failures did not create false completed files
+* An image was preserved when its matching metadata write failed
+* Temporary partial files were removed
+* Network failures left upload items pending
+* Normal operation resumed after each recovery event
+
+## Runtime Cleanup
+
+The validation was run with runtime retention disabled.
+
+Temporary test data was created under:
+
+```text
+ValidationEvidence/P2-10/runtime/
+```
+
+This temporary data included:
+
+* Empty camera-frame files
+* Truncated image copies
+* Temporary stored images
+* Temporary metadata files
+* Storage recovery records
+* Partial-write files
+* Simulated network state
+
+After the test completed, the runtime directory was removed automatically.
+
+The original source images and permanent evidence files were retained.
+
+## Evidence
+
+* `MetadataLabeling/run_p2_10.py`
+* `ValidationEvidence/P2-10/P2-10-scenario-results.csv`
+* `ValidationEvidence/P2-10/P2-10-failure-log.csv`
+* `ValidationEvidence/P2-10/P2-10-recovery-timeline.csv`
+* `ValidationEvidence/P2-10/P2-10-file-integrity.csv`
+* `ValidationEvidence/P2-10/P2-10-state-transitions.json`
+* `ValidationEvidence/P2-10/P2-10-final-report.json`
+* `ValidationEvidence/P2-10/logs/p2-10.log`
+
+## P2-10 Finding
+
+**Pass**
+
+The P2-10 validation executed 35 controlled scenarios covering camera, GNSS, speed-input, storage, network, and final application-health behavior.
+
+All injected failures were detected, and all tested subsystems recovered without an unhandled application crash. Invalid, empty, dropped, and truncated camera frames were not silently accepted as valid images.
+
+Missing, malformed, stale, invalid, and low-quality GNSS records were marked appropriately without discarding otherwise valid captured images. Missing, stale, and invalid speed values activated the approved fixed-rate fallback of 0.20 images per second. The configured capture rate remained at or below the maximum of 1.00 image per second.
+
+Storage write failures, simulated disk-full conditions, interrupted temporary writes, and metadata-write failures were detected. No false successful storage record was created. When metadata writing failed after image storage, the image was preserved and a recovery record was generated.
+
+Network failures preserved affected items in the simulated pending queue. After connectivity recovery, all pending items were processed, and no network item remained pending.
+
+All generated image and metadata checksums matched their recorded values. The three original repository source images remained unchanged. No silent data-loss event or unrecovered subsystem failure was detected.
+
+P2-10 is complete as a pre-hardware software fault-injection validation. Camera behavior was simulated using repository images rather than the final LUCID camera, and the network portion used simulated queue-state transitions. Actual camera disconnection, physical storage failure, GNSS hardware loss, network-hardware interruption, and full-system recovery must be confirmed during hardware integration.
