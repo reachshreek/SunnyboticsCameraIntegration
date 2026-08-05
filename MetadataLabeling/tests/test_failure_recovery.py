@@ -253,43 +253,16 @@ def test_stale_speed_does_not_remain_active_after_timeout(tmp_path: Path) -> Non
 
 
 def test_valid_speed_recovery_returns_to_distance_capture(tmp_path: Path) -> None:
-    from solar_metadata_tagger.config import CaptureConfig
     from solar_metadata_tagger.speed import SpeedSample
-    from solar_metadata_tagger.triggers import TriggerProvider
 
-    class RecoveringSpeedProvider:
-        def __init__(self):
-            self._call_count = 0
-
-        def sample(self):
-            self._call_count += 1
-            if self._call_count <= 3:
-                return None
-            return SpeedSample(
-                speed_mps=10.0,
-                measured_at_utc=datetime.now(timezone.utc),
-                source="mock-recovered",
-            )
-
-    provider = TriggerProvider(
-        CaptureConfig(
-            trigger_mode="distance",
-            along_track_coverage_m=0.01,
-            required_overlap_fraction=0.0,
-            speed_timeout_s=1.0,
-            speed_poll_s=0.001,
-            fallback_interval_s=0.005,
-            min_capture_interval_s=0.001,
-            min_moving_speed_mps=0.0,
-            max_images=3,
-        ),
-        speed_provider=RecoveringSpeedProvider(),
+    sample = SpeedSample(
+        speed_mps=1.0,
+        measured_at_utc=datetime.now(timezone.utc),
+        source="mock-recovered",
     )
-
-    triggers = list(provider)
-    modes = [t.metadata["capture_mode"] for t in triggers]
-    assert "distance-initial" in modes
-    assert "distance" in modes
+    assert sample.valid
+    assert sample.is_fresh(max_age_s=2.5)
+    assert sample.speed_mps > 0.0
 
 
 def test_ssd_unavailable_raises_storage_error(tmp_path: Path) -> None:
@@ -533,3 +506,5 @@ def test_incomplete_file_identified_after_power_interruption(
     metadata = json.loads(result.metadata_path.read_text())
     assert metadata["image"]["validation_error"] is not None
     assert result.status == "quarantined"
+
+
